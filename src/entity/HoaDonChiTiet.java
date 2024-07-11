@@ -6,15 +6,17 @@ public class HoaDonChiTiet {
     private int maHD;
     private int maSP;
     private int soLuong;
+    private double giaBan;
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(int id, int maHD, int maSP, int soLuong) {
+    public HoaDonChiTiet(int id, int maHD, int maSP, int soLuong, double giaBan) {
         this.id = id;
         this.maHD = maHD;
         this.maSP = maSP;
         this.soLuong = soLuong;
+        this.giaBan = giaBan;
     }
 
     public int getId() {
@@ -47,6 +49,14 @@ public class HoaDonChiTiet {
 
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
+    }
+
+    public double getGiaBan() {
+        return giaBan;
+    }
+
+    public void setGiaBan(double giaBan) {
+        this.giaBan = giaBan;
     }
 
 }

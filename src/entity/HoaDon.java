@@ -6,9 +6,13 @@ public class HoaDon {
 
     private int maHD;
     private int maNV;
-    private int maKH;
-    private String maKM;
+    private String tenKH;
+    private String sdt;
+    private String diaChi;
+    private String maGiamGia;
     private boolean kenhBanHang;
+    private boolean ht_thanhToan;
+    private double thanhTien;
     private Date ngayTao;
     private boolean trangThai;
     private String lyDo;
@@ -16,12 +20,16 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public HoaDon(int maHD, int maNV, int maKH, String maKM, boolean kenhBanHang, Date ngayTao, boolean trangThai, String lyDo) {
+    public HoaDon(int maHD, int maNV, String tenKH, String sdt, String diaChi, String maGiamGia, boolean kenhBanHang, boolean ht_thanhToan, double thanhTien, Date ngayTao, boolean trangThai, String lyDo) {
         this.maHD = maHD;
         this.maNV = maNV;
-        this.maKH = maKH;
-        this.maKM = maKM;
+        this.tenKH = tenKH;
+        this.sdt = sdt;
+        this.diaChi = diaChi;
+        this.maGiamGia = maGiamGia;
         this.kenhBanHang = kenhBanHang;
+        this.ht_thanhToan = ht_thanhToan;
+        this.thanhTien = thanhTien;
         this.ngayTao = ngayTao;
         this.trangThai = trangThai;
         this.lyDo = lyDo;
@@ -43,20 +51,36 @@ public class HoaDon {
         this.maNV = maNV;
     }
 
-    public int getMaKH() {
-        return maKH;
+    public String getTenKH() {
+        return tenKH;
     }
 
-    public void setMaKH(int maKH) {
-        this.maKH = maKH;
+    public void setTenKH(String tenKH) {
+        this.tenKH = tenKH;
     }
 
-    public String getMaKM() {
-        return maKM;
+    public String getSdt() {
+        return sdt;
     }
 
-    public void setMaKM(String maKM) {
-        this.maKM = maKM;
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
+    public String getMaGiamGia() {
+        return maGiamGia;
+    }
+
+    public void setMaGiamGia(String maGiamGia) {
+        this.maGiamGia = maGiamGia;
     }
 
     public boolean isKenhBanHang() {
@@ -65,6 +89,22 @@ public class HoaDon {
 
     public void setKenhBanHang(boolean kenhBanHang) {
         this.kenhBanHang = kenhBanHang;
+    }
+
+    public boolean isHt_thanhToan() {
+        return ht_thanhToan;
+    }
+
+    public void setHt_thanhToan(boolean ht_thanhToan) {
+        this.ht_thanhToan = ht_thanhToan;
+    }
+
+    public double getThanhTien() {
+        return thanhTien;
+    }
+
+    public void setThanhTien(double thanhTien) {
+        this.thanhTien = thanhTien;
     }
 
     public Date getNgayTao() {

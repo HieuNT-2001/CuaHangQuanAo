@@ -8,22 +8,18 @@ public class SanPham {
     private int soLuong;
     private int maNCC;
     private int maDM;
-    private int maMS;
-    private int maKT;
     private boolean trangThai;
 
     public SanPham() {
     }
 
-    public SanPham(int maSP, String tenSP, double donGia, int soLuong, int maNCC, int maDM, int maMS, int maKT, boolean trangThai) {
+    public SanPham(int maSP, String tenSP, double donGia, int soLuong, int maNCC, int maDM, boolean trangThai) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.donGia = donGia;
         this.soLuong = soLuong;
         this.maNCC = maNCC;
         this.maDM = maDM;
-        this.maMS = maMS;
-        this.maKT = maKT;
         this.trangThai = trangThai;
     }
 
@@ -73,22 +69,6 @@ public class SanPham {
 
     public void setMaDM(int maDM) {
         this.maDM = maDM;
-    }
-
-    public int getMaMS() {
-        return maMS;
-    }
-
-    public void setMaMS(int maMS) {
-        this.maMS = maMS;
-    }
-
-    public int getMaKT() {
-        return maKT;
-    }
-
-    public void setMaKT(int maKT) {
-        this.maKT = maKT;
     }
 
     public boolean isTrangThai() {
