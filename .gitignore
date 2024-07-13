@@ -22,6 +22,7 @@ Thumbs.db
 # Ignore configuration files
 private.properties
 config.properties
+user.properties.file
 
 # Ignore IDE specific files
 /.idea/
