@@ -15,7 +15,8 @@ public class HoaDonDAO {
     private final String INSERT = "INSERT INTO HoaDon (MaNV, TenKH, SDT, DiaChi, MaGiamGia, KenhBanHang, HT_ThanhToan, ThanhTien, NgayTao, TrangThai, LyDo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private final String UPDATE = "UPDATE HoaDon SET MaNV = ?, TenKH = ?, SDT = ?, DiaChi = ?, MaGiamGia = ?, KenhBanHang = ?, HT_ThanhToan = ?, ThanhTien = ?, NgayTao = ?, TrangThai = ?, LyDo = ? WHERE MaHD = ?";
     private final String DELETE = "DELETE FROM HoaDon WHERE MaHD = ?";
-
+    
+    // Insert vao hoa don
     public void insert(HoaDon entity) {
         Xjdbc.executeUpdate(
                 INSERT,
@@ -32,7 +33,8 @@ public class HoaDonDAO {
                 entity.getLyDo()
         );
     }
-
+    
+    // Update hoa don
     public void update(HoaDon entity) {
         Xjdbc.executeUpdate(
                 UPDATE,
@@ -51,10 +53,12 @@ public class HoaDonDAO {
         );
     }
 
+    // Delete hoa don
     public void delete(int id) {
         Xjdbc.executeUpdate(DELETE, id);
     }
-
+    
+    // Select hoa don theo cau lenh sql
     public List<HoaDon> selectBySql(String sql, Object... args) {
         List<HoaDon> list = new ArrayList<>();
         try (ResultSet rs = Xjdbc.executeQuery(sql, args)) {
@@ -81,14 +85,17 @@ public class HoaDonDAO {
         return list;
     }
 
+    // Select toan bo hoa don
     public List<HoaDon> selectAll() {
         return selectBySql(SELECT_ALL);
     }
 
+    // Select hoa don theo ma
     public HoaDon selectById(int id) {
         return selectBySql(SELECT_BY_ID, id).get(0);
     }
 
+    // Select theo trang thai
     public List<HoaDon> selectByStatus(int status) {
         return selectBySql(SELECT_BY_STATUS, status);
     }
