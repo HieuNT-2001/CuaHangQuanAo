@@ -1,1 +1,41 @@
-/build/
+# NetBeans specific files
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+build/
+
+# Ignore generated build files and classes
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignore log files and temporary files
+*.log
+*.tmp
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore configuration files
+private.properties
+config.properties
+
+# Ignore IDE specific files
+/.idea/
+/*.iml
+
+# Ignore Maven specific files
+target/
+pom.xml.tag
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Ignore Gradle specific files
+.gradle/
+build/
+*/build/
