@@ -112,7 +112,7 @@ public class PanelNV extends javax.swing.JPanel {
         btnDelete.setText("Xóa");
 
         btnNew.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/New.png"))); // NOI18N
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/New_1.png"))); // NOI18N
         btnNew.setText("Mới");
 
         tbNV.setModel(new javax.swing.table.DefaultTableModel(

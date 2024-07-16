@@ -27,71 +27,71 @@ public class PanelSP extends javax.swing.JPanel {
     private void initComponents() {
 
         lbTitle = new javax.swing.JLabel();
-        lbPass = new javax.swing.JLabel();
-        fillPass = new javax.swing.JTextField();
-        lbName = new javax.swing.JLabel();
-        fillName = new javax.swing.JTextField();
-        lbPhone = new javax.swing.JLabel();
-        fillPhone = new javax.swing.JTextField();
-        lbMaNV = new javax.swing.JLabel();
-        fillMaNV = new javax.swing.JTextField();
-        lbMaNV1 = new javax.swing.JLabel();
-        lbMaNV2 = new javax.swing.JLabel();
-        lbMaNV3 = new javax.swing.JLabel();
-        lbMaNV4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        lbNameSP = new javax.swing.JLabel();
+        fillNameSP = new javax.swing.JTextField();
+        lbPrice = new javax.swing.JLabel();
+        fillPrice = new javax.swing.JTextField();
+        lbQuantity = new javax.swing.JLabel();
+        fillQuantity = new javax.swing.JTextField();
+        lbMaSP = new javax.swing.JLabel();
+        fillMaSP = new javax.swing.JTextField();
+        lbNCC = new javax.swing.JLabel();
+        lbCategory = new javax.swing.JLabel();
+        lbColor = new javax.swing.JLabel();
+        lbSize = new javax.swing.JLabel();
+        cboxNCC = new javax.swing.JComboBox<>();
+        cboxCategory = new javax.swing.JComboBox<>();
+        cboxColor = new javax.swing.JComboBox<>();
+        cboxSize = new javax.swing.JComboBox<>();
         btnAdd = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        fillPhone1 = new javax.swing.JTextField();
-        lbPhone1 = new javax.swing.JLabel();
+        btnSearch = new javax.swing.JButton();
+        searchBar = new javax.swing.JTextField();
+        lbSearch = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        tbSP = new javax.swing.JTable();
+        btnHiddenList = new javax.swing.JButton();
+        btnHideSP = new javax.swing.JButton();
+        btnTTSP = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         lbTitle.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lbTitle.setText("Sản phẩm");
 
-        lbPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbPass.setText("Tên sản phẩm");
+        lbNameSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbNameSP.setText("Tên sản phẩm");
 
-        lbName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbName.setText("Đơn giá");
+        lbPrice.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbPrice.setText("Đơn giá");
 
-        lbPhone.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbPhone.setText("Số lượng");
+        lbQuantity.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbQuantity.setText("Số lượng");
 
-        lbMaNV.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbMaNV.setText("Mã sản phẩm");
+        lbMaSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbMaSP.setText("Mã sản phẩm");
 
-        lbMaNV1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbMaNV1.setText("Nhà cung cấp");
+        lbNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbNCC.setText("Nhà cung cấp");
 
-        lbMaNV2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbMaNV2.setText("Danh mục");
+        lbCategory.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbCategory.setText("Danh mục");
 
-        lbMaNV3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbMaNV3.setText("Màu sắc");
+        lbColor.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbColor.setText("Màu sắc");
 
-        lbMaNV4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbMaNV4.setText("Kích thước");
+        lbSize.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbSize.setText("Kích thước");
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboxNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboxCategory.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboxColor.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboxSize.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         btnAdd.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Add.png"))); // NOI18N
@@ -106,16 +106,16 @@ public class PanelSP extends javax.swing.JPanel {
         btnDelete.setText("Xóa");
 
         btnNew.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/New.png"))); // NOI18N
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/New_1.png"))); // NOI18N
         btnNew.setText("Mới");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Search.png"))); // NOI18N
+        btnSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Search.png"))); // NOI18N
 
-        lbPhone1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbPhone1.setText("Tìm kiếm");
+        lbSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbSearch.setText("Tìm kiếm");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -134,16 +134,16 @@ public class PanelSP extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbSP);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton2.setText("Danh sách SP ẩn");
+        btnHiddenList.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnHiddenList.setText("Danh sách SP ẩn");
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton3.setText("Ẩn sản phẩm");
+        btnHideSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnHideSP.setText("Ẩn sản phẩm");
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton4.setText("Thuộc tính SP");
+        btnTTSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnTTSP.setText("Thuộc tính SP");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,61 +153,61 @@ public class PanelSP extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
+                        .addComponent(btnTTSP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnHideSP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
+                        .addComponent(btnHiddenList))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbPhone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbQuantity, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(lbMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbPass)
-                                        .addComponent(lbName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lbPhone1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lbMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbNameSP)
+                                        .addComponent(lbPrice, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(fillPass, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fillNameSP, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(lbMaNV2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cboxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(fillName, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fillPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(lbMaNV3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbColor, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cboxColor, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(fillPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fillQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(lbMaNV4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbSize, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cboxSize, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(fillMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fillMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(lbMaNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cboxNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(fillPhone1)
+                                        .addComponent(searchBar)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(lbTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE))))
                 .addGap(27, 27, 27))
         );
@@ -216,45 +216,46 @@ public class PanelSP extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbMaNV)
-                    .addComponent(lbMaNV1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fillMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdd))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fillMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbMaSP)
+                        .addComponent(lbNCC)
+                        .addComponent(cboxNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAdd)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fillPass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPass)
-                    .addComponent(lbMaNV2)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fillNameSP, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbNameSP)
+                    .addComponent(lbCategory)
+                    .addComponent(cboxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fillName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbName)
-                    .addComponent(lbMaNV3)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fillPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPrice)
+                    .addComponent(lbColor)
+                    .addComponent(cboxColor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDelete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fillPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPhone)
-                    .addComponent(lbMaNV4)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fillQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbQuantity)
+                    .addComponent(lbSize)
+                    .addComponent(cboxSize, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNew))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fillPhone1)
-                    .addComponent(lbPhone1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchBar)
+                    .addComponent(lbSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnHiddenList)
+                    .addComponent(btnHideSP)
+                    .addComponent(btnTTSP))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -264,31 +265,31 @@ public class PanelSP extends javax.swing.JPanel {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnHiddenList;
+    private javax.swing.JButton btnHideSP;
     private javax.swing.JButton btnNew;
-    private javax.swing.JTextField fillMaNV;
-    private javax.swing.JTextField fillName;
-    private javax.swing.JTextField fillPass;
-    private javax.swing.JTextField fillPhone;
-    private javax.swing.JTextField fillPhone1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnTTSP;
+    private javax.swing.JComboBox<String> cboxCategory;
+    private javax.swing.JComboBox<String> cboxColor;
+    private javax.swing.JComboBox<String> cboxNCC;
+    private javax.swing.JComboBox<String> cboxSize;
+    private javax.swing.JTextField fillMaSP;
+    private javax.swing.JTextField fillNameSP;
+    private javax.swing.JTextField fillPrice;
+    private javax.swing.JTextField fillQuantity;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lbMaNV;
-    private javax.swing.JLabel lbMaNV1;
-    private javax.swing.JLabel lbMaNV2;
-    private javax.swing.JLabel lbMaNV3;
-    private javax.swing.JLabel lbMaNV4;
-    private javax.swing.JLabel lbName;
-    private javax.swing.JLabel lbPass;
-    private javax.swing.JLabel lbPhone;
-    private javax.swing.JLabel lbPhone1;
+    private javax.swing.JLabel lbCategory;
+    private javax.swing.JLabel lbColor;
+    private javax.swing.JLabel lbMaSP;
+    private javax.swing.JLabel lbNCC;
+    private javax.swing.JLabel lbNameSP;
+    private javax.swing.JLabel lbPrice;
+    private javax.swing.JLabel lbQuantity;
+    private javax.swing.JLabel lbSearch;
+    private javax.swing.JLabel lbSize;
     private javax.swing.JLabel lbTitle;
+    private javax.swing.JTextField searchBar;
+    private javax.swing.JTable tbSP;
     // End of variables declaration//GEN-END:variables
 }
