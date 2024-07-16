@@ -8,12 +8,12 @@ package view;
  *
  * @author HP
  */
-public class Main extends javax.swing.JFrame {
+public class Main2 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Main
+     * Creates new form NewJFrame
      */
-    public Main() {
+    public Main2() {
         initComponents();
     }
 
@@ -26,11 +26,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jPanel2 = new javax.swing.JPanel();
-        btnChangePass = new javax.swing.JButton();
-        btnSignout = new javax.swing.JButton();
+        panelNavigate = new javax.swing.JPanel();
         lbTitle = new javax.swing.JLabel();
         btnNV = new javax.swing.JButton();
         btnSP = new javax.swing.JButton();
@@ -39,22 +35,13 @@ public class Main extends javax.swing.JFrame {
         btnBH = new javax.swing.JButton();
         btnHD = new javax.swing.JButton();
         btnTK = new javax.swing.JButton();
-        pnMain = new javax.swing.JPanel();
+        btnSignout = new javax.swing.JButton();
+        btnChangePass = new javax.swing.JButton();
+        panelMain = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 255));
-
-        btnChangePass.setBackground(new java.awt.Color(0, 204, 255));
-        btnChangePass.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnChangePass.setForeground(new java.awt.Color(255, 255, 255));
-        btnChangePass.setText("Đổi mật khẩu");
-
-        btnSignout.setBackground(new java.awt.Color(0, 204, 255));
-        btnSignout.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnSignout.setForeground(new java.awt.Color(255, 255, 255));
-        btnSignout.setText("Đăng xuất");
+        panelNavigate.setBackground(new java.awt.Color(0, 204, 255));
 
         lbTitle.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lbTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,13 +84,21 @@ public class Main extends javax.swing.JFrame {
         btnTK.setForeground(new java.awt.Color(255, 255, 255));
         btnTK.setText("Thống kê");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnChangePass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSignout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+        btnSignout.setBackground(new java.awt.Color(0, 204, 255));
+        btnSignout.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        btnSignout.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignout.setText("Đăng xuất");
+
+        btnChangePass.setBackground(new java.awt.Color(0, 204, 255));
+        btnChangePass.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        btnChangePass.setForeground(new java.awt.Color(255, 255, 255));
+        btnChangePass.setText("Đổi mật khẩu");
+
+        javax.swing.GroupLayout panelNavigateLayout = new javax.swing.GroupLayout(panelNavigate);
+        panelNavigate.setLayout(panelNavigateLayout);
+        panelNavigateLayout.setHorizontalGroup(
+            panelNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnNCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -111,10 +106,12 @@ public class Main extends javax.swing.JFrame {
             .addComponent(btnBH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSignout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnChangePass, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        panelNavigateLayout.setVerticalGroup(
+            panelNavigateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNavigateLayout.createSequentialGroup()
                 .addComponent(lbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,35 +133,32 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(btnChangePass, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        pnMain.setBackground(new java.awt.Color(255, 255, 255));
+        panelMain.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout pnMainLayout = new javax.swing.GroupLayout(pnMain);
-        pnMain.setLayout(pnMainLayout);
-        pnMainLayout.setHorizontalGroup(
-            pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
+        panelMain.setLayout(panelMainLayout);
+        panelMainLayout.setHorizontalGroup(
+            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1024, Short.MAX_VALUE)
         );
-        pnMainLayout.setVerticalGroup(
-            pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelMainLayout.setVerticalGroup(
+            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelNavigate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-
+            .addComponent(panelNavigate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -187,26 +181,28 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new Main2().setVisible(true);
             }
         });
     }
 
-    // Variables declaration - do not modify                     
-
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBH;
     private javax.swing.JButton btnChangePass;
     private javax.swing.JButton btnHD;
@@ -216,8 +212,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnSP;
     private javax.swing.JButton btnSignout;
     private javax.swing.JButton btnTK;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbTitle;
-    private javax.swing.JPanel pnMain;
+    private javax.swing.JPanel panelMain;
+    private javax.swing.JPanel panelNavigate;
+    // End of variables declaration//GEN-END:variables
 }
