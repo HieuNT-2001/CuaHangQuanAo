@@ -34,7 +34,6 @@ public class Main extends javax.swing.JFrame {
         btnNV = new javax.swing.JButton();
         btnSP = new javax.swing.JButton();
         btnNCC = new javax.swing.JButton();
-        btnKH = new javax.swing.JButton();
         btnKM = new javax.swing.JButton();
         btnBH = new javax.swing.JButton();
         btnHD = new javax.swing.JButton();
@@ -77,11 +76,6 @@ public class Main extends javax.swing.JFrame {
         btnNCC.setForeground(new java.awt.Color(255, 255, 255));
         btnNCC.setText("Nhà cung cấp");
 
-        btnKH.setBackground(new java.awt.Color(0, 204, 255));
-        btnKH.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnKH.setForeground(new java.awt.Color(255, 255, 255));
-        btnKH.setText("Khách hàng");
-
         btnKM.setBackground(new java.awt.Color(0, 204, 255));
         btnKM.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         btnKM.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,7 +106,6 @@ public class Main extends javax.swing.JFrame {
             .addComponent(btnNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnNCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnKM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnBH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -129,8 +122,6 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnKH, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnKM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBH, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,7 +129,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(btnHD, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addComponent(btnSignout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnChangePass, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -214,7 +205,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnBH;
     private javax.swing.JButton btnChangePass;
     private javax.swing.JButton btnHD;
-    private javax.swing.JButton btnKH;
     private javax.swing.JButton btnKM;
     private javax.swing.JButton btnNCC;
     private javax.swing.JButton btnNV;
