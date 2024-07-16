@@ -26,145 +26,18 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jPanel2 = new javax.swing.JPanel();
-        btnChangePass = new javax.swing.JButton();
-        btnSignout = new javax.swing.JButton();
-        lbTitle = new javax.swing.JLabel();
-        btnNV = new javax.swing.JButton();
-        btnSP = new javax.swing.JButton();
-        btnNCC = new javax.swing.JButton();
-        btnKM = new javax.swing.JButton();
-        btnBH = new javax.swing.JButton();
-        btnHD = new javax.swing.JButton();
-        btnTK = new javax.swing.JButton();
-        pnMain = new javax.swing.JPanel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-
-        jPanel2.setBackground(new java.awt.Color(0, 204, 255));
-
-        btnChangePass.setBackground(new java.awt.Color(0, 204, 255));
-        btnChangePass.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnChangePass.setForeground(new java.awt.Color(255, 255, 255));
-        btnChangePass.setText("Đổi mật khẩu");
-
-        btnSignout.setBackground(new java.awt.Color(0, 204, 255));
-        btnSignout.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnSignout.setForeground(new java.awt.Color(255, 255, 255));
-        btnSignout.setText("Đăng xuất");
-
-        lbTitle.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        lbTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitle.setText("Cửa hàng");
-        lbTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        btnNV.setBackground(new java.awt.Color(0, 204, 255));
-        btnNV.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnNV.setForeground(new java.awt.Color(255, 255, 255));
-        btnNV.setText("Nhân viên");
-
-        btnSP.setBackground(new java.awt.Color(0, 204, 255));
-        btnSP.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnSP.setForeground(new java.awt.Color(255, 255, 255));
-        btnSP.setText("Sản phẩm");
-
-        btnNCC.setBackground(new java.awt.Color(0, 204, 255));
-        btnNCC.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnNCC.setForeground(new java.awt.Color(255, 255, 255));
-        btnNCC.setText("Nhà cung cấp");
-
-        btnKM.setBackground(new java.awt.Color(0, 204, 255));
-        btnKM.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnKM.setForeground(new java.awt.Color(255, 255, 255));
-        btnKM.setText("Khuyến mãi");
-
-        btnBH.setBackground(new java.awt.Color(0, 204, 255));
-        btnBH.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnBH.setForeground(new java.awt.Color(255, 255, 255));
-        btnBH.setText("Bán hàng");
-
-        btnHD.setBackground(new java.awt.Color(0, 204, 255));
-        btnHD.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnHD.setForeground(new java.awt.Color(255, 255, 255));
-        btnHD.setText("Hóa đơn");
-
-        btnTK.setBackground(new java.awt.Color(0, 204, 255));
-        btnTK.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnTK.setForeground(new java.awt.Color(255, 255, 255));
-        btnTK.setText("Thống kê");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnChangePass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSignout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-            .addComponent(btnNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnNCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnKM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnBH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(lbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnKM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBH, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnHD, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                .addComponent(btnSignout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnChangePass, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        pnMain.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout pnMainLayout = new javax.swing.GroupLayout(pnMain);
-        pnMain.setLayout(pnMainLayout);
-        pnMainLayout.setHorizontalGroup(
-            pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
-        );
-        pnMainLayout.setVerticalGroup(
-            pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 1280, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-
+            .addGap(0, 720, Short.MAX_VALUE)
         );
 
         pack();
@@ -206,17 +79,5 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-
-    private javax.swing.JButton btnBH;
-    private javax.swing.JButton btnChangePass;
-    private javax.swing.JButton btnHD;
-    private javax.swing.JButton btnKM;
-    private javax.swing.JButton btnNCC;
-    private javax.swing.JButton btnNV;
-    private javax.swing.JButton btnSP;
-    private javax.swing.JButton btnSignout;
-    private javax.swing.JButton btnTK;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lbTitle;
-    private javax.swing.JPanel pnMain;
+    // End of variables declaration//GEN-END:variables
+}
