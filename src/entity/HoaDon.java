@@ -14,13 +14,13 @@ public class HoaDon {
     private boolean ht_thanhToan;
     private double thanhTien;
     private Date ngayTao;
-    private boolean trangThai;
+    private int trangThai;
     private String lyDo;
 
     public HoaDon() {
     }
 
-    public HoaDon(int maHD, int maNV, String tenKH, String sdt, String diaChi, String maGiamGia, boolean kenhBanHang, boolean ht_thanhToan, double thanhTien, Date ngayTao, boolean trangThai, String lyDo) {
+    public HoaDon(int maHD, int maNV, String tenKH, String sdt, String diaChi, String maGiamGia, boolean kenhBanHang, boolean ht_thanhToan, double thanhTien, Date ngayTao, int trangThai, String lyDo) {
         this.maHD = maHD;
         this.maNV = maNV;
         this.tenKH = tenKH;
@@ -115,11 +115,11 @@ public class HoaDon {
         this.ngayTao = ngayTao;
     }
 
-    public boolean isTrangThai() {
+    public int getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(boolean trangThai) {
+    public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
 
