@@ -34,9 +34,9 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnSearch" min="-2" pref="60" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lbSearch1" min="-2" pref="78" max="-2" attributes="0"/>
+                              <Component id="lbStatus" min="-2" pref="78" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cboxNCC" min="-2" pref="255" max="-2" attributes="0"/>
+                              <Component id="cboxStatus" min="-2" pref="255" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -45,11 +45,11 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="lbTitle" alignment="1" min="-2" pref="980" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnSearch3" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="btnAdd" min="-2" pref="60" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnSearch1" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="btnThanhToan" min="-2" pref="60" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnSearch2" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="btnCancel" min="-2" pref="60" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -71,8 +71,8 @@
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Component id="btnSearch" min="-2" pref="41" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbSearch1" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="cboxNCC" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="lbStatus" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="cboxStatus" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -80,9 +80,9 @@
               <Component id="jScrollPane1" pref="482" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSearch2" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="btnSearch1" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="btnSearch3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="btnCancel" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="btnThanhToan" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="btnAdd" min="-2" pref="41" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -97,7 +97,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="tbBill">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="12" rowCount="4">
@@ -214,7 +214,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbSearch1">
+    <Component class="javax.swing.JLabel" name="lbStatus">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="16" style="0"/>
@@ -222,7 +222,7 @@
         <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng th&#xe1;i"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cboxNCC">
+    <Component class="javax.swing.JComboBox" name="cboxStatus">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="16" style="0"/>
@@ -232,7 +232,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSearch1">
+    <Component class="javax.swing.JButton" name="btnThanhToan">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="16" style="0"/>
@@ -242,7 +242,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSearch2">
+    <Component class="javax.swing.JButton" name="btnCancel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="16" style="0"/>
@@ -252,7 +252,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSearch3">
+    <Component class="javax.swing.JButton" name="btnAdd">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="16" style="0"/>
