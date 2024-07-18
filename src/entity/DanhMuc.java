@@ -5,6 +5,10 @@ public class DanhMuc {
     private int maDM;
     private String danhMuc;
 
+    public DanhMuc() {
+        
+    }
+
     public int getMaDM() {
         return maDM;
     }
