@@ -64,29 +64,47 @@ public class PanelNV extends javax.swing.JPanel {
         lbMaNV.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbMaNV.setText("Mã nhân viên");
 
+        fillMaNV.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         lbTenDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbTenDangNhap.setText("Tên đăng nhập");
+
+        fillTenDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbConfirmPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbConfirmPass.setText("Xác nhận MK");
 
+        fillConfirmPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         lbPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbPass.setText("Mật khẩu");
+
+        fillPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbBirthyear.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbBirthyear.setText("Năm sinh");
 
+        fillBirthyear.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         lbName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbName.setText("Họ tên");
+
+        fillName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbMail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbMail.setText("Email");
 
+        fillMail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         lbPhone.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbPhone.setText("SĐT");
 
+        fillPhone.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         lbCCCD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbCCCD.setText("CCCD");
+
+        fillCCCD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbVaiTro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbVaiTro.setText("Vai trò");

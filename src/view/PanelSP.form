@@ -173,6 +173,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillNameSP">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbPrice">
       <Properties>
@@ -183,6 +188,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillPrice">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbQuantity">
       <Properties>
@@ -193,6 +203,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillQuantity">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbMaSP">
       <Properties>
@@ -203,6 +218,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillMaSP">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbNCC">
       <Properties>
@@ -331,6 +351,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="searchBar">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbSearch">
       <Properties>

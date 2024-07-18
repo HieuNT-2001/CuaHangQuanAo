@@ -59,6 +59,8 @@ public class PanelHoaDon extends javax.swing.JPanel {
         lbSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbSearch.setText("Tìm kiếm");
 
+        searchBar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         btnSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Search.png"))); // NOI18N
 

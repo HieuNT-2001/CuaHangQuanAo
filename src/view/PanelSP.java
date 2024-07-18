@@ -64,14 +64,22 @@ public class PanelSP extends javax.swing.JPanel {
         lbNameSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbNameSP.setText("Tên sản phẩm");
 
+        fillNameSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         lbPrice.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbPrice.setText("Đơn giá");
+
+        fillPrice.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbQuantity.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbQuantity.setText("Số lượng");
 
+        fillQuantity.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         lbMaSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbMaSP.setText("Mã sản phẩm");
+
+        fillMaSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbNCC.setText("Nhà cung cấp");
@@ -111,6 +119,8 @@ public class PanelSP extends javax.swing.JPanel {
 
         btnSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Search.png"))); // NOI18N
+
+        searchBar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbSearch.setText("Tìm kiếm");

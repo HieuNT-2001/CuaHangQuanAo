@@ -104,6 +104,8 @@ public class PanelKM extends javax.swing.JPanel {
         btnSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Search.png"))); // NOI18N
 
+        searchBar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         lbStartDate.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbStartDate.setText("Ngày bắt đầu");
 
