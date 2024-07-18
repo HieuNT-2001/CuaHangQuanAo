@@ -56,11 +56,17 @@ public class PanelNCC extends javax.swing.JPanel {
         lbMaNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbMaNCC.setText("Mã nhà cung cấp");
 
+        fillMaNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         lbNameNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbNameNCC.setText("Tên nhà cung cấp");
 
+        fillNameNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         lbPhone.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbPhone.setText("SĐT");
+
+        fillMail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbMail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbMail.setText("Email");
@@ -112,8 +118,12 @@ public class PanelNCC extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tbNCC);
 
+        searchBar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         lbSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbSearch.setText("Tìm kiếm");
+
+        fillPhone.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -202,7 +212,7 @@ public class PanelNCC extends javax.swing.JPanel {
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

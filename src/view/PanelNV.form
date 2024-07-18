@@ -195,6 +195,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillMaNV">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbTenDangNhap">
       <Properties>
@@ -205,6 +210,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillTenDangNhap">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbConfirmPass">
       <Properties>
@@ -215,6 +225,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillConfirmPass">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbPass">
       <Properties>
@@ -225,6 +240,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillPass">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbBirthyear">
       <Properties>
@@ -235,6 +255,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillBirthyear">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbName">
       <Properties>
@@ -245,6 +270,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillName">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbMail">
       <Properties>
@@ -255,6 +285,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillMail">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbPhone">
       <Properties>
@@ -265,6 +300,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillPhone">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbCCCD">
       <Properties>
@@ -275,6 +315,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fillCCCD">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbVaiTro">
       <Properties>
