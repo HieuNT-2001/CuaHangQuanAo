@@ -30,15 +30,15 @@ public class DSSPAnJDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tblDanhSachSPAn = new javax.swing.JTable();
+        btnHienThiSP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("Danh sách sản phẩm ẩn");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDanhSachSPAn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -49,12 +49,12 @@ public class DSSPAnJDialog extends javax.swing.JDialog {
                 "Mã SP", "Tên SP", "Đơn giá", "Số lượng", "Nhà cung cấp", "Danh mục", "Màu sắc", "KÍch thước"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblDanhSachSPAn);
 
-        jButton1.setText("Hiển thị sản phẩm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnHienThiSP.setText("Hiển thị sản phẩm");
+        btnHienThiSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnHienThiSPActionPerformed(evt);
             }
         });
 
@@ -74,7 +74,7 @@ public class DSSPAnJDialog extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnHienThiSP)
                 .addGap(68, 68, 68))
         );
         layout.setVerticalGroup(
@@ -87,16 +87,16 @@ public class DSSPAnJDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnHienThiSP)
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnHienThiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHienThiSPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnHienThiSPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,10 +141,10 @@ public class DSSPAnJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnHienThiSP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblDanhSachSPAn;
     // End of variables declaration//GEN-END:variables
 }
