@@ -14,7 +14,7 @@ public class Auth {
         return Auth.user != null;
     }
 
-    public static boolean isManager() {
+    public static boolean isAdmin() {
         return Auth.isLogin() && user.isVaiTro();
     }
 
