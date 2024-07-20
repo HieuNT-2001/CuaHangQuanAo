@@ -20,7 +20,8 @@ public class Xjdbc {
     private static Connection getConnect() throws SQLException {
         return DriverManager.getConnection(URL);
     }
-//PrepareStatement
+
+    //PrepareStatement
     public static PreparedStatement getStmt(Connection con, String sql, Object... args) throws SQLException {
         PreparedStatement stmt;
         if (sql.trim().startsWith("{")) {
@@ -33,7 +34,8 @@ public class Xjdbc {
         }
         return stmt;
     }
-//Truy vấn (Select) hoặc truy vấn SP
+
+    //Truy vấn (Select) hoặc truy vấn SP
     public static ResultSet executeQuery(String sql, Object... args) {
         try (Connection con = getConnect(); PreparedStatement stmt = getStmt(con, sql, args)) {
             return stmt.executeQuery();
@@ -42,7 +44,8 @@ public class Xjdbc {
             throw new RuntimeException(e);
         }
     }
-//Insert, Update, Delete
+
+    //Insert, Update, Delete
     public static void executeUpdate(String sql, Object... args) {
         try (Connection con = getConnect(); PreparedStatement stmt = getStmt(con, sql, args)) {
             stmt.executeUpdate();
