@@ -246,6 +246,7 @@ public class HomeJFrame extends javax.swing.JFrame {
 
     private void btnChangePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePassActionPerformed
         // TODO add your handling code here:
+        showPanel(new DoiMatKhauJPanel());
     }//GEN-LAST:event_btnChangePassActionPerformed
     
     private void showPanel(JPanel panel) {
