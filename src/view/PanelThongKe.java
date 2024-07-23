@@ -345,14 +345,15 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lbTop10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnTop10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbYearTop10)
-                    .addComponent(cboxYearTop10, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                    .addComponent(cboxMonthTop10)
-                    .addComponent(lbMonthTop10))
+                .addGroup(pnTop10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboxYearTop10, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cboxMonthTop10, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnTop10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbYearTop10)
+                        .addComponent(lbMonthTop10)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         jTabbedPane1.addTab("Top bán chạy", pnTop10);
@@ -455,7 +456,8 @@ public class PanelThongKe extends javax.swing.JPanel {
                     .addComponent(lbTimeTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cboxTimeTo))
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
