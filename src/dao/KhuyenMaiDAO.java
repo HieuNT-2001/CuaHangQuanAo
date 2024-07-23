@@ -15,16 +15,16 @@ public class KhuyenMaiDAO {
     public void insert(KhuyenMai km){
         String sql="INSERT INTO KhuyenMai (MaKM, TenKM, NgayBD, NgayKT, GiamGia)\n" +
         "VALUES (?, ?, ?, ?)";
-        Xjdbc.executeUpdate(sql, km.getMaKM(),km.getTenKM(),km.getNgayBD(),km.getNgayKT(),km.getGiamGia());
+        Xjdbc.update(sql, km.getMaKM(),km.getTenKM(),km.getNgayBD(),km.getNgayKT(),km.getGiamGia());
     }
     public void update(KhuyenMai km){
         String sql="UPDATE KhuyenMai SET TenKM=?, NgayBD=?, NgayKT=?, GiamGia=?\n" +
         "WHERE MaKM=?";
-        Xjdbc.executeUpdate(sql, km.getTenKM(),km.getNgayBD(),km.getNgayKT(),km.getGiamGia(),km.getMaKM());
+        Xjdbc.update(sql, km.getTenKM(),km.getNgayBD(),km.getNgayKT(),km.getGiamGia(),km.getMaKM());
     }
     public void delete(String maKM){
         String sql="DELETE FROM KhuyenMai WHERE MaKM=?";
-        Xjdbc.executeUpdate(sql, maKM);
+        Xjdbc.update(sql, maKM);
     }
     public List<KhuyenMai> select(){
         String sql="SELECT * FROM KhuyenMai";
@@ -40,7 +40,7 @@ public class KhuyenMaiDAO {
         try{
             ResultSet rs = null;
             try{
-                rs=Xjdbc.executeQuery(sql, args);
+                rs=Xjdbc.query(sql, args);
                 while(rs.next()){
                     KhuyenMai km=readFromResultSet(rs);
                     lkm.add(km);

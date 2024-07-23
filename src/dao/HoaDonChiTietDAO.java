@@ -16,15 +16,15 @@ import java.sql.*;
 public class HoaDonChiTietDAO {
     public void insert(HoaDonChiTiet HDCT){
         String sql = "Insert into HoaDonChiTiet (, MaHD, MaSP, SoLuong, GiaBan)\n" + "values (?,?,?,?)";
-        Xjdbc.executeUpdate(sql, HDCT.getMaHD(),HDCT.getMaSP(),HDCT.getSoLuong(),HDCT.getGiaBan());
+        Xjdbc.update(sql, HDCT.getMaHD(),HDCT.getMaSP(),HDCT.getSoLuong(),HDCT.getGiaBan());
     }
     public void update(HoaDonChiTiet HDCT){
         String sql = "Update HoaDonChiTiet set  MaHD=?, MaSP = ?, SoLuong =?,GiaBan=?\n" + "where MaHD =?";
-        Xjdbc.executeUpdate(sql,HDCT.getMaHD(),HDCT.getMaSP(),HDCT.getSoLuong(),HDCT.getGiaBan() );
+        Xjdbc.update(sql,HDCT.getMaHD(),HDCT.getMaSP(),HDCT.getSoLuong(),HDCT.getGiaBan() );
     }
     public void delete (String MaHD){
         String sql="DELETE FROM HoaDonChiTiet WHERE MaHD=?";
-        Xjdbc.executeUpdate(sql, MaHD); 
+        Xjdbc.update(sql, MaHD); 
     }
      public List<HoaDonChiTiet> select(){
         String sql ="SELECT * FROM HoaDonChiTiet";
@@ -40,7 +40,7 @@ public class HoaDonChiTietDAO {
         try{
             ResultSet rs = null;
             try{
-                rs=Xjdbc.executeQuery(sql, args);
+                rs=Xjdbc.query(sql, args);
                 while(rs.next()){
                     HoaDonChiTiet HDCT= readFromResultSet(rs);
                     lHDCT.add(HDCT);

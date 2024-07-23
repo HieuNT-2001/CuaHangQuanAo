@@ -15,10 +15,11 @@ public class HoaDonDAO {
     private final String INSERT = "INSERT INTO HoaDon (MaNV, TenKH, SDT, DiaChi, MaGiamGia, KenhBanHang, HT_ThanhToan, ThanhTien, NgayTao, TrangThai, LyDo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private final String UPDATE = "UPDATE HoaDon SET MaNV = ?, TenKH = ?, SDT = ?, DiaChi = ?, MaGiamGia = ?, KenhBanHang = ?, HT_ThanhToan = ?, ThanhTien = ?, NgayTao = ?, TrangThai = ?, LyDo = ? WHERE MaHD = ?";
     private final String DELETE = "DELETE FROM HoaDon WHERE MaHD = ?";
+    private final String SELECT_YEAR = "SELECT DISTINCT YEAR(NgayTao) AS Nam FROM HoaDon";
     
     // Insert vao hoa don
     public void insert(HoaDon entity) {
-        Xjdbc.executeUpdate(
+        Xjdbc.update(
                 INSERT,
                 entity.getMaNV(),
                 entity.getTenKH(),
@@ -36,7 +37,7 @@ public class HoaDonDAO {
     
     // Update hoa don
     public void update(HoaDon entity) {
-        Xjdbc.executeUpdate(
+        Xjdbc.update(
                 UPDATE,
                 entity.getMaNV(),
                 entity.getTenKH(),
@@ -55,13 +56,13 @@ public class HoaDonDAO {
 
     // Delete hoa don
     public void delete(int id) {
-        Xjdbc.executeUpdate(DELETE, id);
+        Xjdbc.update(DELETE, id);
     }
     
     // Select hoa don theo cau lenh sql
     public List<HoaDon> selectBySql(String sql, Object... args) {
         List<HoaDon> list = new ArrayList<>();
-        try (ResultSet rs = Xjdbc.executeQuery(sql, args)) {
+        try (ResultSet rs = Xjdbc.query(sql, args)) {
             while (rs.next()) {
                 HoaDon entity = new HoaDon();
                 entity.setMaHD(rs.getInt("MaHD"));
@@ -79,7 +80,6 @@ public class HoaDonDAO {
                 list.add(entity);
             }
         } catch (SQLException e) {
-            System.out.println(e);
             throw new RuntimeException(e);
         }
         return list;
@@ -98,6 +98,19 @@ public class HoaDonDAO {
     // Select theo trang thai
     public List<HoaDon> selectByStatus(int status) {
         return selectBySql(SELECT_BY_STATUS, status);
+    }
+    
+    // Select cac nam co doanh thu
+    public List<Integer> selectYear() {
+        List<Integer> list = new ArrayList<>();
+        try (ResultSet rs = Xjdbc.query(SELECT_YEAR)) {
+            while (rs.next()) {                
+                list.add(rs.getInt("Nam"));
+            }
+            return list;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

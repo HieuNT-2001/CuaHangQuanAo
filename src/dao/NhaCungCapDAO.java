@@ -15,16 +15,16 @@ public class NhaCungCapDAO {
     public void insert(NhaCungCap cc){
         String sql="INSERT INTO NhaCungCap (TenNCC, SDT, Email, DiaChi)\n" +
         "VALUES (?, ?, ?, ?)";
-        Xjdbc.executeUpdate(sql, cc.getTenNCC(),cc.getSdt(),cc.getEmail(),cc.getDiaChi());
+        Xjdbc.update(sql, cc.getTenNCC(),cc.getSdt(),cc.getEmail(),cc.getDiaChi());
     }
     public void update(NhaCungCap cc){
         String sql="UPDATE NhaCungCap SET TenNCC=?, SDT=?, Email=?, DiaChi=?\n" +
         "WHERE MaNCC=?";
-        Xjdbc.executeUpdate(sql, cc.getTenNCC(),cc.getSdt(),cc.getEmail(),cc.getDiaChi(),cc.getMaNCC());
+        Xjdbc.update(sql, cc.getTenNCC(),cc.getSdt(),cc.getEmail(),cc.getDiaChi(),cc.getMaNCC());
     }
     public void delete(String maNCC){
         String sql="DELETE FROM NhaCungCap WHERE MaNCC=?";
-        Xjdbc.executeUpdate(sql, maNCC);
+        Xjdbc.update(sql, maNCC);
     }
     public List<NhaCungCap> select(){
         String sql="SELECT * FROM NhaCungCap";
@@ -40,7 +40,7 @@ public class NhaCungCapDAO {
         try{
             ResultSet rs = null;
             try{
-                rs=Xjdbc.executeQuery(sql, args);
+                rs=Xjdbc.query(sql, args);
                 while(rs.next()){
                     NhaCungCap cc=readFromResultSet(rs);
                     lcc.add(cc);

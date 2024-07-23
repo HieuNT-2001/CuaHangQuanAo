@@ -22,26 +22,26 @@ public class MauSacDAO {
     
     //Insert vào bảng màu sắc
     public void insert(MauSac entity) {
-        Xjdbc.executeUpdate(INSERT, 
+        Xjdbc.update(INSERT, 
                 entity.getMauSac()
         );
     }
     
     //Update vào bảng màu sắc
     public void update(MauSac entity) {
-        Xjdbc.executeUpdate(UPDATE, 
+        Xjdbc.update(UPDATE, 
                 entity.getMauSac());
     }
     
     //Delete màu sắc
     public void delete(int id) {
-        Xjdbc.executeUpdate(DELETE, id);
+        Xjdbc.update(DELETE, id);
     }
     
     //Select màu sắc theo câu lệnh sql
     public List<MauSac> SelectBySql (String sql, Object...args) {
         List<MauSac> list = new ArrayList<>();
-        try (ResultSet rs = Xjdbc.executeQuery(sql, args)) {
+        try (ResultSet rs = Xjdbc.query(sql, args)) {
             while(rs.next()) {
                 MauSac entity = new MauSac();
                 entity.setMaMS(rs.getInt("MaMS"));

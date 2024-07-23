@@ -15,16 +15,16 @@ public class ChiTietSPDAO {
 public void insert(ChiTietSP CTSP){
         String sql="INSERT INTO ChiTietSanPham (MaSP, MaMS, MaKT, Hinh)\n" +
         "VALUES (?, ?, ?, ?)";
-        Xjdbc.executeUpdate(sql, CTSP.getMaSP(),CTSP.getMaMS(),CTSP.getMaKT(),CTSP.getHinh());
+        Xjdbc.update(sql, CTSP.getMaSP(),CTSP.getMaMS(),CTSP.getMaKT(),CTSP.getHinh());
     }
     public void update(ChiTietSP CTSP){
         String sql="UPDATE ChiTietSanPham SET MaSP=?, MaMS=?, MaKT=?, Hinh=?\n" +
         "WHERE MaKM=?";
-        Xjdbc.executeUpdate(sql, CTSP.getMaSP(),CTSP.getMaMS(),CTSP.getMaKT(),CTSP.getHinh());
+        Xjdbc.update(sql, CTSP.getMaSP(),CTSP.getMaMS(),CTSP.getMaKT(),CTSP.getHinh());
     }
         public void delete(String MaSP){
         String sql="DELETE FROM ChiTietSanPham WHERE MaSP=?";
-        Xjdbc.executeUpdate(sql, MaSP);
+        Xjdbc.update(sql, MaSP);
     }
         public List<ChiTietSP> select(){
         String sql="SELECT * FROM ChiTietSanPham";
@@ -40,7 +40,7 @@ public void insert(ChiTietSP CTSP){
         try{
             ResultSet rs = null;
             try{
-                rs=Xjdbc.executeQuery(sql, args);
+                rs=Xjdbc.query(sql, args);
                 while(rs.next()){
                     ChiTietSP km=readFromResultSet(rs);
                     lCTSP.add(km);

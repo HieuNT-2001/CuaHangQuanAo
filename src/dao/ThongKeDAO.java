@@ -34,25 +34,65 @@ public class ThongKeDAO {
     }
 
     // Lay thong tin chi tiet doanh thu trong nam
-    public List<Object[]> getDoanhThuDetail() {
-        String sql = "{CALL get_doanhThu_detail}";
-        String[] cols = {"Tháng", "Số lượng bán", "Doanh thu"};
-        return getListArray(sql, cols);
+    public List<Object[]> getDoanhThuDetail(int year) {
+        String sql = "{CAll get_doanhThu_detail(?)}";
+        String[] cols = {"Thang", "SoLuongBan", "DoanhThu"};
+        return getListArray(sql, cols, year);
+    }
+
+    // Dem so hoa don trong ngay hom nay
+    public int countHoaDonToday(int status) {
+        String sql = "{CALL count_hoaDon_today(?)}";
+        return countHoaDon(sql, status);
+    }
+
+    // Dem so hoa don theo khoang ngay
+    public int countHoaDonByDate(int status, Date start, Date end) {
+        String sql = "{CALL count_hoaDon_byDate(?, ?, ?)}";
+        return countHoaDon(sql, status, start, end);
+    }
+
+    // Dem so hoa don thang nay
+    public int countHoaDonThisMonth(int status) {
+        String sql = "{CALL count_hoaDon_thisMonth(?)}";
+        return countHoaDon(sql, status);
+    }
+
+    // Dem so hoa don nam nay
+    public int countHoaDonThisYear(int status) {
+        String sql = "{CALL count_hoaDon_thisYear(?)}";
+        return countHoaDon(sql, status);
     }
 
     // Lay danh sach top 10 san pham ban chay nhan trong thang
     public List<Object[]> getTop10SanPham(int month, int year) {
         String sql = "{CALL get_top10_sanPham(?, ?)}";
-        String[] cols = {"Mã sản phẩm", "Tên sản phẩm", "Nhà cung cấp", "Số lượng bán"};
+        String[] cols = {"MaSP", "TenSP", "TenNCC", "SoLuongBan"};
         return getListArray(sql, cols, month, year);
     }
 
     // Lay doanh thu tu ResultSet va tra ve double
     private double getDoanhThu(String sql, Object... args) {
-        try (ResultSet rs = Xjdbc.executeQuery(sql, args)) {
-            return rs.getDouble("DoanhThu");
+        try (ResultSet rs = Xjdbc.query(sql, args)) {
+            if (rs.next()) {
+                return rs.getDouble(1);
+            } else {
+                return 0;
+            }
         } catch (SQLException e) {
-            System.out.println(e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    // Dem hoa don
+    private int countHoaDon(String sql, Object... args) {
+        try (ResultSet rs = Xjdbc.query(sql, args)) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            } else {
+                return 0;
+            }
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -60,17 +100,17 @@ public class ThongKeDAO {
     // Lay thong tin bang tu ResultSet va tra ve ArrayList
     private List<Object[]> getListArray(String sql, String[] cols, Object... args) {
         List<Object[]> list = new ArrayList<>();
-        try (ResultSet rs = Xjdbc.executeQuery(sql, args)) {
+        try {
+            ResultSet rs = Xjdbc.query(sql, args);
             while (rs.next()) {
                 Object[] vals = new Object[cols.length];
                 for (int i = 0; i < cols.length; i++) {
-                    vals[i] = cols[i];
+                    vals[i] = rs.getObject(cols[i]);
                 }
                 list.add(vals);
             }
             return list;
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

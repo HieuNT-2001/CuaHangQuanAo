@@ -15,18 +15,18 @@ public class NhanVienDAO {
     public void insert(NhanVien nv){
         String sql="INSERT INTO NhanVien (TenDangNhap, MatKhau, HoTen, NamSinh, SDT, CCCD, VaiTro)\n" +
         "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        Xjdbc.executeUpdate(sql, nv.getTenDangNhap(),nv.getMatKhau(),nv.getHoTen(),
+        Xjdbc.update(sql, nv.getTenDangNhap(),nv.getMatKhau(),nv.getHoTen(),
                 nv.getNamSinh(),nv.getSdt(),nv.getCccd(),nv.isVaiTro());
     }
     public void update(NhanVien nv){
         String sql="UPDATE NhanVien SET TenDangNhap=?, MatKhau=?, HoTen=?, NamSinh=?, SDT=?, CCCD=?, VaiTro=?\n" +
         "WHERE MaNV=?";
-        Xjdbc.executeUpdate(sql, nv.getTenDangNhap(),nv.getMatKhau(),nv.getHoTen(),
+        Xjdbc.update(sql, nv.getTenDangNhap(),nv.getMatKhau(),nv.getHoTen(),
                 nv.getNamSinh(),nv.getSdt(),nv.getCccd(),nv.isVaiTro(),nv.getMaNV());
     }
     public void delete(String maNV){
         String sql="DELETE FROM NhanVien WHERE MaNV=?";
-        Xjdbc.executeUpdate(sql, maNV);
+        Xjdbc.update(sql, maNV);
     }
     public List<NhanVien> select(){
         String sql="SELECT * FROM NhanVien";
@@ -42,7 +42,7 @@ public class NhanVienDAO {
         try{
             ResultSet rs = null;
             try{
-                rs=Xjdbc.executeQuery(sql, args);
+                rs=Xjdbc.query(sql, args);
                 while(rs.next()){
                     NhanVien nv=readFromResultSet(rs);
                     lnv.add(nv);

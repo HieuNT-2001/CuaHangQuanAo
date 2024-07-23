@@ -14,15 +14,16 @@ public class Xjdbc {
             + "user=sa;"
             + "password=123456;"
             + "encrypt=true;"
-            + "trustServerCertificate=true;"
-            + "loginTimeout=30;";
+            + "trustServerCertificate=true;";
+//            + "loginTimeout=30;";
 
     private static Connection getConnect() throws SQLException {
         return DriverManager.getConnection(URL);
     }
 
     //PrepareStatement
-    public static PreparedStatement getStmt(Connection con, String sql, Object... args) throws SQLException {
+    public static PreparedStatement getStmt(String sql, Object... args) throws SQLException {
+        Connection con = getConnect();
         PreparedStatement stmt;
         if (sql.trim().startsWith("{")) {
             stmt = con.prepareCall(sql); // PROC
@@ -36,23 +37,19 @@ public class Xjdbc {
     }
 
     //Truy vấn (Select) hoặc truy vấn SP
-    public static ResultSet executeQuery(String sql, Object... args) {
-        try (Connection con = getConnect(); PreparedStatement stmt = getStmt(con, sql, args)) {
-            return stmt.executeQuery();
-        } catch (SQLException e) {
-            System.out.println(e);
-            throw new RuntimeException(e);
-        }
+    public static ResultSet query(String sql, Object... args) throws SQLException {
+        PreparedStatement stmt = getStmt(sql, args);
+        return stmt.executeQuery();
     }
 
     //Insert, Update, Delete
-    public static void executeUpdate(String sql, Object... args) {
-        try (Connection con = getConnect(); PreparedStatement stmt = getStmt(con, sql, args)) {
-            stmt.executeUpdate();
+    public static int update(String sql, Object... args) {
+        try (PreparedStatement stmt = getStmt(sql, args)) {
+            return stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
             throw new RuntimeException(e);
         }
     }
-
+    
 }

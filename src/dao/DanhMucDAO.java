@@ -22,27 +22,27 @@ public class DanhMucDAO {
     
     //Insert vào danh mục
     public void insert(DanhMuc entity) {
-        Xjdbc.executeUpdate(INSERT,
+        Xjdbc.update(INSERT,
                 entity.getDanhMuc()
         );
     }
     
     //Update vào danh mục
     public void update(DanhMuc entity) {
-        Xjdbc.executeUpdate(UPDATE, 
+        Xjdbc.update(UPDATE, 
                 entity.getDanhMuc()
         );
     }
     
     //Delete danh mục
     public void delete(int id) {
-        Xjdbc.executeUpdate(DELETE, id);
+        Xjdbc.update(DELETE, id);
     }
     
     //Select danh mục theo câu lệnh sql
     public List<DanhMuc> SelectBySql(String sql, Object...args){
         List<DanhMuc> list = new ArrayList<>();
-        try (ResultSet rs = Xjdbc.executeQuery(sql, args)) {
+        try (ResultSet rs = Xjdbc.query(sql, args)) {
             while(rs.next()){
                 DanhMuc entity = new DanhMuc();
                 entity.setMaDM(rs.getInt("MaDM"));

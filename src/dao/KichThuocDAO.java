@@ -22,25 +22,25 @@ public class KichThuocDAO {
     
     //Insert vào bảng kích thước
     public void insert(KichThuoc entity){
-        Xjdbc.executeUpdate(INSERT, 
+        Xjdbc.update(INSERT, 
                 entity.getKichThuoc());
     }
   
     //Update vào bảng kích thước
     public void update(KichThuoc entity){
-        Xjdbc.executeUpdate(UPDATE, 
+        Xjdbc.update(UPDATE, 
                 entity.getKichThuoc());
     }
     
     //Delete kích thước
     public void delete(int id) {
-        Xjdbc.executeUpdate(DELETE, id);
+        Xjdbc.update(DELETE, id);
     }
     
     //Select màu sắc theo câu lệnh sql
     public List<KichThuoc> SelectBySql(String sql, Object...args){
         List<KichThuoc> list = new ArrayList<>();
-        try (ResultSet rs = Xjdbc.executeQuery(sql, args)){
+        try (ResultSet rs = Xjdbc.query(sql, args)){
             while(rs.next()) {
                 KichThuoc entity = new KichThuoc();
                 entity.setMaKT(rs.getInt("MaKT"));
