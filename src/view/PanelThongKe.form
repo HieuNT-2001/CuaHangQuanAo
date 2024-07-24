@@ -26,32 +26,27 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lbTitle" min="-2" pref="980" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lbTimeFrom" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cboxTimeFrom" min="-2" pref="160" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lbTimeTo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cboxTimeTo" min="-2" pref="160" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Component id="pnToday" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="pnDay" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="pnMonth" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="pnToday" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="pnDay" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="pnMonth" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="pnYear" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lbTimeFrom" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="cboxTimeFrom" min="-2" pref="160" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lbTimeTo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="cboxTimeTo" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Component id="tabPane" alignment="1" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -73,7 +68,8 @@
                   <Component id="cboxTimeTo" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="tabPane" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" pref="396" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -90,7 +86,7 @@
     <Container class="javax.swing.JPanel" name="pnToday">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="0" type="rgb"/>
+          <Color blue="ff" green="cc" red="99" type="rgb"/>
         </Property>
       </Properties>
 
@@ -112,7 +108,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="fillSuccessToday" pref="131" max="32767" attributes="0"/>
+                              <Component id="fillSuccessToday" pref="107" max="32767" attributes="0"/>
                               <Component id="fillCancelledToday" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -151,9 +147,6 @@
         <Component class="javax.swing.JTextField" name="fillToday">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbSuccessToday">
@@ -169,17 +162,11 @@
         <Component class="javax.swing.JTextField" name="fillSuccessToday">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fillCancelledToday">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -187,7 +174,7 @@
     <Container class="javax.swing.JPanel" name="pnDay">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="0" type="rgb"/>
+          <Color blue="ff" green="cc" red="99" type="rgb"/>
         </Property>
       </Properties>
 
@@ -209,7 +196,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="fillSuccessDay" alignment="0" pref="131" max="32767" attributes="0"/>
+                              <Component id="fillSuccessDay" alignment="0" pref="119" max="32767" attributes="0"/>
                               <Component id="fillCancelledDay" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -248,9 +235,6 @@
         <Component class="javax.swing.JTextField" name="fillDay">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbSuccessDay">
@@ -266,17 +250,11 @@
         <Component class="javax.swing.JTextField" name="fillSuccessDay">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fillCancelledDay">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -284,7 +262,7 @@
     <Container class="javax.swing.JPanel" name="pnMonth">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="0" type="rgb"/>
+          <Color blue="ff" green="cc" red="99" type="rgb"/>
         </Property>
       </Properties>
 
@@ -306,7 +284,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="fillSuccessMonth" alignment="0" pref="131" max="32767" attributes="0"/>
+                              <Component id="fillSuccessMonth" alignment="0" pref="119" max="32767" attributes="0"/>
                               <Component id="fillCancelledMonth" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -345,9 +323,6 @@
         <Component class="javax.swing.JTextField" name="fillMonth">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbSuccessMonth">
@@ -363,17 +338,11 @@
         <Component class="javax.swing.JTextField" name="fillSuccessMonth">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fillCancelledMonth">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -381,7 +350,7 @@
     <Container class="javax.swing.JPanel" name="pnYear">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="0" type="rgb"/>
+          <Color blue="ff" green="cc" red="99" type="rgb"/>
         </Property>
       </Properties>
 
@@ -403,7 +372,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="fillSuccessYear" alignment="0" pref="131" max="32767" attributes="0"/>
+                              <Component id="fillSuccessYear" alignment="0" pref="107" max="32767" attributes="0"/>
                               <Component id="fillCancelledYear" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -442,9 +411,6 @@
         <Component class="javax.swing.JTextField" name="fillYear">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbSuccessYear">
@@ -460,17 +426,11 @@
         <Component class="javax.swing.JTextField" name="fillSuccessYear">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fillCancelledYear">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -511,7 +471,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Container class="javax.swing.JTabbedPane" name="tabPane">
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -540,11 +500,11 @@
                           <Group type="102" attributes="0">
                               <Component id="lbMonthTop10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cboxMonthTop10" min="-2" pref="72" max="-2" attributes="0"/>
+                              <Component id="cboxMonthTop10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="lbYearTop10" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="cboxYearTop10" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="cboxYearTop10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -558,17 +518,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbTop10" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cboxYearTop10" alignment="3" pref="30" max="32767" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                              <Component id="lbMonthTop10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cboxYearTop10" alignment="1" max="32767" attributes="0"/>
+                          <Component id="cboxMonthTop10" alignment="1" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lbYearTop10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cboxMonthTop10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbMonthTop10" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="292" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="275" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -593,9 +553,6 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="cboxMonthTop10">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="0"/>
-                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
@@ -614,9 +571,6 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="cboxYearTop10">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="0"/>
-                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
@@ -675,7 +629,7 @@
                           <Group type="102" attributes="0">
                               <Component id="lbYearSales" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cboxYearSales" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="cboxYearSales" min="-2" pref="99" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Component id="lbSales" alignment="0" max="32767" attributes="0"/>
@@ -721,9 +675,6 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="cboxYearSales">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="0"/>
-                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>

@@ -59,7 +59,7 @@ public class PanelThongKe extends javax.swing.JPanel {
         cboxTimeFrom = new javax.swing.JComboBox<>();
         lbTimeTo = new javax.swing.JLabel();
         cboxTimeTo = new javax.swing.JComboBox<>();
-        tabPane = new javax.swing.JTabbedPane();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         pnTop10 = new javax.swing.JPanel();
         lbTop10 = new javax.swing.JLabel();
         lbMonthTop10 = new javax.swing.JLabel();
@@ -80,22 +80,19 @@ public class PanelThongKe extends javax.swing.JPanel {
         lbTitle.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lbTitle.setText("Thống kê");
 
-        pnToday.setBackground(new java.awt.Color(0, 204, 255));
+        pnToday.setBackground(new java.awt.Color(153, 204, 255));
 
         lbToday.setText("Doanh thu hôm nay");
 
         fillToday.setEditable(false);
-        fillToday.setBackground(new java.awt.Color(0, 204, 255));
 
         lbSuccessToday.setText("Thành công: ");
 
         lbCancelledToday.setText("Bị hủy: ");
 
         fillSuccessToday.setEditable(false);
-        fillSuccessToday.setBackground(new java.awt.Color(0, 204, 255));
 
         fillCancelledToday.setEditable(false);
-        fillCancelledToday.setBackground(new java.awt.Color(0, 204, 255));
 
         javax.swing.GroupLayout pnTodayLayout = new javax.swing.GroupLayout(pnToday);
         pnToday.setLayout(pnTodayLayout);
@@ -114,7 +111,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                             .addComponent(lbCancelledToday))
                         .addGap(18, 18, 18)
                         .addGroup(pnTodayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fillSuccessToday, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(fillSuccessToday, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                             .addComponent(fillCancelledToday)))))
         );
         pnTodayLayout.setVerticalGroup(
@@ -135,22 +132,19 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        pnDay.setBackground(new java.awt.Color(0, 204, 255));
+        pnDay.setBackground(new java.awt.Color(153, 204, 255));
 
         lbDay.setText("Doanh thu theo ngày");
 
         fillDay.setEditable(false);
-        fillDay.setBackground(new java.awt.Color(0, 204, 255));
 
         lbSuccessDay.setText("Thành công: ");
 
         lbCancelledDay.setText("Bị hủy: ");
 
         fillSuccessDay.setEditable(false);
-        fillSuccessDay.setBackground(new java.awt.Color(0, 204, 255));
 
         fillCancelledDay.setEditable(false);
-        fillCancelledDay.setBackground(new java.awt.Color(0, 204, 255));
 
         javax.swing.GroupLayout pnDayLayout = new javax.swing.GroupLayout(pnDay);
         pnDay.setLayout(pnDayLayout);
@@ -169,7 +163,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                             .addComponent(lbCancelledDay))
                         .addGap(18, 18, 18)
                         .addGroup(pnDayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fillSuccessDay, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(fillSuccessDay, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                             .addComponent(fillCancelledDay)))))
         );
         pnDayLayout.setVerticalGroup(
@@ -190,22 +184,19 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnMonth.setBackground(new java.awt.Color(0, 204, 255));
+        pnMonth.setBackground(new java.awt.Color(153, 204, 255));
 
         lbMonth.setText("Doanh thu tháng này");
 
         fillMonth.setEditable(false);
-        fillMonth.setBackground(new java.awt.Color(0, 204, 255));
 
         lbSuccessMonth.setText("Thành công: ");
 
         lbCancelledMonth.setText("Bị hủy: ");
 
         fillSuccessMonth.setEditable(false);
-        fillSuccessMonth.setBackground(new java.awt.Color(0, 204, 255));
 
         fillCancelledMonth.setEditable(false);
-        fillCancelledMonth.setBackground(new java.awt.Color(0, 204, 255));
 
         javax.swing.GroupLayout pnMonthLayout = new javax.swing.GroupLayout(pnMonth);
         pnMonth.setLayout(pnMonthLayout);
@@ -224,7 +215,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                             .addComponent(lbCancelledMonth))
                         .addGap(18, 18, 18)
                         .addGroup(pnMonthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fillSuccessMonth, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(fillSuccessMonth, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                             .addComponent(fillCancelledMonth)))))
         );
         pnMonthLayout.setVerticalGroup(
@@ -245,22 +236,19 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnYear.setBackground(new java.awt.Color(0, 204, 255));
+        pnYear.setBackground(new java.awt.Color(153, 204, 255));
 
         lbYear.setText("Doanh thu năm nay");
 
         fillYear.setEditable(false);
-        fillYear.setBackground(new java.awt.Color(0, 204, 255));
 
         lbSuccessYear.setText("Thành công: ");
 
         lbCancelledYear.setText("Bị hủy: ");
 
         fillSuccessYear.setEditable(false);
-        fillSuccessYear.setBackground(new java.awt.Color(0, 204, 255));
 
         fillCancelledYear.setEditable(false);
-        fillCancelledYear.setBackground(new java.awt.Color(0, 204, 255));
 
         javax.swing.GroupLayout pnYearLayout = new javax.swing.GroupLayout(pnYear);
         pnYear.setLayout(pnYearLayout);
@@ -279,7 +267,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                             .addComponent(lbCancelledYear))
                         .addGap(18, 18, 18)
                         .addGroup(pnYearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fillSuccessYear, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(fillSuccessYear, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                             .addComponent(fillCancelledYear)))))
         );
         pnYearLayout.setVerticalGroup(
@@ -315,12 +303,8 @@ public class PanelThongKe extends javax.swing.JPanel {
         lbMonthTop10.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbMonthTop10.setText("Tháng ");
 
-        cboxMonthTop10.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
         lbYearTop10.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbYearTop10.setText("Năm ");
-
-        cboxYearTop10.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         tbTop10.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -347,11 +331,11 @@ public class PanelThongKe extends javax.swing.JPanel {
                     .addGroup(pnTop10Layout.createSequentialGroup()
                         .addComponent(lbMonthTop10)
                         .addGap(18, 18, 18)
-                        .addComponent(cboxMonthTop10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboxMonthTop10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lbYearTop10)
                         .addGap(18, 18, 18)
-                        .addComponent(cboxYearTop10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboxYearTop10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -361,18 +345,18 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lbTop10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnTop10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboxYearTop10, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addGroup(pnTop10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboxYearTop10, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cboxMonthTop10, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnTop10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbMonthTop10)
                         .addComponent(lbYearTop10)
-                        .addComponent(cboxMonthTop10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lbMonthTop10)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
-        tabPane.addTab("Top bán chạy", pnTop10);
+        jTabbedPane1.addTab("Top bán chạy", pnTop10);
 
         pnSales.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -382,8 +366,6 @@ public class PanelThongKe extends javax.swing.JPanel {
 
         lbYearSales.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbYearSales.setText("Năm");
-
-        cboxYearSales.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         tbSales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -409,7 +391,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                     .addGroup(pnSalesLayout.createSequentialGroup()
                         .addComponent(lbYearSales)
                         .addGap(18, 18, 18)
-                        .addComponent(cboxYearSales, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboxYearSales, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(lbSales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -428,7 +410,7 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        tabPane.addTab("Doanh thu", pnSales);
+        jTabbedPane1.addTab("Doanh thu", pnSales);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -439,26 +421,23 @@ public class PanelThongKe extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbTimeFrom)
-                                .addGap(18, 18, 18)
-                                .addComponent(cboxTimeFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lbTimeTo)
-                                .addGap(18, 18, 18)
-                                .addComponent(cboxTimeTo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(pnToday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(pnDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(pnMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pnToday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(pnYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pnDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pnMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pnYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbTimeFrom)
+                        .addGap(18, 18, 18)
+                        .addComponent(cboxTimeFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbTimeTo)
+                        .addGap(18, 18, 18)
+                        .addComponent(cboxTimeTo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(tabPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,7 +456,8 @@ public class PanelThongKe extends javax.swing.JPanel {
                     .addComponent(lbTimeTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cboxTimeTo))
                 .addGap(18, 18, 18)
-                .addComponent(tabPane))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -502,6 +482,7 @@ public class PanelThongKe extends javax.swing.JPanel {
     private javax.swing.JTextField fillYear;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbCancelledDay;
     private javax.swing.JLabel lbCancelledMonth;
     private javax.swing.JLabel lbCancelledToday;
@@ -528,7 +509,6 @@ public class PanelThongKe extends javax.swing.JPanel {
     private javax.swing.JPanel pnToday;
     private javax.swing.JPanel pnTop10;
     private javax.swing.JPanel pnYear;
-    private javax.swing.JTabbedPane tabPane;
     private javax.swing.JTable tbSales;
     private javax.swing.JTable tbTop10;
     // End of variables declaration//GEN-END:variables
