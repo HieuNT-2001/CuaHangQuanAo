@@ -7,7 +7,7 @@ build/
 
 # Ignore generated build files and classes
 *.class
-*.jar
+# *.jar
 *.war
 *.ear
 
