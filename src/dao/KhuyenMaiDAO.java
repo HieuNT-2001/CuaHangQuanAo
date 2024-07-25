@@ -22,7 +22,7 @@ public class KhuyenMaiDAO {
         "WHERE MaKM=?";
         Xjdbc.update(sql, km.getTenKM(),km.getNgayBD(),km.getNgayKT(),km.getGiamGia(),km.getMaKM());
     }
-    public void delete(String maKM){
+    public void delete(int maKM){
         String sql="DELETE FROM KhuyenMai WHERE MaKM=?";
         Xjdbc.update(sql, maKM);
     }
@@ -30,7 +30,7 @@ public class KhuyenMaiDAO {
         String sql="SELECT * FROM KhuyenMai";
         return select(sql);
     }
-    public KhuyenMai findByID(String maNV){
+    public KhuyenMai findByID(int maNV){
         String sql="SELECT * FROM KhuyenMai WHERE MaNV=?";
         List<KhuyenMai> lkm=select(sql, maNV);
         return lkm.size()>0 ? lkm.get(0) : null;
@@ -57,7 +57,7 @@ public class KhuyenMaiDAO {
     }
     private KhuyenMai readFromResultSet(ResultSet rs) throws SQLException{
         KhuyenMai km=new KhuyenMai();
-        km.setMaKM(rs.getString("MaKM"));
+        km.setMaKM(rs.getInt("MaKM"));
         km.setTenKM(rs.getString("TenKM"));
         km.setNgayBD(rs.getDate("NgayBD"));
         km.setNgayKT(rs.getDate("NgayKT"));
