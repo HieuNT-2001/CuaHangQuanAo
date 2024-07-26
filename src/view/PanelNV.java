@@ -61,7 +61,15 @@ public class PanelNV extends javax.swing.JPanel {
         return nv;
     }
     void clear(){
-        this.setModel(new NhanVien());
+        fillMaNV.setText("");
+        fillTenDangNhap.setText("");
+        fillPass.setText("");
+        fillName.setText("");
+        fillBirthyear.setText("");
+        fillPhone.setText("");
+        fillMail.setText("");
+        fillCCCD.setText("");
+        buttonGroup1.clearSelection();
     }
     
     void insert(){
@@ -97,7 +105,7 @@ public class PanelNV extends javax.swing.JPanel {
     }
     void delete(){
         if(MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này?")){
-            String maNV=fillMaNV.getText();
+            int maNV=Integer.parseInt(fillMaNV.getText());
             try{
                 nvd.delete(maNV);
                 fillTable();
@@ -110,10 +118,15 @@ public class PanelNV extends javax.swing.JPanel {
         }
     }
     void edit(){
-        int maNV=(int) tbNV.getValueAt(this.index, 0);
-        NhanVien nv=nvd.findByID(String.valueOf(maNV));
-        if(nv!=null){
-            setModel(nv);
+        try{
+            int maNV=(int) tbNV.getValueAt(this.index, 0);
+            NhanVien nv=nvd.selectById(maNV);
+            if(nv!=null){
+                this.setModel(nv);
+            }
+        }
+        catch(Exception e){
+            MsgBox.alert(this, "Không thể truy vấn dữ liệu");
         }
     }
 
@@ -220,18 +233,38 @@ public class PanelNV extends javax.swing.JPanel {
         btnAdd.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Add.png"))); // NOI18N
         btnAdd.setText("Thêm");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnEdit.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Edit.png"))); // NOI18N
         btnEdit.setText("Sửa");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Delete.png"))); // NOI18N
         btnDelete.setText("Xóa");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnNew.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/New_1.png"))); // NOI18N
         btnNew.setText("Mới");
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
 
         tbNV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -250,6 +283,11 @@ public class PanelNV extends javax.swing.JPanel {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbNVMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tbNV);
@@ -376,6 +414,36 @@ public class PanelNV extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        insert();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        update();
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        delete();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        // TODO add your handling code here:
+        clear();
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void tbNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNVMouseClicked
+        // TODO add your handling code here:
+        if(evt.getClickCount()==2){
+            this.index=tbNV.rowAtPoint(evt.getPoint());
+            if(this.index>=0){
+                edit();
+            }
+        }
+    }//GEN-LAST:event_tbNVMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
