@@ -1,10 +1,11 @@
+
 package entity;
 
 import java.util.Date;
 
 public class KhuyenMai {
 
-    private String maKM;
+    private int maKM;
     private String tenKM;
     private Date ngayBD;
     private Date ngayKT;
@@ -13,7 +14,7 @@ public class KhuyenMai {
     public KhuyenMai() {
     }
 
-    public KhuyenMai(String maKM, String tenKM, Date ngayBD, Date ngayKT, double giamGia) {
+    public KhuyenMai(int maKM, String tenKM, Date ngayBD, Date ngayKT, double giamGia) {
         this.maKM = maKM;
         this.tenKM = tenKM;
         this.ngayBD = ngayBD;
@@ -21,11 +22,11 @@ public class KhuyenMai {
         this.giamGia = giamGia;
     }
 
-    public String getMaKM() {
+    public int getMaKM() {
         return maKM;
     }
 
-    public void setMaKM(String maKM) {
+    public void setMaKM(int maKM) {
         this.maKM = maKM;
     }
 

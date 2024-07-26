@@ -64,7 +64,7 @@ public class KhuyenMaiDAO {
 
     private KhuyenMai readFromResultSet(ResultSet rs) throws SQLException {
         KhuyenMai km = new KhuyenMai();
-        km.setMaKM(rs.getString("MaKM"));
+        km.setMaKM(rs.getInt("MaKM"));
         km.setTenKM(rs.getString("TenKM"));
         km.setNgayBD(rs.getDate("NgayBD"));
         km.setNgayKT(rs.getDate("NgayKT"));
