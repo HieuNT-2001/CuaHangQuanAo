@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dao;
+
 import entity.HoaDonChiTiet;
 import utils.Xjdbc;
 import utils.*;
@@ -14,49 +15,54 @@ import java.sql.*;
  * @author Admin
  */
 public class HoaDonChiTietDAO {
-    public void insert(HoaDonChiTiet HDCT){
+
+    public void insert(HoaDonChiTiet HDCT) {
         String sql = "Insert into HoaDonChiTiet (, MaHD, MaSP, SoLuong, GiaBan)\n" + "values (?,?,?,?)";
-        Xjdbc.update(sql, HDCT.getMaHD(),HDCT.getMaSP(),HDCT.getSoLuong(),HDCT.getGiaBan());
+        Xjdbc.update(sql, HDCT.getMaHD(), HDCT.getMaSP(), HDCT.getSoLuong(), HDCT.getGiaBan());
     }
-    public void update(HoaDonChiTiet HDCT){
-        String sql = "Update HoaDonChiTiet set  MaHD=?, MaSP = ?, SoLuong =?,GiaBan=?\n" + "where MaHD =?";
-        Xjdbc.update(sql,HDCT.getMaHD(),HDCT.getMaSP(),HDCT.getSoLuong(),HDCT.getGiaBan() );
+
+    public void update(HoaDonChiTiet HDCT) {
+        String sql = "Update HoaDonChiTiet set  MaHD=?, MaSP = ?, SoLuong =?,GiaBan=?\n" + "where ID =?";
+        Xjdbc.update(sql, HDCT.getMaHD(), HDCT.getMaSP(), HDCT.getSoLuong(), HDCT.getGiaBan());
     }
-    public void delete (String MaHD){
-        String sql="DELETE FROM HoaDonChiTiet WHERE MaHD=?";
-        Xjdbc.update(sql, MaHD); 
+
+    public void delete(int id) {
+        String sql = "DELETE FROM HoaDonChiTiet WHERE ID=?";
+        Xjdbc.update(sql, id);
     }
-     public List<HoaDonChiTiet> select(){
-        String sql ="SELECT * FROM HoaDonChiTiet";
-        return select(sql);
+
+    public List<HoaDonChiTiet> select() {
+        String sql = "SELECT * FROM HoaDonChiTiet";
+        return selectBySql(sql);
     }
-     public HoaDonChiTiet findByID(String MaHD){
-        String sql="SELECT * FROM KhuyenMai WHERE MaNV=?";
-        List<HoaDonChiTiet> lHDCT=select(sql,MaHD );
-        return lHDCT.size()>0 ? lHDCT.get(0) : null;         
-     }
-      private List<HoaDonChiTiet> select(String sql, Object...args){
-        List<HoaDonChiTiet> lHDCT=new ArrayList<>();
-        try{
+
+    public HoaDonChiTiet selectById(int id) {
+        String sql = "SELECT * FROM HoaDonChiTiet WHERE ID=?";
+        List<HoaDonChiTiet> lHDCT = selectBySql(sql, id);
+        return lHDCT.size() > 0 ? lHDCT.get(0) : null;
+    }
+
+    private List<HoaDonChiTiet> selectBySql(String sql, Object... args) {
+        List<HoaDonChiTiet> lHDCT = new ArrayList<>();
+        try {
             ResultSet rs = null;
-            try{
-                rs=Xjdbc.query(sql, args);
-                while(rs.next()){
-                    HoaDonChiTiet HDCT= readFromResultSet(rs);
+            try {
+                rs = Xjdbc.query(sql, args);
+                while (rs.next()) {
+                    HoaDonChiTiet HDCT = readFromResultSet(rs);
                     lHDCT.add(HDCT);
                 }
-            }
-            finally{
+            } finally {
                 rs.getStatement();
             }
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return lHDCT;
-}
-      private HoaDonChiTiet readFromResultSet(ResultSet rs) throws SQLException{
-        HoaDonChiTiet HDCT=new HoaDonChiTiet();
+    }
+
+    private HoaDonChiTiet readFromResultSet(ResultSet rs) throws SQLException {
+        HoaDonChiTiet HDCT = new HoaDonChiTiet();
         HDCT.setMaHD(rs.getInt("MaHD"));
         HDCT.setMaSP(rs.getInt("MaSP"));
         HDCT.setSoLuong(rs.getInt("SoLuong"));
@@ -64,5 +70,3 @@ public class HoaDonChiTietDAO {
         return HDCT;
     }
 }
-
-   
