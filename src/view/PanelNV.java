@@ -3,18 +3,118 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view;
-
+import dao.*;
+import entity.*;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import utils.MsgBox;
 /**
  *
  * @author HP
  */
 public class PanelNV extends javax.swing.JPanel {
-
+    int index=0;
+    NhanVienDAO nvd=new NhanVienDAO();
     /**
      * Creates new form PanelNV
      */
     public PanelNV() {
         initComponents();
+        fillTable();
+    }
+    void fillTable(){
+        DefaultTableModel model=(DefaultTableModel) tbNV.getModel();
+        model.setRowCount(0);
+        List<NhanVien> lnv=nvd.select();
+        for(NhanVien nv:lnv){
+            Object data[]={nv.getMaNV(),nv.getTenDangNhap(),nv.getMatKhau(),nv.getHoTen(),
+                nv.getNamSinh(),null,nv.getSdt(),nv.getCccd(),nv.isVaiTro() ? "Quản lý":"Nhân viên"
+            };
+            model.addRow(data);
+        }
+    }
+    void setModel(NhanVien nv){
+        fillMaNV.setText(String.valueOf(nv.getMaNV()));
+        fillTenDangNhap.setText(nv.getTenDangNhap());
+        fillPass.setText(nv.getMatKhau());
+        fillConfirmPass.setText(nv.getMatKhau());
+        fillName.setText(nv.getHoTen());
+        fillBirthyear.setText(String.valueOf(nv.getNamSinh()));
+        fillPhone.setText(nv.getSdt());
+        fillMail.setText("");
+        fillCCCD.setText(nv.getCccd());
+        radAdmin.setSelected(nv.isVaiTro());
+        radNV.setSelected(!nv.isVaiTro());
+    }
+    
+    NhanVien getModel(){
+        NhanVien nv=new NhanVien();
+        nv.setMaNV(Integer.parseInt(fillMaNV.getText()));
+        nv.setTenDangNhap(fillTenDangNhap.getText());
+        nv.setMatKhau(fillPass.getText());
+        nv.setHoTen(fillName.getText());
+        nv.setNamSinh(Integer.parseInt(fillBirthyear.getText()));
+        nv.setSdt(fillPhone.getText());
+        //nv.setEmail(fillMail.getText());
+        nv.setCccd(fillCCCD.getText());
+        nv.setVaiTro(radAdmin.isSelected());
+        return nv;
+    }
+    void clear(){
+        this.setModel(new NhanVien());
+    }
+    
+    void insert(){
+        NhanVien nv=getModel();
+        String confirm=fillConfirmPass.getText();
+        if(confirm.equals(nv.getMatKhau())){
+            try{
+                nvd.insert(nv);
+                fillTable();
+                clear();
+            }
+            catch(Exception e){
+                MsgBox.alert(this, "Thêm nhân viên thất bại!");
+            }
+        }
+        else MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
+    }
+    
+    void update(){
+        NhanVien nv=getModel();
+        String confirm=fillConfirmPass.getText();
+        if(confirm.equals(nv.getMatKhau())){
+            try{
+                nvd.update(nv);
+                fillTable();
+                clear();
+            }
+            catch(Exception e){
+                MsgBox.alert(this, "Cập nhật thất bại!");
+            }
+        }
+        else MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
+    }
+    void delete(){
+        if(MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này?")){
+            String maNV=fillMaNV.getText();
+            try{
+                nvd.delete(maNV);
+                fillTable();
+                clear();
+                MsgBox.alert(this, "Xóa thành công!");
+            }
+            catch(Exception e){
+                MsgBox.alert(this, "Xóa thất bại!");
+            }
+        }
+    }
+    void edit(){
+        int maNV=(int) tbNV.getValueAt(this.index, 0);
+        NhanVien nv=nvd.findByID(String.valueOf(maNV));
+        if(nv!=null){
+            setModel(nv);
+        }
     }
 
     /**
