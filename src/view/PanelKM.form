@@ -54,7 +54,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbEndDate" min="-2" max="-2" attributes="0"/>
-                                  <Component id="dayEnd" min="-2" pref="240" max="-2" attributes="0"/>
+                                  <Component id="dateEnd" min="-2" pref="240" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -115,7 +115,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="dateStart" max="32767" attributes="0"/>
-                          <Component id="dayEnd" max="32767" attributes="0"/>
+                          <Component id="dateEnd" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -335,7 +335,7 @@
     </Container>
     <Component class="com.toedter.calendar.JDateChooser" name="dateStart">
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="dayEnd">
+    <Component class="com.toedter.calendar.JDateChooser" name="dateEnd">
     </Component>
   </SubComponents>
 </Form>
