@@ -4,17 +4,72 @@
  */
 package view;
 
+import dao.DanhMucDAO;
+import dao.HoaDonDAO;
+import dao.NhaCungCapDAO;
+import dao.SanPhamDAO;
+import entity.HoaDon;
+import entity.SanPham;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author PC
  */
 public class BanHangJPanel extends javax.swing.JPanel {
+    
+    SanPhamDAO spDAO = new SanPhamDAO();
+    NhaCungCapDAO nccDAO = new NhaCungCapDAO();
+    DanhMucDAO dmDAO = new DanhMucDAO();
+    HoaDonDAO hdDAO = new HoaDonDAO();
 
     /**
      * Creates new form BanHangJPanel
      */
     public BanHangJPanel() {
         initComponents();
+        fillTableDanhSachSP();
+    }
+    
+    // Hàm đổ dữ liệu bảng danh sách sản phẩm
+    private void fillTableDanhSachSP() {
+        DefaultTableModel model = (DefaultTableModel) tblDanhSachSP.getModel();
+        model.setRowCount(0);
+        List<SanPham> list = spDAO.selectByStatus(1);
+        for (SanPham sanPham : list) {
+            Object[] rowData = {
+                String.format("SP%04d", sanPham.getMaSP()),
+                sanPham.getTenSP(),
+                sanPham.getDonGia(),
+                sanPham.getSoLuong(),
+                nccDAO.selectById(sanPham.getMaNCC()).getTenNCC(),
+                dmDAO.selectById(sanPham.getMaDM()).getDanhMuc()
+            };
+            model.addRow(rowData);
+        }
+    }
+    
+    // Hàm đổ dữ liệu vào bảng giỏ hàng
+    private void fillTableGioHang() {
+        
+    }
+    
+    // Hàm đổ dữ liệu vào bảng danh sách hóa đơn
+    private void fillTableDanhSachHD() {
+        DefaultTableModel model = (DefaultTableModel) tblDanhSachHD.getModel();
+        model.setRowCount(0);
+        List<HoaDon> list = hdDAO.selectByStatus(0);
+        for (HoaDon hoaDon : list) {
+            Object[] rowData = {
+                
+            };
+        }
+    }
+    
+    // Hàm tạo hóa đơn
+    private void taoHoaDon() {
+        
     }
 
     /**
@@ -353,6 +408,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
     private void btnTaoHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHDActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnTaoHDActionPerformed
 
 

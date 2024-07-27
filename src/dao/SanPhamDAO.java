@@ -44,6 +44,11 @@ public class SanPhamDAO {
         List<SanPham> lsp = selectBySql(sql, maSP);
         return lsp.size() > 0 ? lsp.get(0) : null;
     }
+    
+    public List<SanPham> selectByStatus(int status) {
+        String sql= "SELECT * FROM SanPham WHERE TrangThai = ?";
+        return selectBySql(sql, status);
+    }
 
     private List<SanPham> selectBySql(String sql, Object... args) {
         List<SanPham> lsp = new ArrayList<>();
