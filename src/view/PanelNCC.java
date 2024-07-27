@@ -4,19 +4,46 @@
  */
 package view;
 
+import javax.swing.table.DefaultTableModel;
+import dao.NhaCungCapDAO; 
+import entity.NhaCungCap;
+import java.util.List;
+import utils.MsgBox;
 /**
  *
  * @author HP
  */
 public class PanelNCC extends javax.swing.JPanel {
 
+    NhaCungCapDAO nccDAO = new NhaCungCapDAO();
     /**
      * Creates new form NewJPanel
      */
     public PanelNCC() {
         initComponents();
+        fillTableNCC();
     }
 
+    public void fillTableNCC() {
+        DefaultTableModel model = (DefaultTableModel) tblNCC.getModel();
+        model.setRowCount(0);
+        try {
+            List<NhaCungCap> list = nccDAO.select();
+            for (NhaCungCap ncc : list) {
+                Object[] rowData = {
+                    ncc.getMaNCC(),
+                    ncc.getTenNCC(),
+                    ncc.getSdt(),
+                    ncc.getEmail(),
+                    ncc.getDiaChi()
+                };
+                model.addRow(rowData);//Thêm một hàng vào JTable
+            }
+        } catch (Exception e) {
+             MsgBox.alert(this, "Loi truy van du lieu!");
+        }
+    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,25 +55,25 @@ public class PanelNCC extends javax.swing.JPanel {
 
         lbTitle = new javax.swing.JLabel();
         lbMaNCC = new javax.swing.JLabel();
-        fillMaNCC = new javax.swing.JTextField();
+        txtMaNCC = new javax.swing.JTextField();
         lbNameNCC = new javax.swing.JLabel();
-        fillNameNCC = new javax.swing.JTextField();
+        txtTenNCC = new javax.swing.JTextField();
         lbPhone = new javax.swing.JLabel();
-        fillMail = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         lbMail = new javax.swing.JLabel();
         lbAddress = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        fillAddress = new javax.swing.JTextArea();
-        btnAdd = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnNew = new javax.swing.JButton();
+        txtDiaChi = new javax.swing.JTextArea();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tbNCC = new javax.swing.JTable();
+        tblNCC = new javax.swing.JTable();
         searchBar = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
-        fillPhone = new javax.swing.JTextField();
+        txtSDT = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -56,17 +83,17 @@ public class PanelNCC extends javax.swing.JPanel {
         lbMaNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbMaNCC.setText("Mã nhà cung cấp");
 
-        fillMaNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtMaNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbNameNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbNameNCC.setText("Tên nhà cung cấp");
 
-        fillNameNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtTenNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbPhone.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbPhone.setText("SĐT");
 
-        fillMail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbMail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbMail.setText("Email");
@@ -74,30 +101,30 @@ public class PanelNCC extends javax.swing.JPanel {
         lbAddress.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbAddress.setText("Địa chỉ");
 
-        fillAddress.setColumns(20);
-        fillAddress.setRows(5);
-        jScrollPane1.setViewportView(fillAddress);
+        txtDiaChi.setColumns(20);
+        txtDiaChi.setRows(5);
+        jScrollPane1.setViewportView(txtDiaChi);
 
-        btnAdd.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Add.png"))); // NOI18N
-        btnAdd.setText("Thêm");
+        btnThem.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Add.png"))); // NOI18N
+        btnThem.setText("Thêm");
 
-        btnEdit.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Edit.png"))); // NOI18N
-        btnEdit.setText("Sửa");
+        btnSua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Edit.png"))); // NOI18N
+        btnSua.setText("Sửa");
 
-        btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Delete.png"))); // NOI18N
-        btnDelete.setText("Xóa");
+        btnXoa.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Delete.png"))); // NOI18N
+        btnXoa.setText("Xóa");
 
-        btnNew.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/New_1.png"))); // NOI18N
-        btnNew.setText("Mới");
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/New_1.png"))); // NOI18N
+        btnLamMoi.setText("Mới");
 
         btnSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Search.png"))); // NOI18N
 
-        tbNCC.setModel(new javax.swing.table.DefaultTableModel(
+        tblNCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -116,14 +143,14 @@ public class PanelNCC extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tbNCC);
+        jScrollPane2.setViewportView(tblNCC);
 
         searchBar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         lbSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbSearch.setText("Tìm kiếm");
 
-        fillPhone.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtSDT.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -145,29 +172,29 @@ public class PanelNCC extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(fillPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbMaNCC)
                                 .addGap(18, 18, 18)
-                                .addComponent(fillMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbNameNCC)
                                 .addGap(18, 18, 18)
-                                .addComponent(fillNameNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTenNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbMail, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(fillMail, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbAddress)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                            .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                            .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLamMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -182,30 +209,30 @@ public class PanelNCC extends javax.swing.JPanel {
                         .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fillMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fillNameNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTenNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbNameNCC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(fillPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fillMail, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbMail, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnNew)))
+                        .addComponent(btnLamMoi)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(searchBar, javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,16 +246,11 @@ public class PanelNCC extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnNew;
+    private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JTextArea fillAddress;
-    private javax.swing.JTextField fillMaNCC;
-    private javax.swing.JTextField fillMail;
-    private javax.swing.JTextField fillNameNCC;
-    private javax.swing.JTextField fillPhone;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbAddress;
@@ -239,6 +261,11 @@ public class PanelNCC extends javax.swing.JPanel {
     private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JTextField searchBar;
-    private javax.swing.JTable tbNCC;
+    private javax.swing.JTable tblNCC;
+    private javax.swing.JTextArea txtDiaChi;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtMaNCC;
+    private javax.swing.JTextField txtSDT;
+    private javax.swing.JTextField txtTenNCC;
     // End of variables declaration//GEN-END:variables
 }
