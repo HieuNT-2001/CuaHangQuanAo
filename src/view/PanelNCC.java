@@ -43,10 +43,7 @@ public class PanelNCC extends javax.swing.JPanel {
              MsgBox.alert(this, "Loi truy van du lieu!");
         }
     }
-    
-    public void Add() {
-        
-    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
