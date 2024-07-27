@@ -135,6 +135,25 @@ public class PanelNV extends javax.swing.JPanel {
             System.out.println("Không thể truy vấn dữ liệu");
         }
     }
+    
+    public boolean checkNull(){
+        if (fillTenDangNhap.getText().isBlank()) {
+            return false;
+        }else if(fillPass.getText().isBlank()){
+            return false;
+        }else if(fillConfirmPass.getText().isBlank()){
+            return false;
+        }else if(fillName.getText().isBlank()){
+            return false;
+        }else if(fillBirthyear.getText().isBlank()){
+            return false;
+        }else if(fillPhone.getText().isBlank()){
+            return false;
+        }else if(fillCCCD.getText().isBlank()){
+            return false;
+        }
+        return true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -184,6 +203,7 @@ public class PanelNV extends javax.swing.JPanel {
         lbMaNV.setText("Mã nhân viên");
 
         fillMaNV.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        fillMaNV.setEnabled(false);
 
         lbTenDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbTenDangNhap.setText("Tên đăng nhập");
@@ -423,11 +443,21 @@ public class PanelNV extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+//        if(fillTenDangNhap.getText().isBlank()||fillPass.getText().isBlank()||fillConfirmPass.getText().isBlank()||
+//            fillName.getText().isBlank()||fillBirthyear.getText().isBlank()||fillPhone)
+        if(checkNull()==false){
+            MsgBox.alert(this, "Vui lòng điền hết thông tin");
+            return;
+        }
         insert();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
+        if(checkNull()==false){
+            MsgBox.alert(this, "Vui lòng điền hết thông tin");
+            return;
+        }
         update();
     }//GEN-LAST:event_btnEditActionPerformed
 
