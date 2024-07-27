@@ -5,7 +5,7 @@
 package view;
 import dao.*;
 import entity.*;
-import java.util.List;
+import java.util.*;
 import javax.swing.table.DefaultTableModel;
 import utils.MsgBox;
 /**
@@ -80,9 +80,11 @@ public class PanelNV extends javax.swing.JPanel {
                 nvd.insert(nv);
                 fillTable();
                 clear();
+                System.out.println("Thêm nhân viên thành công!");
             }
             catch(Exception e){
                 MsgBox.alert(this, "Thêm nhân viên thất bại!");
+                System.out.println("Thêm nhân viên thất bại!");
             }
         }
         else MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
@@ -96,9 +98,11 @@ public class PanelNV extends javax.swing.JPanel {
                 nvd.update(nv);
                 fillTable();
                 clear();
+                System.out.println("Cập nhật thành công!");
             }
             catch(Exception e){
                 MsgBox.alert(this, "Cập nhật thất bại!");
+                System.out.println("Cập nhật thất bại!");
             }
         }
         else MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
@@ -111,9 +115,11 @@ public class PanelNV extends javax.swing.JPanel {
                 fillTable();
                 clear();
                 MsgBox.alert(this, "Xóa thành công!");
+                System.out.println("Xóa thành công!");
             }
             catch(Exception e){
                 MsgBox.alert(this, "Xóa thất bại!");
+                System.out.println("Xóa thất bại!");
             }
         }
     }
@@ -126,7 +132,7 @@ public class PanelNV extends javax.swing.JPanel {
             }
         }
         catch(Exception e){
-            MsgBox.alert(this, "Không thể truy vấn dữ liệu");
+            System.out.println("Không thể truy vấn dữ liệu");
         }
     }
 
