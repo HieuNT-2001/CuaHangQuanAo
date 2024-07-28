@@ -21,10 +21,6 @@ import javax.swing.table.DefaultTableModel;
 import utils.Auth;
 import utils.MsgBox;
 import utils.XDate;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 /**
  *
@@ -44,7 +40,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
      */
     public BanHangJPanel() {
         initComponents();
-        ht_ThanhToan();
         fillTableDanhSachSP();
         fillTableDanhSachHD();
     }
@@ -109,7 +104,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
             HoaDon hd = getForm(false);
             hdDAO.insert(hd);
             fillTableDanhSachHD();
-            clearGioHang();
             clearForm();
         }
     }
@@ -122,7 +116,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
                 HoaDon hd = getForm(true);
                 hdDAO.insert(hd);
                 fillTableDanhSachHD();
-                clearGioHang();
                 clearForm();
             }
         }
@@ -143,7 +136,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
                     HoaDonChiTiet hdct = hdctDAO.selectByMaHD_MaSP(maHD, maSP);
                     int soLuong = (int) tblGioHang.getValueAt(i, 3) + 1;
                     hdct.setSoLuong(soLuong);
-                    System.out.println(hdct.getId() + "," + hdct.getMaHD() + "," + hdct.getMaSP() + "," + hdct.getSoLuong() + "," + hdct.getGiaBan());
                     hdctDAO.update(hdct);
                 } else {
                     MsgBox.alert(this, "Không có đủ hàng!");
@@ -163,7 +155,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
             hdctDAO.insert(hdct);
         }
 
-//        fillTableDanhSachSP();
         fillTableGioHang(maHD);
         updateThanhTien(tableHDRow);
         setForm(tableHDRow);
@@ -173,7 +164,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
         int maHD = (int) tblDanhSachHD.getValueAt(tableHDRow, 0);
         int maSP = (int) tblGioHang.getValueAt(tableGioHangRow, 0);
         hdctDAO.deleteByMaHD_MaSP(maHD, maSP);
-//        fillTableDanhSachSP();
         fillTableGioHang(maHD);
         updateThanhTien(tableHDRow);
         setForm(tableHDRow);
@@ -324,15 +314,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
             return false;
         }
         return true;
-    }
-
-    private void ht_ThanhToan() {
-        if (cboHinhThucTT.getSelectedIndex() == 1) {
-            txtTienKhachDua.setEnabled(false);
-            txtTienThua.setText("");
-        } else if (cboHinhThucTT.getSelectedIndex() == 0) {
-            txtTienKhachDua.setEnabled(true);
-        }
     }
 
     /**
@@ -838,11 +819,14 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
     private void cboHinhThucTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboHinhThucTTActionPerformed
         // TODO add your handling code here:
-        ht_ThanhToan();
+        if (cboHinhThucTT.getSelectedIndex() == 1) {
+            txtTienKhachDua.setEnabled(false);
+            txtTienThua.setText("");
+        } else if (cboHinhThucTT.getSelectedIndex() == 0) {
+            txtTienKhachDua.setEnabled(true);
+        }
     }//GEN-LAST:event_cboHinhThucTTActionPerformed
 
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDatHang;
