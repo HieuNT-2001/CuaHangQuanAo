@@ -260,8 +260,7 @@ public class HomeJFrame extends javax.swing.JFrame {
 
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
         // TODO add your handling code here:
-        DangNhapJFrame DnJFrame = new DangNhapJFrame();
-        DnJFrame.setVisible(true);
+        new DangNhapJFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSignoutActionPerformed
 
