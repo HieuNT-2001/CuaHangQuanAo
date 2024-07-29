@@ -5,13 +5,15 @@
 package view;
 
 import javax.swing.JPanel;
+import utils.Auth;
+import utils.MsgBox;
 
 /**
  *
  * @author HP
  */
 public class HomeJFrame extends javax.swing.JFrame {
-    
+
     private JPanel childPanel;
 
     /**
@@ -207,22 +209,38 @@ public class HomeJFrame extends javax.swing.JFrame {
 
     private void btnNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNVActionPerformed
         // TODO add your handling code here:
-        showPanel(new PanelNV());
+        if (Auth.isAdmin()) {
+            showPanel(new PanelNV());
+        } else {
+            MsgBox.alert(this, "Bạn có không quyền truy cập chức năng này!");
+        }
     }//GEN-LAST:event_btnNVActionPerformed
 
     private void btnSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSPActionPerformed
         // TODO add your handling code here:
-        showPanel(new PanelSP());
+        if (Auth.isAdmin()) {
+            showPanel(new PanelSP());
+        } else {
+            MsgBox.alert(this, "Bạn có không quyền truy cập chức năng này!");
+        }
     }//GEN-LAST:event_btnSPActionPerformed
 
     private void btnNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNCCActionPerformed
-        // TODO add your handling code here:
-        showPanel(new PanelNCC());
+        // TODO add your handling code here
+        if (Auth.isAdmin()) {
+            showPanel(new PanelNCC());
+        } else {
+            MsgBox.alert(this, "Bạn có không quyền truy cập chức năng này!");
+        }
     }//GEN-LAST:event_btnNCCActionPerformed
 
     private void btnKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKMActionPerformed
         // TODO add your handling code here:
-        showPanel(new PanelKM());
+        if (Auth.isAdmin()) {
+            showPanel(new PanelKM());
+        } else {
+            MsgBox.alert(this, "Bạn có không quyền truy cập chức năng này!");
+        }
     }//GEN-LAST:event_btnKMActionPerformed
 
     private void btnBHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBHActionPerformed
@@ -242,19 +260,23 @@ public class HomeJFrame extends javax.swing.JFrame {
 
     private void btnSignoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignoutActionPerformed
         // TODO add your handling code here:
+        DangNhapJFrame DnJFrame = new DangNhapJFrame();
+        DnJFrame.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSignoutActionPerformed
 
     private void btnChangePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePassActionPerformed
         // TODO add your handling code here:
         showPanel(new DoiMatKhauJPanel());
     }//GEN-LAST:event_btnChangePassActionPerformed
-    
+
     private void showPanel(JPanel panel) {
         childPanel = panel;
         panelMain.removeAll();
         panelMain.add(childPanel);
         panelMain.validate();
     }
+
     /**
      * @param args the command line arguments
      */
