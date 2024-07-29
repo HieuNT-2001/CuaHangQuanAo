@@ -3,18 +3,37 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view;
-
+import dao.*;
+import entity.*;
+import java.util.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+import utils.MsgBox;
 /**
  *
  * @author PC
  */
 public class PanelHoaDon extends javax.swing.JPanel {
-
+    int index=0;
+    HoaDonDAO hdd=new HoaDonDAO();
     /**
      * Creates new form HoaDonJPanel
      */
     public PanelHoaDon() {
         initComponents();
+        fillTableHoaDon();
+        
+    }
+    void fillTableHoaDon(){
+        DefaultTableModel model=(DefaultTableModel) tbBill.getModel();
+        model.setRowCount(0);
+        List<HoaDon> lhd=hdd.selectAll();
+        for(HoaDon hd:lhd){
+            Object data[]={hd.getMaHD(),hd.getMaNV(),hd.getTenKH(),hd.getSdt(),hd.getDiaChi(),
+            hd.getMaGiamGia(),hd.getThanhTien(),hd.isKenhBanHang(),hd.isHt_thanhToan(),hd.getNgayTao(),
+            hd.getTrangThai(),hd.getLyDo()};
+            model.addRow(data);
+        }
     }
 
     /**
@@ -68,15 +87,31 @@ public class PanelHoaDon extends javax.swing.JPanel {
         lbStatus.setText("Trạng thái");
 
         cboxStatus.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa thanh toán", "Đã thanh toán", "Đã hủy" }));
 
         btnThanhToan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Dollar.png"))); // NOI18N
+        btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhToanActionPerformed(evt);
+            }
+        });
 
         btnCancel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Cancel.png"))); // NOI18N
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         btnAdd.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Add.png"))); // NOI18N
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -134,6 +169,21 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnThanhToanActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        MsgBox.prompt(this, "Vui lòng nhập lý do hủy: ");
+        
+    }//GEN-LAST:event_btnCancelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
