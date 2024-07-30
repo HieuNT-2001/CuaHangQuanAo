@@ -21,6 +21,7 @@ public class HomeJFrame extends javax.swing.JFrame {
      */
     public HomeJFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
         showPanel(new ThongKeJPanel());
     }
 
