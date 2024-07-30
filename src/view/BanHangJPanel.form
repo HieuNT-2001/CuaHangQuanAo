@@ -33,7 +33,7 @@
                                   <Component id="lblDanhSachHD" min="-2" pref="112" max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" alignment="0" min="-2" pref="441" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="159" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblMaQR" min="-2" pref="45" max="-2" attributes="0"/>
                                   <Component id="pnlMaQR" min="-2" max="-2" attributes="0"/>
@@ -254,23 +254,23 @@
                                   <Component id="txtThanhTien" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblGiamGia" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                  <Component id="txtGiamGia" max="32767" attributes="0"/>
+                                  <Component id="lblTienThua" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="txtTienThua" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblKhachCanTra" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="txtThanhToan" max="32767" attributes="0"/>
+                                  <Component id="lblGiamGia" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Component id="txtGiamGia" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="lblSDT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblTienThua" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Component id="txtTienThua" max="32767" attributes="0"/>
+                                  <Component id="lblKhachCanTra" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="txtThanhToan" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -313,23 +313,21 @@
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtGiamGia" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="txtGiamGia" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtThanhToan" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
-                          <Component id="lblGiamGia" max="32767" attributes="0"/>
-                          <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                          <Component id="lblGiamGia" pref="19" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblKhachCanTra" min="-2" pref="19" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtThanhToan" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                          <Component id="lblKhachCanTra" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jSeparator2" min="-2" pref="11" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblHT_thanhToan" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cboHinhThucTT" alignment="3" min="-2" max="-2" attributes="0"/>
