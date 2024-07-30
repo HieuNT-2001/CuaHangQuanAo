@@ -8,7 +8,7 @@ import entity.*;
 import java.util.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
-import utils.MsgBox;
+import utils.*;
 /**
  *
  * @author PC
@@ -29,7 +29,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
         model.setRowCount(0);
         List<HoaDon> lhd=hdd.selectAll();
         for(HoaDon hd:lhd){
-            Object data[]={hd.getMaHD(),hd.getMaNV(),hd.getTenKH(),hd.getSdt(),hd.getDiaChi(),
+            Object data[]={hd.getMaHD(),Auth.user.getHoTen(),hd.getTenKH(),hd.getSdt(),hd.getDiaChi(),
             hd.getMaGiamGia(),hd.getThanhTien(),hd.isKenhBanHang(),hd.isHt_thanhToan(),hd.getNgayTao(),
             hd.getTrangThai(),hd.getLyDo()};
             model.addRow(data);
@@ -176,12 +176,22 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
-        
+        this.index=tbBill.getSelectedRow();
+        if(index>=0){
+            
+        }
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
-        MsgBox.prompt(this, "Vui lòng nhập lý do hủy: ");
+        this.index=tbBill.getSelectedRow();
+        if(index>=0){
+            String lydoHuy=MsgBox.prompt(this, "Vui lòng nhập lý do hủy: ");
+            if(!lydoHuy.isBlank()){
+                
+            }
+        }
+        
         
     }//GEN-LAST:event_btnCancelActionPerformed
 
