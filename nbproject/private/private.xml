@@ -4,8 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/HP/Desktop/Assignment/CuaHangQuanAo_PRO1041/src/view/PanelHoaDon.java</file>
-            <file>file:/C:/Users/HP/Desktop/Assignment/CuaHangQuanAo_PRO1041/src/utils/MsgBox.java</file>
-            <file>file:/C:/Users/HP/Desktop/Assignment/CuaHangQuanAo_PRO1041/src/view/PanelNV.java</file>
+            <file>file:/C:/Users/HP/Desktop/Assignment/CuaHangQuanAo_PRO1041/src/view/DialogCTHD.java</file>
+            <file>file:/C:/Users/HP/Desktop/Assignment/CuaHangQuanAo_PRO1041/src/dao/HoaDonChiTietDAO.java</file>
+            <file>file:/C:/Users/HP/Desktop/Assignment/CuaHangQuanAo_PRO1041/src/view/BanHangJPanel.java</file>
         </group>
     </open-files>
 </project-private>
