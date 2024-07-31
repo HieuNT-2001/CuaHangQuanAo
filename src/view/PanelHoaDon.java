@@ -6,7 +6,6 @@ package view;
 import dao.*;
 import entity.*;
 import java.util.*;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import utils.*;
 /**
@@ -22,17 +21,24 @@ public class PanelHoaDon extends javax.swing.JPanel {
     public PanelHoaDon() {
         initComponents();
         fillTableHoaDon();
-        
     }
     void fillTableHoaDon(){
         DefaultTableModel model=(DefaultTableModel) tbBill.getModel();
         model.setRowCount(0);
-        List<HoaDon> lhd=hdd.selectAll();
-        for(HoaDon hd:lhd){
-            Object data[]={hd.getMaHD(),Auth.user.getHoTen(),hd.getTenKH(),hd.getSdt(),hd.getDiaChi(),
-            hd.getMaGiamGia(),hd.getThanhTien(),hd.isKenhBanHang(),hd.isHt_thanhToan(),hd.getNgayTao(),
-            hd.getTrangThai(),hd.getLyDo()};
-            model.addRow(data);
+        try{
+            int id=Integer.parseInt(searchBar.getText());
+            int status=cboxStatus.getSelectedIndex();
+            List<HoaDon> lhd=(List<HoaDon>) hdd.selectById(id);
+            lhd=hdd.selectByStatus(status);
+            for(HoaDon hd:lhd){
+                Object data[]={hd.getMaHD(),Auth.user.getHoTen(),hd.getTenKH(),hd.getSdt(),hd.getDiaChi(),
+                hd.getMaGiamGia(),hd.getThanhTien(),hd.isKenhBanHang(),hd.isHt_thanhToan(),hd.getNgayTao(),
+                hd.getTrangThai(),hd.getLyDo()};
+                model.addRow(data);
+            }
+        }
+        catch(Exception e){
+            System.out.println("Không thể truy vấn dữ liệu");
         }
     }
 
@@ -53,9 +59,6 @@ public class PanelHoaDon extends javax.swing.JPanel {
         btnSearch = new javax.swing.JButton();
         lbStatus = new javax.swing.JLabel();
         cboxStatus = new javax.swing.JComboBox<>();
-        btnThanhToan = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
-        btnAdd = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -70,6 +73,11 @@ public class PanelHoaDon extends javax.swing.JPanel {
                 "Mã HĐ", "Người tạo", "Khách hàng", "SĐT", "Địa chỉ", "Mã giảm giá", "Thành tiền", "Kênh bán hàng", "HT thanh toán", "Ngày tạo", "Trạng thái", "Lý do"
             }
         ));
+        tbBill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbBillMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbBill);
 
         lbTitle.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -82,36 +90,18 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
         btnSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Search.png"))); // NOI18N
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         lbStatus.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbStatus.setText("Trạng thái");
 
         cboxStatus.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         cboxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa thanh toán", "Đã thanh toán", "Đã hủy" }));
-
-        btnThanhToan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Dollar.png"))); // NOI18N
-        btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThanhToanActionPerformed(evt);
-            }
-        });
-
-        btnCancel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Cancel.png"))); // NOI18N
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-
-        btnAdd.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Add.png"))); // NOI18N
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
+        cboxStatus.setSelectedIndex(-1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,14 +125,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
                                 .addComponent(cboxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(17, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(lbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
@@ -160,47 +143,26 @@ public class PanelHoaDon extends javax.swing.JPanel {
                             .addComponent(lbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cboxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddActionPerformed
+        fillTableHoaDon();
+    }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
+    private void tbBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBillMouseClicked
         // TODO add your handling code here:
-        this.index=tbBill.getSelectedRow();
-        if(index>=0){
+        if(evt.getClickCount()==2){
             
         }
-    }//GEN-LAST:event_btnThanhToanActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
-        this.index=tbBill.getSelectedRow();
-        if(index>=0){
-            String lydoHuy=MsgBox.prompt(this, "Vui lòng nhập lý do hủy: ");
-            if(!lydoHuy.isBlank()){
-                
-            }
-        }
-        
-        
-    }//GEN-LAST:event_btnCancelActionPerformed
+    }//GEN-LAST:event_tbBillMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnThanhToan;
     private javax.swing.JComboBox<String> cboxStatus;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
