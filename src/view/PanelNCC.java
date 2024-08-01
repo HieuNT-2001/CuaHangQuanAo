@@ -28,8 +28,9 @@ public class PanelNCC extends javax.swing.JPanel {
     public void fillTableNCC() {
         DefaultTableModel model = (DefaultTableModel) tblNCC.getModel();
         model.setRowCount(0);
+        String tenNCC = searchBar.getText();
         try {
-            List<NhaCungCap> list = nccDAO.select();
+            List<NhaCungCap> list = nccDAO.selectByTenNCC(tenNCC);
             for (NhaCungCap ncc : list) {
                 Object[] rowData = {
                     ncc.getMaNCC(),
@@ -90,27 +91,26 @@ public class PanelNCC extends javax.swing.JPanel {
         return true;
     }
     
-    public NhaCungCap timKiemNCC(String TenNCC) {
-        DefaultTableModel model = (DefaultTableModel) tblNCC.getModel();
-        model.setRowCount(0);
-        List<NhaCungCap> listNCC = null;
-        try {
-            listNCC = nccDAO.selectByTenNCC(TenNCC);
-            for (NhaCungCap ncc : listNCC) {
-                Object[] rowData = {
-                    ncc.getMaNCC(),
-                    ncc.getTenNCC(),
-                    ncc.getSdt(),
-                    ncc.getEmail(),
-                    ncc.getDiaChi()
-                };
-                model.addRow(rowData);//Thêm một hàng vào JTable
-            }
-        } catch (Exception e) {
-             MsgBox.alert(this, "Loi truy van du lieu!");
-        }
-        return (NhaCungCap) listNCC;
-    }
+//    public void timKiemNCC(String TenNCC) {
+//        DefaultTableModel model = (DefaultTableModel) tblNCC.getModel();
+//        model.setRowCount(0);
+//        List<NhaCungCap> listNCC = null;
+//        try {
+//            listNCC = nccDAO.selectByTenNCC(TenNCC);
+//            for (NhaCungCap ncc : listNCC) {
+//                Object[] rowData = {
+//                    ncc.getMaNCC(),
+//                    ncc.getTenNCC(),
+//                    ncc.getSdt(),
+//                    ncc.getEmail(),
+//                    ncc.getDiaChi()
+//                };
+//                model.addRow(rowData);//Thêm một hàng vào JTable
+//            }
+//        } catch (Exception e) {
+//             MsgBox.alert(this, "Loi truy van du lieu!");
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -378,7 +378,7 @@ public class PanelNCC extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        timKiemNCC(txtTenNCC.getText());
+//        timKiemNCC(txtTenNCC.getText());
         fillTableNCC();
     }//GEN-LAST:event_btnSearchActionPerformed
 
