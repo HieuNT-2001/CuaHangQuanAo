@@ -17,12 +17,12 @@ import java.sql.*;
 public class HoaDonChiTietDAO {
 
     public void insert(HoaDonChiTiet HDCT) {
-        String sql = "Insert into HoaDonChiTiet (, MaHD, MaSP, SoLuong, GiaBan)\n" + "values (?,?,?,?)";
+        String sql = "insert into HoaDonChiTiet (MaHD, MaSP, SoLuong, GiaBan)\n" + "values (?,?,?,?)";
         Xjdbc.update(sql, HDCT.getMaHD(), HDCT.getMaSP(), HDCT.getSoLuong(), HDCT.getGiaBan());
     }
 
     public void update(HoaDonChiTiet HDCT) {
-        String sql = "Update HoaDonChiTiet set  MaHD=?, MaSP = ?, SoLuong =?,GiaBan=?\n" + "where ID =?";
+        String sql = "update HoaDonChiTiet set  MaHD=?, MaSP = ?, SoLuong =?,GiaBan=?\n" + "where ID =?";
         Xjdbc.update(sql, HDCT.getMaHD(), HDCT.getMaSP(), HDCT.getSoLuong(), HDCT.getGiaBan());
     }
 
@@ -40,6 +40,14 @@ public class HoaDonChiTietDAO {
         String sql = "SELECT * FROM HoaDonChiTiet WHERE ID=?";
         List<HoaDonChiTiet> lHDCT = selectBySql(sql, id);
         return lHDCT.size() > 0 ? lHDCT.get(0) : null;
+    }
+
+    public List<HoaDonChiTiet> selectByMaHD(int maHD) {
+        String sql = "SELECT * FROM HoaDonChiTiet WHERE MaHD=?";
+        return selectBySql(sql, maHD);
+
+//        List<HoaDonChiTiet> lHDCT = selectBySql(sql, maHD);
+//        return lHDCT.size() > 0 ? lHDCT.get(0) : null;
     }
 
     private List<HoaDonChiTiet> selectBySql(String sql, Object... args) {
@@ -63,6 +71,7 @@ public class HoaDonChiTietDAO {
 
     private HoaDonChiTiet readFromResultSet(ResultSet rs) throws SQLException {
         HoaDonChiTiet HDCT = new HoaDonChiTiet();
+        HDCT.setId(rs.getInt("ID"));
         HDCT.setMaHD(rs.getInt("MaHD"));
         HDCT.setMaSP(rs.getInt("MaSP"));
         HDCT.setSoLuong(rs.getInt("SoLuong"));

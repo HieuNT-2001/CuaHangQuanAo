@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class HoaDonDAO {
 
     private final String SELECT_ALL = "SELECT * FROM HoaDon";
-    private final String SELECT_BY_ID = "SELECT * FROM HoaDon WHERE MaHD =%?%";
+    private final String SELECT_BY_ID = "SELECT * FROM HoaDon WHERE MaHD =?";
     private final String SELECT_BY_STATUS = "SELECT * FROM HoaDon WHERE TrangThai = ?";
     private final String INSERT = "INSERT INTO HoaDon (MaNV, TenKH, SDT, DiaChi, MaGiamGia, KenhBanHang, HT_ThanhToan, ThanhTien, NgayTao, TrangThai, LyDo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private final String UPDATE = "UPDATE HoaDon SET MaNV = ?, TenKH = ?, SDT = ?, DiaChi = ?, MaGiamGia = ?, KenhBanHang = ?, HT_ThanhToan = ?, ThanhTien = ?, NgayTao = ?, TrangThai = ?, LyDo = ? WHERE MaHD = ?";

@@ -3,36 +3,48 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
+
 import dao.*;
 import entity.*;
 import java.util.*;
 import javax.swing.table.DefaultTableModel;
 import utils.*;
+
 /**
  *
  * @author HP
  */
 public class DialogCTHD extends javax.swing.JDialog {
-    HoaDonChiTietDAO hdctd=new HoaDonChiTietDAO();
-    SanPham sp=new SanPham();
-    
+
+    HoaDonChiTietDAO hdctd = new HoaDonChiTietDAO();
+    SanPhamDAO spDAO = new SanPhamDAO();
+    private int maHD = 0;
+
     /**
      * Creates new form NewJDialog
      */
-    public DialogCTHD(java.awt.Frame parent, boolean modal) {
+    public DialogCTHD(java.awt.Frame parent, boolean modal, int maHD) {
         super(parent, modal);
+        this.maHD = maHD;
         initComponents();
         fillTable();
     }
-    void fillTable(){
-        DefaultTableModel model=(DefaultTableModel) tbCTHD.getModel();
+
+    void fillTable() {
+        DefaultTableModel model = (DefaultTableModel) tbCTHD.getModel();
         model.setRowCount(0);
-        List<HoaDonChiTiet> lhdct=hdctd.select();
-        for(HoaDonChiTiet hdct:lhdct){
-            Object data[]={hdct.getMaSP(),sp.getTenSP(),hdct.getGiaBan(),hdct.getSoLuong(),(hdct.getGiaBan()*hdct.getSoLuong())};
+        List<HoaDonChiTiet> lhdct = hdctd.selectByMaHD(maHD);
+        for (HoaDonChiTiet hdct : lhdct) {
+            Object data[] = {
+                spDAO.selectById(hdct.getMaSP()).getTenSP(),
+                hdct.getGiaBan(),
+                hdct.getSoLuong(),
+                hdct.getGiaBan() * hdct.getSoLuong()
+            };
             model.addRow(data);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,17 +62,17 @@ public class DialogCTHD extends javax.swing.JDialog {
 
         tbCTHD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Mã SP", "Tên SP", "Giá bán", "Số lượng", "Thành tiền"
+                "Mã SP", "Giá bán", "Số lượng", "Thành tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -128,7 +140,7 @@ public class DialogCTHD extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DialogCTHD dialog = new DialogCTHD(new javax.swing.JFrame(), true);
+                DialogCTHD dialog = new DialogCTHD(new javax.swing.JFrame(), true, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -3,45 +3,110 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view;
+
 import dao.*;
 import entity.*;
+import java.awt.Frame;
 import java.util.*;
 import javax.swing.table.DefaultTableModel;
 import utils.*;
+
 /**
  *
  * @author PC
  */
 public class PanelHoaDon extends javax.swing.JPanel {
-    int index=0;
-    HoaDonDAO hdd=new HoaDonDAO();
+
+    int index = 0;
+    HoaDonDAO hdd = new HoaDonDAO();
+
     /**
      * Creates new form HoaDonJPanel
      */
     public PanelHoaDon() {
         initComponents();
         fillTableHoaDon();
+//        this.fillTableByStatus();
     }
-    void fillTableHoaDon(){
-        DefaultTableModel model=(DefaultTableModel) tbBill.getModel();
+
+    void fillTableHoaDon() {
+        DefaultTableModel model = (DefaultTableModel) tbBill.getModel();
         model.setRowCount(0);
-        try{
-            int id=Integer.parseInt(searchBar.getText());
-            int status=cboxStatus.getSelectedIndex();
-            List<HoaDon> lhd=(List<HoaDon>) hdd.selectById(id);
-            lhd=hdd.selectByStatus(status);
-            for(HoaDon hd:lhd){
-                Object data[]={hd.getMaHD(),Auth.user.getHoTen(),hd.getTenKH(),hd.getSdt(),hd.getDiaChi(),
-                hd.getMaGiamGia(),hd.getThanhTien(),hd.isKenhBanHang(),hd.isHt_thanhToan(),hd.getNgayTao(),
-                hd.getTrangThai(),hd.getLyDo()};
+        int status = cboxStatus.getSelectedIndex();
+        List<HoaDon> lhd = null;
+        if (status == 3) {
+            lhd = hdd.selectAll();
+        } else {
+            lhd = hdd.selectByStatus(status);
+        }
+        try {
+            for (HoaDon hd : lhd) {
+                Object data[] = {
+                    hd.getMaHD(),
+                    hd.getMaNV(),
+                    hd.getTenKH(),
+                    hd.getSdt(),
+                    hd.getDiaChi(),
+                    hd.getMaGiamGia(),
+                    hd.getThanhTien(),
+                    hd.isKenhBanHang(),
+                    hd.isHt_thanhToan(),
+                    hd.getNgayTao(),
+                    hd.getTrangThai(),
+                    hd.getLyDo()
+                };
                 model.addRow(data);
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Không thể truy vấn dữ liệu");
         }
     }
 
+    void fillTableByID() {
+        DefaultTableModel model = (DefaultTableModel) tbBill.getModel();
+        model.setRowCount(0);
+        try {
+            int id = Integer.parseInt(searchBar.getText());
+            HoaDon hd = hdd.selectById(id);
+//            List<HoaDon> lhd = (List<HoaDon>) hdd.selectById(id);
+//            for (HoaDon hd : lhd) {
+            Object data[] = {hd.getMaHD(), hd.getMaNV(), hd.getTenKH(), hd.getSdt(), hd.getDiaChi(),
+                hd.getMaGiamGia(), hd.getThanhTien(), hd.isKenhBanHang(), hd.isHt_thanhToan(), hd.getNgayTao(),
+                hd.getTrangThai(), hd.getLyDo()};
+            model.addRow(data);
+//            }
+        } catch (Exception e) {
+            System.out.println("Không thể truy vấn dữ liệu");
+        }
+    }
+
+    private int getMaHD(int index) {
+        this.index = tbBill.getSelectedRow();
+        int maHD = (int) tbBill.getValueAt(index, 0);
+        return maHD;
+    }
+
+//    void fillTableByStatus() {
+//        DefaultTableModel model = (DefaultTableModel) tbBill.getModel();
+//        model.setRowCount(0);
+//        try {
+//            int status = cboxStatus.getSelectedIndex();
+//            if (status == 3) {
+//                fillTableHoaDon();
+//            } else {
+//                List<HoaDon> lhd = hdd.selectByStatus(status);
+//                for (HoaDon hd : lhd) {
+//                    Object data[] = {hd.getMaHD(), hd.getMaNV(), hd.getTenKH(), hd.getSdt(), hd.getDiaChi(),
+//                        hd.getMaGiamGia(), hd.getThanhTien(), hd.isKenhBanHang(), hd.isHt_thanhToan(), hd.getNgayTao(),
+//                        hd.getTrangThai(), hd.getLyDo()};
+//                    model.addRow(data);
+//                }
+//
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Không thể truy vấn dữ liệu");
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,7 +137,15 @@ public class PanelHoaDon extends javax.swing.JPanel {
             new String [] {
                 "Mã HĐ", "Người tạo", "Khách hàng", "SĐT", "Địa chỉ", "Mã giảm giá", "Thành tiền", "Kênh bán hàng", "HT thanh toán", "Ngày tạo", "Trạng thái", "Lý do"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbBill.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbBillMouseClicked(evt);
@@ -100,8 +173,12 @@ public class PanelHoaDon extends javax.swing.JPanel {
         lbStatus.setText("Trạng thái");
 
         cboxStatus.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        cboxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa thanh toán", "Đã thanh toán", "Đã hủy" }));
-        cboxStatus.setSelectedIndex(-1);
+        cboxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chưa thanh toán", "Đã thanh toán", "Đã hủy", "Tất cả" }));
+        cboxStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxStatusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -150,15 +227,24 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        fillTableHoaDon();
+        fillTableByID();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void tbBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBillMouseClicked
         // TODO add your handling code here:
-        if(evt.getClickCount()==2){
-            
+        if (evt.getClickCount() == 2) {
+            this.index = tbBill.getSelectedRow();
+            int maHD = (int) tbBill.getValueAt(index, 0);
+//            Frame homeJDFrame = (Frame) new HomeJFrame();
+            DialogCTHD hdctDialog = new DialogCTHD(new javax.swing.JFrame(), true, maHD);
+            hdctDialog.setVisible(true);
         }
     }//GEN-LAST:event_tbBillMouseClicked
+
+    private void cboxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxStatusActionPerformed
+        // TODO add your handling code here:
+        fillTableHoaDon();
+    }//GEN-LAST:event_cboxStatusActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -86,18 +86,18 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="12" rowCount="4">
-                <Column editable="true" title="M&#xe3; H&#x110;" type="java.lang.Object"/>
-                <Column editable="true" title="Ng&#x1b0;&#x1edd;i t&#x1ea1;o" type="java.lang.Object"/>
-                <Column editable="true" title="Kh&#xe1;ch h&#xe0;ng" type="java.lang.Object"/>
-                <Column editable="true" title="S&#x110;T" type="java.lang.Object"/>
-                <Column editable="true" title="&#x110;&#x1ecb;a ch&#x1ec9;" type="java.lang.Object"/>
-                <Column editable="true" title="M&#xe3; gi&#x1ea3;m gi&#xe1;" type="java.lang.Object"/>
-                <Column editable="true" title="Th&#xe0;nh ti&#x1ec1;n" type="java.lang.Object"/>
-                <Column editable="true" title="K&#xea;nh b&#xe1;n h&#xe0;ng" type="java.lang.Object"/>
-                <Column editable="true" title="HT thanh to&#xe1;n" type="java.lang.Object"/>
-                <Column editable="true" title="Ng&#xe0;y t&#x1ea1;o" type="java.lang.Object"/>
-                <Column editable="true" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object"/>
-                <Column editable="true" title="L&#xfd; do" type="java.lang.Object"/>
+                <Column editable="false" title="M&#xe3; H&#x110;" type="java.lang.Object"/>
+                <Column editable="false" title="Ng&#x1b0;&#x1edd;i t&#x1ea1;o" type="java.lang.Object"/>
+                <Column editable="false" title="Kh&#xe1;ch h&#xe0;ng" type="java.lang.Object"/>
+                <Column editable="false" title="S&#x110;T" type="java.lang.Object"/>
+                <Column editable="false" title="&#x110;&#x1ecb;a ch&#x1ec9;" type="java.lang.Object"/>
+                <Column editable="false" title="M&#xe3; gi&#x1ea3;m gi&#xe1;" type="java.lang.Object"/>
+                <Column editable="false" title="Th&#xe0;nh ti&#x1ec1;n" type="java.lang.Object"/>
+                <Column editable="false" title="K&#xea;nh b&#xe1;n h&#xe0;ng" type="java.lang.Object"/>
+                <Column editable="false" title="HT thanh to&#xe1;n" type="java.lang.Object"/>
+                <Column editable="false" title="Ng&#xe0;y t&#x1ea1;o" type="java.lang.Object"/>
+                <Column editable="false" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object"/>
+                <Column editable="false" title="L&#xfd; do" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -225,14 +225,16 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
-            <StringItem index="1" value="Ch&#x1b0;a thanh to&#xe1;n"/>
-            <StringItem index="2" value="&#x110;&#xe3; thanh to&#xe1;n"/>
-            <StringItem index="3" value="&#x110;&#xe3; h&#x1ee7;y"/>
+            <StringItem index="0" value="Ch&#x1b0;a thanh to&#xe1;n"/>
+            <StringItem index="1" value="&#x110;&#xe3; thanh to&#xe1;n"/>
+            <StringItem index="2" value="&#x110;&#xe3; h&#x1ee7;y"/>
+            <StringItem index="3" value="T&#x1ea5;t c&#x1ea3;"/>
           </StringArray>
         </Property>
-        <Property name="selectedIndex" type="int" value="-1"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboxStatusActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
