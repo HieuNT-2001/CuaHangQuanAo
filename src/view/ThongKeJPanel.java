@@ -69,7 +69,6 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblTop10SP.getModel();
         model.setRowCount(0);
         int month = Integer.parseInt(cboThang.getSelectedItem().toString());
-        System.out.println(month);
         int year = (int) cboNam2.getSelectedItem();
         List<Object[]> list = tkDAO.getTop10SanPham(month, year);
         for (Object[] product : list) {
