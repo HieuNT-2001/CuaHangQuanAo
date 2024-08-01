@@ -32,9 +32,7 @@ public class PanelKM extends javax.swing.JPanel {
         lbNameKM = new javax.swing.JLabel();
         fillNameKM = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
-        fillStartDate = new javax.swing.JTextField();
         lbEndDate = new javax.swing.JLabel();
-        fillEndDate = new javax.swing.JTextField();
         fillDiscount = new javax.swing.JTextField();
         lbDiscount = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
@@ -46,6 +44,8 @@ public class PanelKM extends javax.swing.JPanel {
         lbStartDate = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbKM = new javax.swing.JTable();
+        dateStart = new com.toedter.calendar.JDateChooser();
+        dateEnd = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -65,12 +65,8 @@ public class PanelKM extends javax.swing.JPanel {
         lbSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbSearch.setText("Tìm kiếm");
 
-        fillStartDate.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
         lbEndDate.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbEndDate.setText("Ngày kết thúc");
-
-        fillEndDate.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         fillDiscount.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
@@ -157,12 +153,12 @@ public class PanelKM extends javax.swing.JPanel {
                                     .addComponent(lbNameKM)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fillStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbStartDate))
+                                    .addComponent(lbStartDate)
+                                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fillEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbEndDate))
+                                    .addComponent(lbEndDate)
+                                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbDiscount)
@@ -196,19 +192,19 @@ public class PanelKM extends javax.swing.JPanel {
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fillStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fillEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fillDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fillDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dateEnd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -227,11 +223,11 @@ public class PanelKM extends javax.swing.JPanel {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnSearch;
+    private com.toedter.calendar.JDateChooser dateEnd;
+    private com.toedter.calendar.JDateChooser dateStart;
     private javax.swing.JTextField fillDiscount;
-    private javax.swing.JTextField fillEndDate;
     private javax.swing.JTextField fillMaKM;
     private javax.swing.JTextField fillNameKM;
-    private javax.swing.JTextField fillStartDate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbDiscount;
     private javax.swing.JLabel lbEndDate;
