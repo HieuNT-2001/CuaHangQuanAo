@@ -4,19 +4,55 @@
  */
 package view;
 
+import entity.NhanVien;
+import dao.NhanVienDAO;
+import utils.Auth;
+import utils.MsgBox;
+
 /**
  *
  * @author PC
  */
 public class DangNhapJFrame extends javax.swing.JFrame {
 
+    NhanVienDAO nvDAO = new NhanVienDAO();
     /**
      * Creates new form DangNhapJFrame
      */
     public DangNhapJFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
+    void dangNhap() {
+        String tenDangNhap = txtTenDangNhap.getText();
+        String matKhau = new String(txtMatKhau.getPassword());
+        
+        if(tenDangNhap.isEmpty()){
+            MsgBox.alert(this, "Ten dang nhap khong duoc de trong!");
+            return;
+        } 
+        if(matKhau.isEmpty()){
+            MsgBox.alert(this, "Mat khau khong duoc de trong!");
+        }
+        
+        NhanVien nv = nvDAO.selectByUserName(tenDangNhap);
+        if (nv == null) {
+            MsgBox.alert(this, "Sai ten dang nhap!");
+        } else if (!matKhau.equals(nv.getMatKhau())) {
+            MsgBox.alert(this, "Sai mat khau!");
+        } else {
+            Auth.user = nv;
+            HomeJFrame homeJFrame = new HomeJFrame();
+            homeJFrame.setVisible(true);
+            this.dispose();
+        }
+    }
+    
+    void thoat() {
+        if(MsgBox.confirm(this, "Ban muon thoat chuong trinh?"));
+        System.exit(0);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,8 +82,18 @@ public class DangNhapJFrame extends javax.swing.JFrame {
         jLabel3.setText("Mật khẩu:");
 
         btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
+            }
+        });
 
         btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,6 +164,16 @@ public class DangNhapJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        // TODO add your handling code here:
+        dangNhap();
+    }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        // TODO add your handling code here:
+        thoat();
+    }//GEN-LAST:event_btnThoatActionPerformed
 
     /**
      * @param args the command line arguments

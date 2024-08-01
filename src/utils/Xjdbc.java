@@ -47,7 +47,6 @@ public class Xjdbc {
         try (PreparedStatement stmt = getStmt(sql, args)) {
             return stmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e);
             throw new RuntimeException(e);
         }
     }

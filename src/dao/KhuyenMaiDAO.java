@@ -43,6 +43,14 @@ public class KhuyenMaiDAO {
         return lkm.size() > 0 ? lkm.get(0) : null;
     }
 
+    
+    public KhuyenMai selectByTenKM(String tenKM) {
+        String sql = "SELECT * FROM KhuyenMai WHERE TenKM = ?";
+        List<KhuyenMai> lkm = selectBySql(sql, tenKM);
+        return lkm.size() > 0 ? lkm.get(0) : null;
+    }
+
+
     private List<KhuyenMai> selectBySql(String sql, Object... args) {
         List<KhuyenMai> lkm = new ArrayList<>();
         try {

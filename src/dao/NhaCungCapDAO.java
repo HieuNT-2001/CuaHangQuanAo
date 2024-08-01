@@ -43,6 +43,13 @@ public class NhaCungCapDAO {
         return lcc.size() > 0 ? lcc.get(0) : null;
     }
 
+
+    public List<NhaCungCap> selectByTenNCC(String tenNCC) {
+        String sql = "SELECT * FROM NhaCungCap WHERE TenNCC LIKE ?";
+        return selectBySql(sql, "%" + tenNCC + "%");
+    }
+
+
     private List<NhaCungCap> selectBySql(String sql, Object... args) {
         List<NhaCungCap> lcc = new ArrayList<>();
         try {
@@ -57,6 +64,7 @@ public class NhaCungCapDAO {
                 rs.getStatement();
             }
         } catch (SQLException e) {
+
             throw new RuntimeException(e);
         }
         return lcc;
