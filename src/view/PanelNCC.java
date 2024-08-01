@@ -7,6 +7,7 @@ package view;
 import javax.swing.table.DefaultTableModel;
 import dao.NhaCungCapDAO; 
 import entity.NhaCungCap;
+import java.util.ArrayList;
 import java.util.List;
 import utils.MsgBox;
 /**
@@ -44,6 +45,72 @@ public class PanelNCC extends javax.swing.JPanel {
         }
     }
    
+    private NhaCungCap getNhaCungCap() {
+        int maNCC = Integer.parseInt(txtMaNCC.getText());
+        String tenNCC = txtTenNCC.getText();
+        String SDT = txtSDT.getText();
+        String Email = txtEmail.getText();
+        String diaChi = txtDiaChi.getText();
+        NhaCungCap ncc = new NhaCungCap(maNCC, tenNCC, SDT, Email, diaChi);
+        return ncc;
+    }
+    
+    private void setNhaCungCap(int viTri) {
+        int maNCC =  (int) tblNCC.getValueAt(viTri, 0);
+        String maNCC2 = String.valueOf(tblNCC.getValueAt(viTri, 0));
+        String tenNCC = String.valueOf(tblNCC.getValueAt(viTri, 1));
+        String SDT = String.valueOf(tblNCC.getValueAt(viTri, 2));
+        String Email = String.valueOf(tblNCC.getValueAt(viTri, 3));
+        String diaChi = String.valueOf(tblNCC.getValueAt(viTri, 4));
+        txtMaNCC.setText(maNCC2);
+        txtTenNCC.setText(tenNCC);
+        txtSDT.setText(SDT);
+        txtEmail.setText(Email);
+        txtDiaChi.setText(diaChi);
+    }
+    
+    private void lamMoi() {
+        txtMaNCC.setText("");
+        txtTenNCC.setText("");
+        txtSDT.setText("");
+        txtEmail.setText("");
+        txtDiaChi.setText("");
+    }
+    
+    private boolean checkNull() {
+        if (txtTenNCC.getText().equals("")) {
+            return false;
+        } else if (txtSDT.getText().equals("")) {
+            return false;
+        } else if (txtEmail.getText().equals("")) {
+            return false;
+        } else if (txtDiaChi.getText().equals("")) {
+            return false;
+        }
+        return true;
+    }
+    
+    public NhaCungCap timKiemNCC(String TenNCC) {
+        DefaultTableModel model = (DefaultTableModel) tblNCC.getModel();
+        model.setRowCount(0);
+        List<NhaCungCap> listNCC = null;
+        try {
+            listNCC = nccDAO.selectByTenNCC(TenNCC);
+            for (NhaCungCap ncc : listNCC) {
+                Object[] rowData = {
+                    ncc.getMaNCC(),
+                    ncc.getTenNCC(),
+                    ncc.getSdt(),
+                    ncc.getEmail(),
+                    ncc.getDiaChi()
+                };
+                model.addRow(rowData);//Thêm một hàng vào JTable
+            }
+        } catch (Exception e) {
+             MsgBox.alert(this, "Loi truy van du lieu!");
+        }
+        return (NhaCungCap) listNCC;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,6 +151,7 @@ public class PanelNCC extends javax.swing.JPanel {
         lbMaNCC.setText("Mã nhà cung cấp");
 
         txtMaNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtMaNCC.setEnabled(false);
 
         lbNameNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbNameNCC.setText("Tên nhà cung cấp");
@@ -108,21 +176,46 @@ public class PanelNCC extends javax.swing.JPanel {
         btnThem.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Add.png"))); // NOI18N
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnSua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Edit.png"))); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/New_1.png"))); // NOI18N
         btnLamMoi.setText("Mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
 
         btnSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Search.png"))); // NOI18N
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         tblNCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,6 +234,11 @@ public class PanelNCC extends javax.swing.JPanel {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblNCC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblNCCMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(tblNCC);
@@ -244,6 +342,46 @@ public class PanelNCC extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        nccDAO.delete(Integer.parseInt(txtMaNCC.getText()));
+        fillTableNCC();
+        
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        checkNull();
+        nccDAO.insert(this.getNhaCungCap());
+        fillTableNCC();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        this.lamMoi();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void tblNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNCCMouseClicked
+        // TODO add your handling code here:
+        int viTri = tblNCC.getSelectedRow();
+        this.setNhaCungCap(viTri);
+    }//GEN-LAST:event_tblNCCMouseClicked
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        NhaCungCap ncc = this.getNhaCungCap();
+        NhaCungCapDAO nccDAO = new NhaCungCapDAO();
+        checkNull();
+        nccDAO.update(ncc);
+        fillTableNCC();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        timKiemNCC(txtTenNCC.getText());
+        fillTableNCC();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLamMoi;
@@ -268,4 +406,6 @@ public class PanelNCC extends javax.swing.JPanel {
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTenNCC;
     // End of variables declaration//GEN-END:variables
+
+   
 }
