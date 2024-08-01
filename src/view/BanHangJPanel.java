@@ -93,6 +93,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
                 hoaDon.getMaHD(),
                 Auth.user.getHoTen(),
                 hoaDon.getTenKH(),
+                hoaDon.isKenhBanHang() ? "Online" : "Trực tiếp",
                 hoaDon.getTrangThai() == 0 ? "Chưa thanh toán" : "đã thanh toán - đã hủy",
                 hoaDon.getNgayTao()
             };
@@ -102,26 +103,18 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
     // Tạo một hóa đơn vơi kênh bán hàng tại quầy
     private void taoHoaDon() {
-        String maGiamGia = txtMaGiamGia.getText();
-        if (maGiamGia.isBlank() || checkKhuyenMai(maGiamGia)) {
-            HoaDon hd = getForm(false);
-            hdDAO.insert(hd);
-            fillTableDanhSachHD();
-            clearForm();
-        }
+        HoaDon hd = getForm(false);
+        hdDAO.insert(hd);
+        fillTableDanhSachHD();
+        clearForm();
     }
 
     // tạo một hóa đơn với kênh bán hàng online
     private void datHang() {
-        if (isDatHang()) {
-            String maGiamGia = txtMaGiamGia.getText();
-            if (maGiamGia.isBlank() || checkKhuyenMai(maGiamGia)) {
-                HoaDon hd = getForm(true);
-                hdDAO.insert(hd);
-                fillTableDanhSachHD();
-                clearForm();
-            }
-        }
+        HoaDon hd = getForm(true);
+        hdDAO.insert(hd);
+        fillTableDanhSachHD();
+        clearForm();
     }
 
     // Thêm sản phẩm vào giở hàng
@@ -185,22 +178,18 @@ public class BanHangJPanel extends javax.swing.JPanel {
     }
 
     // Cập nhật trạng thái hóa đơn (Đã thanh toán, hủy)
-    private void updateTrangThai(int row, int status, String args) {
+    private void updateThongTinHD(int row, int status, String args) {
         int maHD = (int) tblDanhSachHD.getValueAt(row, 0);
         HoaDon hd = hdDAO.selectById(maHD);
 
-        // Kiểm tra xem nếu là đơn đặt hàng
-        // thì hình thức thanh toán có phải chuyển khoản không
-        // nếu không thì hủy lệnh
-        if (hd.isKenhBanHang() == true && cboHinhThucTT.getSelectedIndex() != 1) {
-            MsgBox.alert(this, "Đặt hàng chỉ thanh toán bằng chuyển khoản!");
-            return;
-        }
-
-        // Cập nhật trang thái cho hóa đơn
-        hd.setTrangThai(status);
+        // Cập nhật thông tin cho hóa đơn
+        hd.setTenKH(txtTenKH.getText());
+        hd.setSdt(txtSDT.getText());
+        hd.setDiaChi(txtDiaChi.getText());
+        hd.setMaGiamGia(txtMaGiamGia.getText());
         boolean ht_thanhToan = cboHinhThucTT.getSelectedIndex() == 1;
         hd.setHt_thanhToan(ht_thanhToan);
+        hd.setTrangThai(status);
         hd.setLyDo(args);
         hdDAO.update(hd);
 
@@ -209,11 +198,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
         } else if (status == 2) {
             MsgBox.alert(this, "Hủy hóa đơn thành công!");
         }
-
-        fillTableDanhSachHD();
-        fillTableDanhSachSP();
-        clearGioHang();
-        clearForm();
     }
 
     // Cập nhật lại thành tiền khi thêm sản phẩm vào giỏ hàng
@@ -249,10 +233,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
     private HoaDon getForm(boolean kenhBanHang) {
         HoaDon hd = new HoaDon();
         hd.setMaNV(Auth.user.getMaNV());
-        hd.setTenKH(txtTenKH.getText());
-        hd.setSdt(txtSDT.getText());
-        hd.setDiaChi(txtDiaChi.getText());
-        hd.setMaGiamGia(txtMaGiamGia.getText());
         hd.setKenhBanHang(kenhBanHang);
         boolean ht_thanhToan = cboHinhThucTT.getSelectedIndex() == 1;
         hd.setHt_thanhToan(ht_thanhToan);
@@ -271,18 +251,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
         double thanhTien = getThanhTien();
         double giamGia = thanhTien * getGiamGia(hd.getMaGiamGia());
         double thanhToan = thanhTien - giamGia;
-
-        txtTenKH.setText(hd.getTenKH());
-        txtTenKH.setEnabled(false);
-
-        txtSDT.setText(hd.getSdt());
-        txtSDT.setEnabled(false);
-
-        txtDiaChi.setText(hd.getDiaChi());
-        txtDiaChi.setEnabled(false);
-
-        txtMaGiamGia.setText(hd.getMaGiamGia());
-        txtMaGiamGia.setEnabled(false);
 
         txtThanhTien.setText(String.valueOf(thanhTien));
         txtGiamGia.setText(String.valueOf(giamGia));
@@ -311,8 +279,8 @@ public class BanHangJPanel extends javax.swing.JPanel {
     }
 
     // Kiểm tra hiệu lực mã giảm giá
-    public boolean checkKhuyenMai(String maKM) {
-        KhuyenMai km = kmDAO.selectByTenKM(maKM);
+    public boolean checkKhuyenMai(String maGiamGia) {
+        KhuyenMai km = kmDAO.selectByTenKM(maGiamGia);
         Date ngayHienTai = XDate.toDate(LocalDate.now().toString(), "yyyy-MM-dd");
         if (km == null) {
             MsgBox.alert(this, "Mã khuyến mại không tồn tại!");
@@ -337,6 +305,9 @@ public class BanHangJPanel extends javax.swing.JPanel {
             return false;
         } else if (txtDiaChi.getText().isBlank()) {
             MsgBox.alert(this, "Không được để trống địa chỉ khi đặt hàng!");
+            return false;
+        } else if (cboHinhThucTT.getSelectedIndex() != 1) {
+            MsgBox.alert(this, "Đặt hàng chỉ thanh toán bằng chuyển khoản!");
             return false;
         }
         return true;
@@ -436,6 +407,17 @@ public class BanHangJPanel extends javax.swing.JPanel {
         lblDiaChi.setText("Địa chỉ:");
 
         lblMaGiamGia.setText("Mã giảm giá:");
+
+        txtMaGiamGia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaGiamGiaActionPerformed(evt);
+            }
+        });
+        txtMaGiamGia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMaGiamGiaKeyPressed(evt);
+            }
+        });
 
         lblThanhTien.setText("Tổng thành tiền:");
 
@@ -650,11 +632,11 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã HĐ", "Tên NV", "Tên KH", "Trạng thái", "Ngày tạo"
+                "Mã HĐ", "Tên NV", "Tên KH", "Kênh bán hàng", "Trạng thái", "Ngày tạo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -716,8 +698,8 @@ public class BanHangJPanel extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblDanhSachHD, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblMaQR, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(pnlMaQR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -792,7 +774,15 @@ public class BanHangJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int row = tblDanhSachHD.getSelectedRow();
         if (row >= 0) {
-            updateTrangThai(row, 1, "");
+            String kenhBanHang = tblDanhSachHD.getValueAt(row, 3).toString();
+            if (kenhBanHang.equals("Online") && !isDatHang()) {
+                return;
+            }
+            updateThongTinHD(row, 1, "");
+            fillTableDanhSachHD();
+            fillTableDanhSachSP();
+            clearGioHang();
+            clearForm();
         }
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
@@ -802,7 +792,11 @@ public class BanHangJPanel extends javax.swing.JPanel {
         if (row >= 0) {
             String lyDoHuy = MsgBox.prompt(this, "Nhập lý do hủy");
             if (lyDoHuy != null) {
-                updateTrangThai(row, 2, lyDoHuy);
+                updateThongTinHD(row, 2, lyDoHuy);
+                fillTableDanhSachHD();
+                fillTableDanhSachSP();
+                clearGioHang();
+                clearForm();
             }
         }
     }//GEN-LAST:event_btnHuyActionPerformed
@@ -891,6 +885,23 @@ public class BanHangJPanel extends javax.swing.JPanel {
             }
         });
     }//GEN-LAST:event_tblGioHangMouseClicked
+
+    private void txtMaGiamGiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaGiamGiaKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            int row = tblDanhSachHD.getSelectedRow();
+            String maGiamGia = txtMaGiamGia.getText();
+            if (row >= 0 && checkKhuyenMai(maGiamGia)) {
+                updateThongTinHD(row, 0, "");
+                updateThanhTien(row);
+                setForm(row);
+            }
+        }
+    }//GEN-LAST:event_txtMaGiamGiaKeyPressed
+
+    private void txtMaGiamGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaGiamGiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaGiamGiaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDatHang;

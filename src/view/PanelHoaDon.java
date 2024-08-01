@@ -19,6 +19,7 @@ public class PanelHoaDon extends javax.swing.JPanel {
 
     int index = 0;
     HoaDonDAO hdd = new HoaDonDAO();
+    NhanVienDAO nvDAO = new NhanVienDAO();
 
     /**
      * Creates new form HoaDonJPanel
@@ -33,26 +34,21 @@ public class PanelHoaDon extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tbBill.getModel();
         model.setRowCount(0);
         int status = cboxStatus.getSelectedIndex();
-        List<HoaDon> lhd = null;
-        if (status == 3) {
-            lhd = hdd.selectAll();
-        } else {
-            lhd = hdd.selectByStatus(status);
-        }
+        List<HoaDon> lhd = getListHD(status);
         try {
             for (HoaDon hd : lhd) {
                 Object data[] = {
                     hd.getMaHD(),
-                    hd.getMaNV(),
+                    nvDAO.selectById(hd.getMaNV()).getHoTen(),
                     hd.getTenKH(),
                     hd.getSdt(),
                     hd.getDiaChi(),
                     hd.getMaGiamGia(),
                     hd.getThanhTien(),
-                    hd.isKenhBanHang(),
-                    hd.isHt_thanhToan(),
+                    hd.isKenhBanHang() ? "Online" : "Trực tiếp",
+                    hd.isHt_thanhToan() ? "Chuyển khoản" : "Tiền mặt",
                     hd.getNgayTao(),
-                    hd.getTrangThai(),
+                    getTrangThai(hd.getTrangThai()),
                     hd.getLyDo()
                 };
                 model.addRow(data);
@@ -79,11 +75,21 @@ public class PanelHoaDon extends javax.swing.JPanel {
             System.out.println("Không thể truy vấn dữ liệu");
         }
     }
-
-    private int getMaHD(int index) {
-        this.index = tbBill.getSelectedRow();
-        int maHD = (int) tbBill.getValueAt(index, 0);
-        return maHD;
+    
+    private List<HoaDon> getListHD(int status) {
+        if (status == 3) {
+            return hdd.selectAll();
+        } else {
+            return hdd.selectByStatus(status);
+        }
+    }
+    
+    private String getTrangThai(int status) {
+        return switch (status) {
+            case 0 -> "Chưa thanh toán";
+            case 1 -> "Đã thanh toán";
+            default -> "Đã hủy";
+        };
     }
 
 //    void fillTableByStatus() {
@@ -220,8 +226,8 @@ public class PanelHoaDon extends javax.swing.JPanel {
                             .addComponent(lbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cboxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

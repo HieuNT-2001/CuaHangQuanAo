@@ -47,7 +47,13 @@ public class PanelNCC extends javax.swing.JPanel {
     }
    
     private NhaCungCap getNhaCungCap() {
-        int maNCC = Integer.parseInt(txtMaNCC.getText());
+        int maNCC;
+        if (txtMaNCC.getText().isBlank()) {
+            maNCC = 0;
+        } else {
+            maNCC = Integer.parseInt(txtMaNCC.getText());
+        }
+//        int maNCC = Integer.parseInt(txtMaNCC.getText());
         String tenNCC = txtTenNCC.getText();
         String SDT = txtSDT.getText();
         String Email = txtEmail.getText();
@@ -370,7 +376,7 @@ public class PanelNCC extends javax.swing.JPanel {
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         NhaCungCap ncc = this.getNhaCungCap();
-        NhaCungCapDAO nccDAO = new NhaCungCapDAO();
+//        NhaCungCapDAO nccDAO = new NhaCungCapDAO();
         checkNull();
         nccDAO.update(ncc);
         fillTableNCC();
