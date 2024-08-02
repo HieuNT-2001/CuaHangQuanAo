@@ -45,15 +45,11 @@ public class NhanVienDAO {
         return lnv.size() > 0 ? lnv.get(0) : null;
     }
 
-
-
     public NhanVien selectByUserName(String tenDangNhap) {
         String sql = "SELECT * FROM NhanVien WHERE TenDangNhap = ?";
         List<NhanVien> lnv = selectBySql(sql,tenDangNhap);
         return lnv.size() > 0 ? lnv.get(0) : null;
     }
-          
-
 
     private List<NhanVien> selectBySql(String sql, Object... args) {
         List<NhanVien> lnv = new ArrayList<>();

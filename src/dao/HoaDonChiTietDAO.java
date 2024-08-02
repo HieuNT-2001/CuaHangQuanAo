@@ -52,7 +52,7 @@ public class HoaDonChiTietDAO {
         String sql = "SELECT * FROM HoaDonChiTiet WHERE MaHD = ?";
         return selectBySql(sql, maHD);
     }
-    
+
     public HoaDonChiTiet selectByMaHD_MaSP(int maHD, int maSP) {
         String sql = "SELECT * FROM HoaDonChiTiet WHERE MaHD = ? AND MaSP = ?";
         List<HoaDonChiTiet> lHDCT = selectBySql(sql, maHD, maSP);
