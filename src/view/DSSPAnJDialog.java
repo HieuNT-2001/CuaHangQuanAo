@@ -16,6 +16,7 @@ public class DSSPAnJDialog extends javax.swing.JDialog {
     public DSSPAnJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

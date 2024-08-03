@@ -22,6 +22,7 @@ public class HoaDonChiTietJDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form NewJDialog
+     *
      * @param parent
      * @param modal
      * @param maHD
@@ -30,6 +31,7 @@ public class HoaDonChiTietJDialog extends javax.swing.JDialog {
         super(parent, modal);
         this.maHD = maHD;
         initComponents();
+        this.setLocationRelativeTo(null);
         fillTable();
     }
 

@@ -24,7 +24,7 @@ public class ChiTietSPDAO {
     public void update(ChiTietSP CTSP) {
         String sql = "UPDATE ChiTietSP SET MaSP=?, MaMS=?, MaKT=?, Hinh=?\n"
                 + "WHERE ID=?";
-        Xjdbc.update(sql, CTSP.getMaSP(), CTSP.getMaMS(), CTSP.getMaKT(), CTSP.getHinh());
+        Xjdbc.update(sql, CTSP.getMaSP(), CTSP.getMaMS(), CTSP.getMaKT(), CTSP.getHinh(), CTSP.getId());
     }
 
     public void delete(int id) {

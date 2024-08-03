@@ -284,57 +284,8 @@ BEGIN
 END
 GO
 
--- -- TRIGGER INSERT HÓA ĐƠN CHI TIẾT
--- CREATE OR ALTER TRIGGER insert_HoaDonChiTiet ON HoaDonChiTiet
--- AFTER INSERT
--- AS
--- BEGIN
---     IF EXISTS (SELECT *
---     FROM inserted)
---     BEGIN
---         UPDATE SanPham
---             SET SoLuong = sp.SoLuong - i.SoLuong
---         FROM SanPham sp
---             JOIN inserted i ON sp.MaSP = i.MaSP
---     END
--- END
--- GO
-
--- -- TRIGGER UPDATE HÓA ĐƠN CHI TIẾT
--- CREATE OR ALTER TRIGGER update_HoaDonChiTiet ON HoaDonChiTiet
--- AFTER UPDATE
--- AS
--- BEGIN
---     IF EXISTS (SELECT *
---     FROM inserted)
---     BEGIN
---         UPDATE SanPham
---             SET SoLuong = sp.SoLuong - (i.SoLuong - ISNULL(d.SoLuong, 0))
---         FROM SanPham sp
---             JOIN inserted i ON sp.MaSP = i.MaSP
---             LEFT JOIN deleted d ON sp.MaSP = d.MaSP
---     END
--- END
--- GO
-
--- -- TRIGGER DELETE HÓA ĐƠN CHI TIẾT
--- CREATE OR ALTER TRIGGER delete_hoaDonChiTiet ON HoaDonChiTiet
--- AFTER DELETE
--- AS
--- BEGIN
---     IF EXISTS (SELECT *
---     FROM deleted)
---     BEGIN
---         UPDATE SanPham
---             SET SoLuong = sp.SoLuong + d.SoLuong
---         FROM SanPham sp
---             JOIN deleted d ON sp.MaSP = d.MaSP
---     END
--- END
--- GO
-
 -- TRIGGER THANH TOÁN HÓA ĐƠN
-CREATE OR ALTER TRIGGER cancel_HoaDon ON HoaDon
+CREATE OR ALTER TRIGGER thanhToan_HoaDon ON HoaDon
 AFTER UPDATE
 AS
 BEGIN

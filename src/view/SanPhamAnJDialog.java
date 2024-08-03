@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Admin
  */
 public class SanPhamAnJDialog extends javax.swing.JDialog {
-    
+
     int index = -1;
     SanPhamDAO spd = new SanPhamDAO();
     NhaCungCapDAO nccDAO = new NhaCungCapDAO();
@@ -28,9 +28,10 @@ public class SanPhamAnJDialog extends javax.swing.JDialog {
     public SanPhamAnJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         fillTable();
     }
-    
+
     private void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
         model.setRowCount(0);
@@ -47,7 +48,7 @@ public class SanPhamAnJDialog extends javax.swing.JDialog {
             model.addRow(data);
         }
     }
-    
+
     private void boAnSanPham(int index) {
         int maSP = (int) tblSanPham.getValueAt(index, 0);
         SanPham sp = spd.selectById(maSP);
