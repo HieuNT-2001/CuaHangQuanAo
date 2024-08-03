@@ -58,5 +58,9 @@ public class NhaCungCap {
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
+    
+    public String toString() {
+        return this.getTenNCC();
+    }
 
 }

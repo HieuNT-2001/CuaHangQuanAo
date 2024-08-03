@@ -19,7 +19,7 @@ public class KichThuocDAO {
 
     private final String SELECT_ALL = "SELECT * FROM KichThuoc";
     private final String SELECT_BY_ID = "SELECT * FROM KichThuoc WHERE MaKT = ?";
-    private final String INSERT = "INSERT INTO KichThuoc (KichThuoc) values ?";
+    private final String INSERT = "INSERT INTO KichThuoc (KichThuoc) values (?)";
     private final String UPDATE = "UPDATE KichThuoc SET KichThuoc = ? WHERE MaKT = ?";
     private final String DELETE = "DELETE FROM KichThuoc WHERE MaKT = ?";
 

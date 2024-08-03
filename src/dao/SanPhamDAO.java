@@ -16,14 +16,14 @@ import java.sql.*;
 public class SanPhamDAO {
 
     public void insert(SanPham sp) {
-        String sql = "INSERT INTO SanPham (TenSP, DonGia, SoLuong, MaNCC, MaDM, MaMS, MaKT, TrangThai)\n"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO SanPham (TenSP, DonGia, SoLuong, MaNCC, MaDM, TrangThai)\n"
+                + "VALUES (?, ?, ?, ?, ?, ?)";
         Xjdbc.update(sql, sp.getTenSP(), sp.getDonGia(), sp.getSoLuong(), sp.getMaNCC(),
                 sp.getMaDM(), sp.isTrangThai());
     }
 
     public void update(SanPham sp) {
-        String sql = "UPDATE SanPham SET TenSP=?, DonGia=?, SoLuong=?, MaNCC=?, MaDM=?, MaMS=?, MaKT=?, TrangThai=?\n"
+        String sql = "UPDATE SanPham SET TenSP=?, DonGia=?, SoLuong=?, MaNCC=?, MaDM=?, TrangThai=?\n"
                 + "WHERE MaSP=?";
         Xjdbc.update(sql, sp.getTenSP(), sp.getDonGia(), sp.getSoLuong(), sp.getMaNCC(),
                 sp.getMaDM(), sp.isTrangThai(), sp.getMaSP());
@@ -49,6 +49,13 @@ public class SanPhamDAO {
         String sql = "SELECT * FROM SanPham WHERE TrangThai = ?";
         return selectBySql(sql, status);
     }
+
+
+    public List<SanPham> selectByName(int status, String keyword) {
+        String sql = "SELECT * FROM SanPham WHERE TrangThai = ? AND TenSP LIKE ?";
+        return selectBySql(sql, status, "%" + keyword + "%");
+    }
+
 
     private List<SanPham> selectBySql(String sql, Object... args) {
         List<SanPham> lsp = new ArrayList<>();

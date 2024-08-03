@@ -29,5 +29,9 @@ public class DanhMuc {
         this.maDM = maDM;
         this.danhMuc = danhMuc;
     }
+    
+    public String toString() {
+        return this.getDanhMuc();
+    }
 
 }

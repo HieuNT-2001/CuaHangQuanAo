@@ -1,8 +1,15 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view;
+
+import java.util.*;
+import entity.*;
+import dao.*;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -10,11 +17,64 @@ package view;
  */
 public class PanelKM extends javax.swing.JPanel {
 
+    int index = -1;
+    KhuyenMaiDAO kmd = new KhuyenMaiDAO();
+
     /**
      * Creates new form PanelKM
      */
     public PanelKM() {
+
         initComponents();
+        fillTable();
+    }
+
+    public void fillTable() {
+        DefaultTableModel model = (DefaultTableModel) tbKM.getModel();
+        model.setRowCount(0);
+        List<KhuyenMai> lkm = kmd.select();
+        for (KhuyenMai km : lkm) {
+            Object data[] = {km.getMaKM(), km.getTenKM(), km.getNgayBD(), km.getNgayKT(), km.getGiamGia()
+            };
+            model.addRow(data);
+        }
+    }
+
+    void setModel(KhuyenMai km) {
+        fillMaKM.setText(String.valueOf(km.getMaKM()));
+        fillNameKM.setText(String.valueOf(km.getTenKM()));
+        jdcBatDau.setDate((km.getNgayBD()));
+        jdcKetThuc.setDate((km.getNgayKT()));
+        fillDiscount.setText(String.valueOf(km.getGiamGia()));
+
+    }
+
+    KhuyenMai getModel() {
+        KhuyenMai km = new KhuyenMai();
+        if (fillMaKM.getText().isBlank()) {
+            km.setMaKM(0);
+        } else {
+            km.setMaKM(Integer.parseInt(fillMaKM.getText()));
+        }
+        km.setTenKM(fillNameKM.getText());
+        km.setNgayBD(jdcBatDau.getDate());
+        km.setNgayKT(jdcKetThuc.getDate());
+        km.setGiamGia(Double.parseDouble(fillDiscount.getText()));
+        return km;
+    }
+
+    void clear() {
+        fillMaKM.setText("");
+        fillNameKM.setText("");
+        jdcBatDau.setDate(null);
+        jdcKetThuc.setDate(null);
+        fillDiscount.setText("");
+
+    }
+
+    private void insert() {
+
+
     }
 
     /**
@@ -44,8 +104,8 @@ public class PanelKM extends javax.swing.JPanel {
         lbStartDate = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbKM = new javax.swing.JTable();
-        dateStart = new com.toedter.calendar.JDateChooser();
-        dateEnd = new com.toedter.calendar.JDateChooser();
+        jdcBatDau = new com.toedter.calendar.JDateChooser();
+        jdcKetThuc = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -126,6 +186,10 @@ public class PanelKM extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbKM);
 
+        jdcBatDau.setDateFormatString("yyyy-MM-dd");
+
+        jdcKetThuc.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,11 +218,11 @@ public class PanelKM extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbStartDate)
-                                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jdcKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbEndDate)
-                                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jdcBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbDiscount)
@@ -192,7 +256,7 @@ public class PanelKM extends javax.swing.JPanel {
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fillDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,9 +266,9 @@ public class PanelKM extends javax.swing.JPanel {
                             .addComponent(lbDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dateEnd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jdcBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdcKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -223,12 +287,12 @@ public class PanelKM extends javax.swing.JPanel {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnSearch;
-    private com.toedter.calendar.JDateChooser dateEnd;
-    private com.toedter.calendar.JDateChooser dateStart;
     private javax.swing.JTextField fillDiscount;
     private javax.swing.JTextField fillMaKM;
     private javax.swing.JTextField fillNameKM;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser jdcBatDau;
+    private com.toedter.calendar.JDateChooser jdcKetThuc;
     private javax.swing.JLabel lbDiscount;
     private javax.swing.JLabel lbEndDate;
     private javax.swing.JLabel lbMaKM;
@@ -239,4 +303,8 @@ public class PanelKM extends javax.swing.JPanel {
     private javax.swing.JTextField searchBar;
     private javax.swing.JTable tbKM;
     // End of variables declaration//GEN-END:variables
+
+//    private KhuyenMai getModel() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 }

@@ -4,11 +4,24 @@
  */
 package view;
 
+import dao.KichThuocDAO;
+import dao.MauSacDAO;
+import entity.KichThuoc;
+import entity.MauSac;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import utils.MsgBox;
+
 /**
  *
  * @author PC
  */
 public class ThuocTinhSPJDialog extends javax.swing.JDialog {
+
+    MauSacDAO msDAO = new MauSacDAO();
+    KichThuocDAO ktDAO = new KichThuocDAO();
+    int comboBoxIndex = 0;
+    int tableIndex = -1;
 
     /**
      * Creates new form ThuocTinhSPJDialog
@@ -16,6 +29,93 @@ public class ThuocTinhSPJDialog extends javax.swing.JDialog {
     public ThuocTinhSPJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        fillTable();
+    }
+
+    private void fillTable() {
+        if (comboBoxIndex == 0) {
+            fillTable1();
+        } else if (comboBoxIndex == 1) {
+            fillTable2();
+        }
+    }
+
+    private void fillTable1() {
+        DefaultTableModel model = (DefaultTableModel) tblThuocTinhSP.getModel();
+        model.setRowCount(0);
+        List<MauSac> list = msDAO.SelectAll();
+        for (MauSac ms : list) {
+            Object[] rowData = {
+                ms.getMaMS(),
+                ms.getMauSac()
+            };
+            model.addRow(rowData);
+        }
+    }
+
+    private void fillTable2() {
+        DefaultTableModel model = (DefaultTableModel) tblThuocTinhSP.getModel();
+        model.setRowCount(0);
+        List<KichThuoc> list = ktDAO.SelectAll();
+        for (KichThuoc kt : list) {
+            Object[] rowData = {
+                kt.getMaKT(),
+                kt.getKichThuoc()
+            };
+            model.addRow(rowData);
+        }
+    }
+
+    private void insert() {
+        String value = txtGiaTri.getText();
+        if (comboBoxIndex == 0) {
+            MauSac ms = new MauSac();
+            ms.setMauSac(value);
+            msDAO.insert(ms);
+            MsgBox.alert(this, "Thêm màu sắc thành công!");
+        } else if (comboBoxIndex == 1) {
+            KichThuoc kt = new KichThuoc();
+            kt.setKichThuoc(value);
+            ktDAO.insert(kt);
+            MsgBox.alert(this, "Thêm kích thước thành công!");
+        }
+        fillTable();
+    }
+
+    private void update() {
+        int id = (int) tblThuocTinhSP.getValueAt(this.tableIndex, 0);
+        String value = txtGiaTri.getText();
+        if (comboBoxIndex == 0) {
+            MauSac ms = msDAO.SelectById(id);
+            ms.setMauSac(value);
+            msDAO.update(ms);
+            MsgBox.alert(this, "Sửa màu sắc thành công!");
+        } else if (comboBoxIndex == 1) {
+            KichThuoc kt = ktDAO.SelectById(id);
+            kt.setKichThuoc(value);
+            ktDAO.update(kt);
+            MsgBox.alert(this, "Sửa kích thước thành công!");
+        }
+        this.tableIndex = -1;
+        fillTable();
+    }
+
+    private void delete() {
+        int id = (int) tblThuocTinhSP.getValueAt(this.tableIndex, 0);
+        if (comboBoxIndex == 0) {
+            msDAO.delete(id);
+            MsgBox.alert(this, "Xóa màu sắc thành công!");
+        } else if (comboBoxIndex == 1) {
+            ktDAO.delete(id);
+            MsgBox.alert(this, "Xóa kích thước thành công!");
+        }
+        this.tableIndex = -1;
+        fillTable();
+    }
+
+    private void setForm() {
+        String value = tblThuocTinhSP.getValueAt(this.tableIndex, 1).toString();
+        txtGiaTri.setText(value);
     }
 
     /**
@@ -36,6 +136,8 @@ public class ThuocTinhSPJDialog extends javax.swing.JDialog {
         btnThem = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblThuocTinhSP = new javax.swing.JTable();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -46,7 +148,19 @@ public class ThuocTinhSPJDialog extends javax.swing.JDialog {
 
         jLabel3.setText("Giá trị: ");
 
+        cboThuocTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Màu sắc", "Kích thước" }));
+        cboThuocTinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboThuocTinhActionPerformed(evt);
+            }
+        });
+
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         tblThuocTinhSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,10 +170,29 @@ public class ThuocTinhSPJDialog extends javax.swing.JDialog {
                 {null, null}
             },
             new String [] {
-                "Thuộc tính: ", "Giá trị: "
+                "Mã", "Giá trị: "
             }
         ));
+        tblThuocTinhSP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblThuocTinhSPMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblThuocTinhSP);
+
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,11 +209,14 @@ public class ThuocTinhSPJDialog extends javax.swing.JDialog {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cboThuocTinh, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtGiaTri, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnThem))
-                            .addComponent(cboThuocTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnThem)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSua)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnXoa))
+                            .addComponent(txtGiaTri))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -102,15 +238,54 @@ public class ThuocTinhSPJDialog extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtGiaTri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThem))
+                    .addComponent(txtGiaTri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThem)
+                    .addComponent(btnSua)
+                    .addComponent(btnXoa))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cboThuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboThuocTinhActionPerformed
+        // TODO add your handling code here:
+        this.comboBoxIndex = (int) cboThuocTinh.getSelectedIndex();
+        fillTable();
+    }//GEN-LAST:event_cboThuocTinhActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        insert();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        this.tableIndex = tblThuocTinhSP.getSelectedRow();
+        if (tableIndex >= 0) {
+            delete();
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        this.tableIndex = tblThuocTinhSP.getSelectedRow();
+        if (tableIndex >= 0) {
+            update();
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void tblThuocTinhSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblThuocTinhSPMouseClicked
+        // TODO add your handling code here:
+        this.tableIndex = tblThuocTinhSP.getSelectedRow();
+        if (tableIndex >= 0) {
+            setForm();
+        }
+    }//GEN-LAST:event_tblThuocTinhSPMouseClicked
 
     /**
      * @param args the command line arguments
@@ -155,7 +330,9 @@ public class ThuocTinhSPJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cboThuocTinh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
