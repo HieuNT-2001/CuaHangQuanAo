@@ -19,7 +19,7 @@ public class MauSacDAO {
 
     private final String SELECT_ALL = "SELECT * FROM MauSac";
     private final String SELECT_BY_ID = "SELECT * FROM MauSac WHERE MaMS = ?";
-    private final String INSERT = "INSERT INTO MauSac (MauSac) values ?";
+    private final String INSERT = "INSERT INTO MauSac (MauSac) values (?)";
     private final String UPDATE = "UPDATE MauSac SET MauSac = ? WHERE MaMS = ?";
     private final String DELETE = "DELETE FROM MauSac WHERE MaMS = ?";
 
