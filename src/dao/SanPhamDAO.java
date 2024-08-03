@@ -45,16 +45,17 @@ public class SanPhamDAO {
         return lsp.size() > 0 ? lsp.get(0) : null;
     }
 
-    
     public List<SanPham> selectByStatus(int status) {
-        String sql= "SELECT * FROM SanPham WHERE TrangThai = ?";
+        String sql = "SELECT * FROM SanPham WHERE TrangThai = ?";
         return selectBySql(sql, status);
     }
+
 
     public List<SanPham> selectByName(int status, String keyword) {
         String sql = "SELECT * FROM SanPham WHERE TrangThai = ? AND TenSP LIKE ?";
         return selectBySql(sql, status, "%" + keyword + "%");
     }
+
 
     private List<SanPham> selectBySql(String sql, Object... args) {
         List<SanPham> lsp = new ArrayList<>();

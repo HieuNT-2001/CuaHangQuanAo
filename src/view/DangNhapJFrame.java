@@ -21,6 +21,7 @@ public class DangNhapJFrame extends javax.swing.JFrame {
      */
     public DangNhapJFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     void dangNhap() {

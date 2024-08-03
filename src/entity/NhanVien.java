@@ -25,6 +25,7 @@ public class NhanVien {
         this.vaiTro = vaiTro;
     }
 
+
     public int getMaNV() {
         return maNV;
     }
@@ -87,6 +88,6 @@ public class NhanVien {
 
     public void setVaiTro(boolean vaiTro) {
         this.vaiTro = vaiTro;
-    }
+    }  
 
 }

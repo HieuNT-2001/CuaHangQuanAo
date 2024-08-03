@@ -1,23 +1,16 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view;
 
-<<<<<<< Updated upstream
 import java.util.*;
 import entity.*;
 import dao.*;
 import javax.swing.table.DefaultTableModel;
 
-=======
-import dao.KhuyenMaiDAO;
-import entity.KhuyenMai;
-import javax.swing.table.DefaultTableModel;
 
-
-
->>>>>>> Stashed changes
 /**
  *
  * @author HP
@@ -31,7 +24,7 @@ public class PanelKM extends javax.swing.JPanel {
      * Creates new form PanelKM
      */
     public PanelKM() {
-<<<<<<< Updated upstream
+
         initComponents();
         fillTable();
     }
@@ -81,17 +74,7 @@ public class PanelKM extends javax.swing.JPanel {
 
     private void insert() {
 
-=======
-        initComponents();       
-    }
-    private void fillTableKM (){
-        DefaultTableModel model = (DefaultTableModel) tbKM.getModel();
-        model.setRowCount(ABORT);
-        for( KhuyenMai km : KhuyenMaiDAO.getAll()){
-            Object data[] = {km.getMaKM(),km.getTenKM(),km.getNgayBD(),km.getNgayKT(),km.getGiamGia()};
-            model.addRow(data);
-        }
->>>>>>> Stashed changes
+
     }
 
     /**

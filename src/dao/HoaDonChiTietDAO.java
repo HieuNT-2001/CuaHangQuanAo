@@ -17,6 +17,7 @@ import java.sql.*;
 public class HoaDonChiTietDAO {
 
     public void insert(HoaDonChiTiet HDCT) {
+
         String sql = "Insert into HoaDonChiTiet (MaHD, MaSP, SoLuong, GiaBan)\n" + "values (?,?,?,?)";
         Xjdbc.update(sql, HDCT.getMaHD(), HDCT.getMaSP(), HDCT.getSoLuong(), HDCT.getGiaBan());
     }
@@ -51,11 +52,12 @@ public class HoaDonChiTietDAO {
         String sql = "SELECT * FROM HoaDonChiTiet WHERE MaHD = ?";
         return selectBySql(sql, maHD);
     }
-    
+
     public HoaDonChiTiet selectByMaHD_MaSP(int maHD, int maSP) {
         String sql = "SELECT * FROM HoaDonChiTiet WHERE MaHD = ? AND MaSP = ?";
         List<HoaDonChiTiet> lHDCT = selectBySql(sql, maHD, maSP);
         return lHDCT.size() > 0 ? lHDCT.get(0) : null;
+
     }
 
     private List<HoaDonChiTiet> selectBySql(String sql, Object... args) {
