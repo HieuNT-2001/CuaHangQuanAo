@@ -48,6 +48,7 @@ public class HomeJFrame extends javax.swing.JFrame {
         panelMain = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("LALASTORE");
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
         panelNavigate.setBackground(new java.awt.Color(0, 204, 255));
@@ -55,7 +56,7 @@ public class HomeJFrame extends javax.swing.JFrame {
         lbTitle.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lbTitle.setForeground(new java.awt.Color(255, 255, 255));
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitle.setText("Cửa hàng");
+        lbTitle.setText("LALASTORE");
         lbTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btnNV.setBackground(new java.awt.Color(0, 204, 255));
@@ -211,7 +212,7 @@ public class HomeJFrame extends javax.swing.JFrame {
     private void btnNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNVActionPerformed
         // TODO add your handling code here:
         if (Auth.isAdmin()) {
-            showPanel(new PanelNV());
+            showPanel(new NhanVienJPanel());
         } else {
             MsgBox.alert(this, "Bạn có không quyền truy cập chức năng này!");
         }
@@ -220,7 +221,7 @@ public class HomeJFrame extends javax.swing.JFrame {
     private void btnSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSPActionPerformed
         // TODO add your handling code here:
         if (Auth.isAdmin()) {
-            showPanel(new PanelSP());
+            showPanel(new SanPhamJPanel());
         } else {
             MsgBox.alert(this, "Bạn có không quyền truy cập chức năng này!");
         }
@@ -229,7 +230,7 @@ public class HomeJFrame extends javax.swing.JFrame {
     private void btnNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNCCActionPerformed
         // TODO add your handling code here
         if (Auth.isAdmin()) {
-            showPanel(new PanelNCC());
+            showPanel(new NhaCungCapJPanel());
         } else {
             MsgBox.alert(this, "Bạn có không quyền truy cập chức năng này!");
         }
@@ -251,7 +252,7 @@ public class HomeJFrame extends javax.swing.JFrame {
 
     private void btnHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHDActionPerformed
         // TODO add your handling code here:
-        showPanel(new PanelHoaDon());
+        showPanel(new HoaDonJPanel());
     }//GEN-LAST:event_btnHDActionPerformed
 
     private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed

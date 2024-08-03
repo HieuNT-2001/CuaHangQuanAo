@@ -28,5 +28,9 @@ public class MauSac {
     public void setMauSac(String mauSac) {
         this.mauSac = mauSac;
     }
+    
+    public String toString() {
+        return this.getMauSac();
+    }
 
 }

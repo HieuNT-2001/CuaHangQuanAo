@@ -140,6 +140,7 @@ public class ThuocTinhSPJDialog extends javax.swing.JDialog {
         btnXoa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Thuộc tính sản phẩm");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("Thuộc tính sản phẩm");
@@ -172,7 +173,15 @@ public class ThuocTinhSPJDialog extends javax.swing.JDialog {
             new String [] {
                 "Mã", "Giá trị: "
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblThuocTinhSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblThuocTinhSPMouseClicked(evt);

@@ -14,13 +14,13 @@ import utils.MsgBox;
  *
  * @author HP
  */
-public class PanelNCC extends javax.swing.JPanel {
+public class NhaCungCapJPanel extends javax.swing.JPanel {
 
     NhaCungCapDAO nccDAO = new NhaCungCapDAO();
     /**
      * Creates new form NewJPanel
      */
-    public PanelNCC() {
+    public NhaCungCapJPanel() {
         initComponents();
         fillTableNCC();
     }

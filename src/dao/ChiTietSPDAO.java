@@ -16,31 +16,36 @@ import java.sql.*;
 public class ChiTietSPDAO {
 
     public void insert(ChiTietSP CTSP) {
-        String sql = "INSERT INTO ChiTietSanPham (MaSP, MaMS, MaKT, Hinh)\n"
+        String sql = "INSERT INTO ChiTietSP (MaSP, MaMS, MaKT, Hinh)\n"
                 + "VALUES (?, ?, ?, ?)";
         Xjdbc.update(sql, CTSP.getMaSP(), CTSP.getMaMS(), CTSP.getMaKT(), CTSP.getHinh());
     }
 
     public void update(ChiTietSP CTSP) {
-        String sql = "UPDATE ChiTietSanPham SET MaSP=?, MaMS=?, MaKT=?, Hinh=?\n"
+        String sql = "UPDATE ChiTietSP SET MaSP=?, MaMS=?, MaKT=?, Hinh=?\n"
                 + "WHERE ID=?";
         Xjdbc.update(sql, CTSP.getMaSP(), CTSP.getMaMS(), CTSP.getMaKT(), CTSP.getHinh());
     }
 
     public void delete(int id) {
-        String sql = "DELETE FROM ChiTietSanPham WHERE ID=?";
+        String sql = "DELETE FROM ChiTietSP WHERE ID=?";
         Xjdbc.update(sql, id);
     }
 
     public List<ChiTietSP> select() {
-        String sql = "SELECT * FROM ChiTietSanPham";
+        String sql = "SELECT * FROM ChiTietSP";
         return selectBySql(sql);
     }
 
     public ChiTietSP selectById(int id) {
-        String sql = "SELECT * FROM ChiTietSanPham WHERE ID=?";
+        String sql = "SELECT * FROM ChiTietSP WHERE ID=?";
         List<ChiTietSP> lCTSP = selectBySql(sql, id);
         return lCTSP.size() > 0 ? lCTSP.get(0) : null;
+    }
+
+    public List<ChiTietSP> selectByMaSP(int maSP) {
+        String sql = "SELECT * FROM ChiTietSP WHERE MaSP = ?";
+        return selectBySql(sql, maSP);
     }
 
     private List<ChiTietSP> selectBySql(String sql, Object... args) {
@@ -64,7 +69,8 @@ public class ChiTietSPDAO {
 
     private ChiTietSP readFromResultSet(ResultSet rs) throws SQLException {
         ChiTietSP lCTSP = new ChiTietSP();
-        lCTSP.setMaKT(rs.getInt("MaKT"));
+        lCTSP.setId(rs.getInt("ID"));
+        lCTSP.setMaSP(rs.getInt("MaSP"));
         lCTSP.setMaMS(rs.getInt("MaMS"));
         lCTSP.setMaKT(rs.getInt("MaKT"));
         lCTSP.setHinh(rs.getString("Hinh"));

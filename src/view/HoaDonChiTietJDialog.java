@@ -14,7 +14,7 @@ import utils.*;
  *
  * @author HP
  */
-public class DialogCTHD extends javax.swing.JDialog {
+public class HoaDonChiTietJDialog extends javax.swing.JDialog {
 
     HoaDonChiTietDAO hdctd = new HoaDonChiTietDAO();
     SanPhamDAO spDAO = new SanPhamDAO();
@@ -22,8 +22,11 @@ public class DialogCTHD extends javax.swing.JDialog {
 
     /**
      * Creates new form NewJDialog
+     * @param parent
+     * @param modal
+     * @param maHD
      */
-    public DialogCTHD(java.awt.Frame parent, boolean modal, int maHD) {
+    public HoaDonChiTietJDialog(java.awt.Frame parent, boolean modal, int maHD) {
         super(parent, modal);
         this.maHD = maHD;
         initComponents();
@@ -59,6 +62,7 @@ public class DialogCTHD extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Hóa đơn chi tiết");
 
         tbCTHD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,21 +130,23 @@ public class DialogCTHD extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogCTHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HoaDonChiTietJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogCTHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HoaDonChiTietJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogCTHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HoaDonChiTietJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogCTHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HoaDonChiTietJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DialogCTHD dialog = new DialogCTHD(new javax.swing.JFrame(), true, 0);
+                HoaDonChiTietJDialog dialog = new HoaDonChiTietJDialog(new javax.swing.JFrame(), true, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

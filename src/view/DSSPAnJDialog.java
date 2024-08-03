@@ -34,6 +34,7 @@ public class DSSPAnJDialog extends javax.swing.JDialog {
         btnHienThiSP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Danh sách sản phẩm");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("Danh sách sản phẩm ẩn");
@@ -48,7 +49,15 @@ public class DSSPAnJDialog extends javax.swing.JDialog {
             new String [] {
                 "Mã SP", "Tên SP", "Đơn giá", "Số lượng", "Nhà cung cấp", "Danh mục", "Màu sắc", "KÍch thước"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblDanhSachSPAn);
 
         btnHienThiSP.setText("Hiển thị sản phẩm");

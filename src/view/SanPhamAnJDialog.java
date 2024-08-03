@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class SanPhamAn extends javax.swing.JDialog {
+public class SanPhamAnJDialog extends javax.swing.JDialog {
     
     int index = -1;
     SanPhamDAO spd = new SanPhamDAO();
@@ -25,7 +25,7 @@ public class SanPhamAn extends javax.swing.JDialog {
     /**
      * Creates new form SanPhamAn
      */
-    public SanPhamAn(java.awt.Frame parent, boolean modal) {
+    public SanPhamAnJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         fillTable();
@@ -72,6 +72,7 @@ public class SanPhamAn extends javax.swing.JDialog {
         btnBoAn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Danh sách sản phẩm ẩn");
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(102, 153, 255));
@@ -163,20 +164,21 @@ public class SanPhamAn extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SanPhamAn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SanPhamAnJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SanPhamAn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SanPhamAnJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SanPhamAn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SanPhamAnJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SanPhamAn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SanPhamAnJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                SanPhamAn dialog = new SanPhamAn(new javax.swing.JFrame(), true);
+                SanPhamAnJDialog dialog = new SanPhamAnJDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

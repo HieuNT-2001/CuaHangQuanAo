@@ -28,5 +28,9 @@ public class KichThuoc {
     public void setKichThuoc(String kichThuoc) {
         this.kichThuoc = kichThuoc;
     }
+    
+    public String toString() {
+        return this.getKichThuoc();
+    }
 
 }
