@@ -205,7 +205,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
     // Lấy số tiền giảm giá
     private double getGiamGia(String maGiamGia) {
-        KhuyenMai km = kmDAO.selectByTenKM(maGiamGia);
+        KhuyenMai km = kmDAO.selectByTenKM(maGiamGia).get(0);
         if (km == null) {
             return 0;
         } else {
@@ -286,7 +286,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
     // Kiểm tra hiệu lực mã giảm giá
     public boolean checkKhuyenMai(String maKM) {
-        KhuyenMai km = kmDAO.selectByTenKM(maKM);
+        KhuyenMai km = kmDAO.selectByTenKM(maKM).get(0);
         Date ngayHienTai = XDate.toDate(LocalDate.now().toString(), "yyyy-MM-dd");
         if (km == null) {
             MsgBox.alert(this, "Mã khuyến mại không tồn tại!");

@@ -8,12 +8,12 @@ package view;
  *
  * @author HP
  */
-public class PanelNV extends javax.swing.JPanel {
+public class NhanVienJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelNV
      */
-    public PanelNV() {
+    public NhanVienJPanel() {
         initComponents();
     }
 

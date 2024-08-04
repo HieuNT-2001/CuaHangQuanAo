@@ -49,12 +49,12 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbStartDate" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jdcKetThuc" min="-2" pref="240" max="-2" attributes="0"/>
+                                  <Component id="jdcBatDau" min="-2" pref="240" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbEndDate" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jdcBatDau" min="-2" pref="240" max="-2" attributes="0"/>
+                                  <Component id="jdcKetThuc" min="-2" pref="240" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -114,8 +114,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jdcBatDau" min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="jdcKetThuc" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="jdcBatDau" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -154,6 +154,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="16" style="0"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbNameKM">

@@ -207,17 +207,17 @@ public class HomeJFrame extends javax.swing.JFrame {
 
     private void btnNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNVActionPerformed
         // TODO add your handling code here:
-        showPanel(new PanelNV());
+        showPanel(new NhanVienJPanel());
     }//GEN-LAST:event_btnNVActionPerformed
 
     private void btnSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSPActionPerformed
         // TODO add your handling code here:
-        showPanel(new PanelSP());
+        showPanel(new SanPhamJPanel());
     }//GEN-LAST:event_btnSPActionPerformed
 
     private void btnNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNCCActionPerformed
         // TODO add your handling code here:
-        showPanel(new PanelNCC());
+        showPanel(new NhaCungCapJPanel());
     }//GEN-LAST:event_btnNCCActionPerformed
 
     private void btnKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKMActionPerformed
@@ -232,7 +232,7 @@ public class HomeJFrame extends javax.swing.JFrame {
 
     private void btnHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHDActionPerformed
         // TODO add your handling code here:
-        showPanel(new PanelHoaDon());
+        showPanel(new HoaDonJPanel());
     }//GEN-LAST:event_btnHDActionPerformed
 
     private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed

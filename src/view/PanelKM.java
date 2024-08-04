@@ -27,27 +27,33 @@ public class PanelKM extends javax.swing.JPanel {
         fillTable();
     }
 
-    public void fillTable() {
+    private void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tbKM.getModel();
         model.setRowCount(0);
-        List<KhuyenMai> lkm = kmd.select();
+        String tenKM = searchBar.getText();
+        List<KhuyenMai> lkm = kmd.selectByTenKM(tenKM);
         for (KhuyenMai km : lkm) {
-            Object data[] = {km.getMaKM(), km.getTenKM(), km.getNgayBD(), km.getNgayKT(), km.getGiamGia()
+            Object data[] = {
+                km.getMaKM(),
+                km.getTenKM(),
+                km.getNgayBD(),
+                km.getNgayKT(),
+                km.getGiamGia()
             };
             model.addRow(data);
         }
     }
 
-    void setModel(KhuyenMai km) {
+    private void setModel(KhuyenMai km) {
         fillMaKM.setText(String.valueOf(km.getMaKM()));
         fillNameKM.setText(String.valueOf(km.getTenKM()));
-        jdcBatDau.setDate((km.getNgayBD()));
-        jdcKetThuc.setDate((km.getNgayKT()));
+        jdcKetThuc.setDate((km.getNgayBD()));
+        jdcBatDau.setDate((km.getNgayKT()));
         fillDiscount.setText(String.valueOf(km.getGiamGia()));
 
     }
 
-    KhuyenMai getModel() {
+    private KhuyenMai getModel() {
         KhuyenMai km = new KhuyenMai();
         if (fillMaKM.getText().isBlank()) {
             km.setMaKM(0);
@@ -61,7 +67,7 @@ public class PanelKM extends javax.swing.JPanel {
         return km;
     }
 
-    void clear() {
+    private void clear() {
         fillMaKM.setText("");
         fillNameKM.setText("");
         jdcBatDau.setDate(null);
@@ -71,62 +77,68 @@ public class PanelKM extends javax.swing.JPanel {
     }
 
     private void insert() {
-        KhuyenMai km = getModel();
-        if(checkNull()){
-        try{
-            kmd.insert(km);
-            fillTable();
-            clear();
-            this.index = -1;
-            System.out.println("Thêm khuyến mãi thành công");
-        } catch (Exception e ){
-            MsgBox.alert(this, "Thêm khuyến mãi thất bại");
-        }
-        }
-    }
-    private void update(){
-        KhuyenMai km = getModel();
-        try{
-            kmd.update(km);
-            fillTable();
-            clear();
-            this.index = -1;
-            System.out.println("Cập nhật khuyến mãi thành công");
-        }catch (Exception e ){
-            MsgBox.alert(this,"Cập nhật khuyến mãi thất bại");
+        if (checkNull()) {
+            KhuyenMai km = getModel();
+            try {
+                kmd.insert(km);
+                fillTable();
+                clear();
+                this.index = -1;
+                MsgBox.alert(this, "Thêm khuyến mãi thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Thêm khuyến mãi thất bại");
+            }
         }
     }
-    private void delete (){
-        if (MsgBox.confirm(this,"Bạn có thật sự muốn xóa khuyến mãi này")){
-            int  MaKM = Integer.parseInt(fillMaKM.getName());
-            try{
+
+    private void update() {
+        if (checkNull()) {
+            KhuyenMai km = getModel();
+            try {
+                kmd.update(km);
+                fillTable();
+                clear();
+                this.index = -1;
+                MsgBox.alert(this, "Cập nhật khuyến mãi thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Cập nhật khuyến mãi thất bại");
+            }
+        }
+    }
+
+    private void delete() {
+        if (MsgBox.confirm(this, "Bạn có thật sự muốn xóa khuyến mãi này")) {
+            int MaKM = Integer.parseInt(fillMaKM.getText());
+            try {
                 kmd.delete(MaKM);
                 fillTable();
                 clear();
                 this.index = -1;
-                MsgBox.alert(this,"Xóa khuyến mãi thành công");
-            }catch (Exception e){
+                MsgBox.alert(this, "Xóa khuyến mãi thành công");
+            } catch (Exception e) {
                 MsgBox.alert(this, "Xóa thất bại");
             }
         }
     }
-    void edit(){
-        try{
-            int MaKM = (int) tbKM.getValueAt(this.index,0);
+
+    private void edit() {
+        try {
+            int MaKM = (int) tbKM.getValueAt(this.index, 0);
             KhuyenMai km = kmd.selectById(MaKM);
             this.setModel(km);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("không thể cập nhật dữ liệu");
         }
     }
-    public boolean checkNull(){
-        if(fillNameKM.getText().isBlank()){
+
+    private boolean checkNull() {
+        if (fillNameKM.getText().isBlank()) {
             return false;
-        }else if (jdcBatDau.getToolTipText().isBlank()){
+        } else if (jdcKetThuc.getDate() == null) {
             return false;
-        }else if(jdcKetThuc.getToolTipText().isBlank()){
+        } else if (jdcBatDau.getDate() == null) {
             return false;
-        }else if(fillDiscount.getText().isBlank()){
+        } else if (fillDiscount.getText().isBlank()) {
             return false;
         }
         return true;
@@ -171,6 +183,7 @@ public class PanelKM extends javax.swing.JPanel {
         lbMaKM.setText("Mã khuyến mãi");
 
         fillMaKM.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        fillMaKM.setEnabled(false);
 
         lbNameKM.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbNameKM.setText("Tên khuyến mãi");
@@ -303,11 +316,11 @@ public class PanelKM extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbStartDate)
-                                    .addComponent(jdcKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jdcBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbEndDate)
-                                    .addComponent(jdcBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jdcKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbDiscount)
@@ -352,8 +365,8 @@ public class PanelKM extends javax.swing.JPanel {
                             .addComponent(lbStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jdcBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jdcKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jdcKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdcBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -372,21 +385,21 @@ public class PanelKM extends javax.swing.JPanel {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-                if (this.index >= 0) {
+        if (this.index >= 0) {
             update();
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-                if (this.index >= 0) {
+        if (this.index >= 0) {
             delete();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         // TODO add your handling code here:
-         clear();
+        clear();
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
@@ -396,12 +409,12 @@ public class PanelKM extends javax.swing.JPanel {
 
     private void tbKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKMMouseClicked
         // TODO add your handling code here:
-                this.index = tbKM.getSelectedRow();
+        this.index = tbKM.getSelectedRow();
         if (this.index >= 0) {
             edit();
         }
         if (evt.getClickCount() == 2) {
-            
+
         }
     }//GEN-LAST:event_tbKMMouseClicked
 
