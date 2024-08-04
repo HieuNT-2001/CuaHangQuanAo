@@ -221,11 +221,11 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
     // Lấy phần trăm giảm giá
     private double getGiamGia(String maGiamGia) {
-        KhuyenMai km = kmDAO.selectByTenKM(maGiamGia);
-        if (km == null) {
+        List<KhuyenMai> list = kmDAO.selectByTenKM(maGiamGia);
+        if (list.isEmpty()) {
             return 0;
         } else {
-            return km.getGiamGia();
+            return list.get(0).getGiamGia();
         }
     }
 
@@ -280,15 +280,15 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
     // Kiểm tra hiệu lực mã giảm giá
     public boolean checkKhuyenMai(String maGiamGia) {
-        KhuyenMai km = kmDAO.selectByTenKM(maGiamGia);
+        List<KhuyenMai> list = kmDAO.selectByTenKM(maGiamGia);
         Date ngayHienTai = XDate.toDate(LocalDate.now().toString(), "yyyy-MM-dd");
-        if (km == null) {
+        if (list.isEmpty()) {
             MsgBox.alert(this, "Mã khuyến mại không tồn tại!");
             return false;
-        } else if (ngayHienTai.before(km.getNgayBD())) {
+        } else if (ngayHienTai.before(list.get(0).getNgayBD())) {
             MsgBox.alert(this, "Mã khuyến mại chưa có hiệu lực!");
             return false;
-        } else if (ngayHienTai.after(km.getNgayKT())) {
+        } else if (ngayHienTai.after(list.get(0).getNgayKT())) {
             MsgBox.alert(this, "Mã khuyến mại đã hết hiệu lực!");
             return false;
         }
