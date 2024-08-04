@@ -214,6 +214,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEdit">
       <Properties>
@@ -227,6 +230,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDelete">
       <Properties>
@@ -240,6 +246,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnNew">
       <Properties>
@@ -253,6 +262,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSearch">
       <Properties>
@@ -263,6 +275,9 @@
           <Image iconType="3" name="/Icon/Search.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="searchBar">
       <Properties>
@@ -330,6 +345,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbKMMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

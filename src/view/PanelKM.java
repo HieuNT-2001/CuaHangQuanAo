@@ -4,20 +4,12 @@
  */
 package view;
 
-<<<<<<< Updated upstream
 import java.util.*;
 import entity.*;
 import dao.*;
 import javax.swing.table.DefaultTableModel;
+import utils.MsgBox;
 
-=======
-import dao.KhuyenMaiDAO;
-import entity.KhuyenMai;
-import javax.swing.table.DefaultTableModel;
-
-
-
->>>>>>> Stashed changes
 /**
  *
  * @author HP
@@ -31,7 +23,6 @@ public class PanelKM extends javax.swing.JPanel {
      * Creates new form PanelKM
      */
     public PanelKM() {
-<<<<<<< Updated upstream
         initComponents();
         fillTable();
     }
@@ -80,18 +71,65 @@ public class PanelKM extends javax.swing.JPanel {
     }
 
     private void insert() {
-
-=======
-        initComponents();       
-    }
-    private void fillTableKM (){
-        DefaultTableModel model = (DefaultTableModel) tbKM.getModel();
-        model.setRowCount(ABORT);
-        for( KhuyenMai km : KhuyenMaiDAO.getAll()){
-            Object data[] = {km.getMaKM(),km.getTenKM(),km.getNgayBD(),km.getNgayKT(),km.getGiamGia()};
-            model.addRow(data);
+        KhuyenMai km = getModel();
+        if(checkNull()){
+        try{
+            kmd.insert(km);
+            fillTable();
+            clear();
+            this.index = -1;
+            System.out.println("Thêm khuyến mãi thành công");
+        } catch (Exception e ){
+            MsgBox.alert(this, "Thêm khuyến mãi thất bại");
         }
->>>>>>> Stashed changes
+        }
+    }
+    private void update(){
+        KhuyenMai km = getModel();
+        try{
+            kmd.update(km);
+            fillTable();
+            clear();
+            this.index = -1;
+            System.out.println("Cập nhật khuyến mãi thành công");
+        }catch (Exception e ){
+            MsgBox.alert(this,"Cập nhật khuyến mãi thất bại");
+        }
+    }
+    private void delete (){
+        if (MsgBox.confirm(this,"Bạn có thật sự muốn xóa khuyến mãi này")){
+            int  MaKM = Integer.parseInt(fillMaKM.getName());
+            try{
+                kmd.delete(MaKM);
+                fillTable();
+                clear();
+                this.index = -1;
+                MsgBox.alert(this,"Xóa khuyến mãi thành công");
+            }catch (Exception e){
+                MsgBox.alert(this, "Xóa thất bại");
+            }
+        }
+    }
+    void edit(){
+        try{
+            int MaKM = (int) tbKM.getValueAt(this.index,0);
+            KhuyenMai km = kmd.selectById(MaKM);
+            this.setModel(km);
+        }catch (Exception e){
+            System.out.println("không thể cập nhật dữ liệu");
+        }
+    }
+    public boolean checkNull(){
+        if(fillNameKM.getText().isBlank()){
+            return false;
+        }else if (jdcBatDau.getToolTipText().isBlank()){
+            return false;
+        }else if(jdcKetThuc.getToolTipText().isBlank()){
+            return false;
+        }else if(fillDiscount.getText().isBlank()){
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -155,27 +193,52 @@ public class PanelKM extends javax.swing.JPanel {
         btnAdd.setText("Thêm");
         btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnEdit.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Edit.png"))); // NOI18N
         btnEdit.setText("Sửa");
         btnEdit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEdit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Delete.png"))); // NOI18N
         btnDelete.setText("Xóa");
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnNew.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/New_1.png"))); // NOI18N
         btnNew.setText("Mới");
         btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
 
         btnSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Search.png"))); // NOI18N
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         searchBar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
@@ -199,6 +262,11 @@ public class PanelKM extends javax.swing.JPanel {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbKM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbKMMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tbKM);
@@ -296,6 +364,46 @@ public class PanelKM extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        insert();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+                if (this.index >= 0) {
+            update();
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+                if (this.index >= 0) {
+            delete();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        // TODO add your handling code here:
+         clear();
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        fillTable();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void tbKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKMMouseClicked
+        // TODO add your handling code here:
+                this.index = tbKM.getSelectedRow();
+        if (this.index >= 0) {
+            edit();
+        }
+        if (evt.getClickCount() == 2) {
+            
+        }
+    }//GEN-LAST:event_tbKMMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

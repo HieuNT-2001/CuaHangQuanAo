@@ -484,6 +484,9 @@ public class PanelSP extends javax.swing.JPanel {
         if (this.index >= 0) {
             edit();
         }
+        if (evt.getClickCount() == 2) {
+            
+        }
     }//GEN-LAST:event_tbSPMouseClicked
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
