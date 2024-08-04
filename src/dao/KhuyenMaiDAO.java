@@ -16,9 +16,9 @@ import java.sql.*;
 public class KhuyenMaiDAO {
 
     public void insert(KhuyenMai km) {
-        String sql = "INSERT INTO KhuyenMai (MaKM, TenKM, NgayBD, NgayKT, GiamGia)\n"
+        String sql = "INSERT INTO KhuyenMai (TenKM, NgayBD, NgayKT, GiamGia)\n"
                 + "VALUES (?, ?, ?, ?)";
-        Xjdbc.update(sql, km.getMaKM(), km.getTenKM(), km.getNgayBD(), km.getNgayKT(), km.getGiamGia());
+        Xjdbc.update(sql, km.getTenKM(), km.getNgayBD(), km.getNgayKT(), km.getGiamGia());
     }
 
     public void update(KhuyenMai km) {
@@ -42,11 +42,10 @@ public class KhuyenMaiDAO {
         List<KhuyenMai> lkm = selectBySql(sql, maKM);
         return lkm.size() > 0 ? lkm.get(0) : null;
     }
-
-    public KhuyenMai selectByTenKM(String tenKM) {
-        String sql = "SELECT * FROM KhuyenMai WHERE TenKM = ?";
-        List<KhuyenMai> lkm = selectBySql(sql, tenKM);
-        return lkm.size() > 0 ? lkm.get(0) : null;
+    
+    public List<KhuyenMai> selectByTenKM(String tenKM) {
+        String sql = "SELECT * FROM KhuyenMai WHERE TenKM LIKE ?";
+        return selectBySql(sql, "%" + tenKM + "%");
     }
 
     private List<KhuyenMai> selectBySql(String sql, Object... args) {

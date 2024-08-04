@@ -1,4 +1,3 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -9,7 +8,7 @@ import java.util.*;
 import entity.*;
 import dao.*;
 import javax.swing.table.DefaultTableModel;
-
+import utils.MsgBox;
 
 /**
  *
@@ -24,32 +23,37 @@ public class PanelKM extends javax.swing.JPanel {
      * Creates new form PanelKM
      */
     public PanelKM() {
-
         initComponents();
         fillTable();
     }
 
-    public void fillTable() {
+    private void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tbKM.getModel();
         model.setRowCount(0);
-        List<KhuyenMai> lkm = kmd.select();
+        String tenKM = searchBar.getText();
+        List<KhuyenMai> lkm = kmd.selectByTenKM(tenKM);
         for (KhuyenMai km : lkm) {
-            Object data[] = {km.getMaKM(), km.getTenKM(), km.getNgayBD(), km.getNgayKT(), km.getGiamGia()
+            Object data[] = {
+                km.getMaKM(),
+                km.getTenKM(),
+                km.getNgayBD(),
+                km.getNgayKT(),
+                km.getGiamGia()
             };
             model.addRow(data);
         }
     }
 
-    void setModel(KhuyenMai km) {
+    private void setModel(KhuyenMai km) {
         fillMaKM.setText(String.valueOf(km.getMaKM()));
         fillNameKM.setText(String.valueOf(km.getTenKM()));
-        jdcBatDau.setDate((km.getNgayBD()));
-        jdcKetThuc.setDate((km.getNgayKT()));
+        jdcKetThuc.setDate((km.getNgayBD()));
+        jdcBatDau.setDate((km.getNgayKT()));
         fillDiscount.setText(String.valueOf(km.getGiamGia()));
 
     }
 
-    KhuyenMai getModel() {
+    private KhuyenMai getModel() {
         KhuyenMai km = new KhuyenMai();
         if (fillMaKM.getText().isBlank()) {
             km.setMaKM(0);
@@ -63,7 +67,7 @@ public class PanelKM extends javax.swing.JPanel {
         return km;
     }
 
-    void clear() {
+    private void clear() {
         fillMaKM.setText("");
         fillNameKM.setText("");
         jdcBatDau.setDate(null);
@@ -73,8 +77,71 @@ public class PanelKM extends javax.swing.JPanel {
     }
 
     private void insert() {
+        if (checkNull()) {
+            KhuyenMai km = getModel();
+            try {
+                kmd.insert(km);
+                fillTable();
+                clear();
+                this.index = -1;
+                MsgBox.alert(this, "Thêm khuyến mãi thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Thêm khuyến mãi thất bại");
+            }
+        }
+    }
 
+    private void update() {
+        if (checkNull()) {
+            KhuyenMai km = getModel();
+            try {
+                kmd.update(km);
+                fillTable();
+                clear();
+                this.index = -1;
+                MsgBox.alert(this, "Cập nhật khuyến mãi thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Cập nhật khuyến mãi thất bại");
+            }
+        }
+    }
 
+    private void delete() {
+        if (MsgBox.confirm(this, "Bạn có thật sự muốn xóa khuyến mãi này")) {
+            int MaKM = Integer.parseInt(fillMaKM.getText());
+            try {
+                kmd.delete(MaKM);
+                fillTable();
+                clear();
+                this.index = -1;
+                MsgBox.alert(this, "Xóa khuyến mãi thành công");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xóa thất bại");
+            }
+        }
+    }
+
+    private void edit() {
+        try {
+            int MaKM = (int) tbKM.getValueAt(this.index, 0);
+            KhuyenMai km = kmd.selectById(MaKM);
+            this.setModel(km);
+        } catch (Exception e) {
+            System.out.println("không thể cập nhật dữ liệu");
+        }
+    }
+
+    private boolean checkNull() {
+        if (fillNameKM.getText().isBlank()) {
+            return false;
+        } else if (jdcKetThuc.getDate() == null) {
+            return false;
+        } else if (jdcBatDau.getDate() == null) {
+            return false;
+        } else if (fillDiscount.getText().isBlank()) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -116,6 +183,7 @@ public class PanelKM extends javax.swing.JPanel {
         lbMaKM.setText("Mã khuyến mãi");
 
         fillMaKM.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        fillMaKM.setEnabled(false);
 
         lbNameKM.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lbNameKM.setText("Tên khuyến mãi");
@@ -138,27 +206,52 @@ public class PanelKM extends javax.swing.JPanel {
         btnAdd.setText("Thêm");
         btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnEdit.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Edit.png"))); // NOI18N
         btnEdit.setText("Sửa");
         btnEdit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEdit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Delete.png"))); // NOI18N
         btnDelete.setText("Xóa");
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnNew.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/New_1.png"))); // NOI18N
         btnNew.setText("Mới");
         btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
 
         btnSearch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Search.png"))); // NOI18N
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         searchBar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
@@ -182,6 +275,11 @@ public class PanelKM extends javax.swing.JPanel {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbKM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbKMMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tbKM);
@@ -218,11 +316,11 @@ public class PanelKM extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbStartDate)
-                                    .addComponent(jdcKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jdcBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbEndDate)
-                                    .addComponent(jdcBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jdcKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbDiscount)
@@ -267,8 +365,8 @@ public class PanelKM extends javax.swing.JPanel {
                             .addComponent(lbStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jdcBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jdcKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jdcKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdcBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -279,6 +377,46 @@ public class PanelKM extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        insert();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        if (this.index >= 0) {
+            update();
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        if (this.index >= 0) {
+            delete();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        // TODO add your handling code here:
+        clear();
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        fillTable();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void tbKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKMMouseClicked
+        // TODO add your handling code here:
+        this.index = tbKM.getSelectedRow();
+        if (this.index >= 0) {
+            edit();
+        }
+        if (evt.getClickCount() == 2) {
+
+        }
+    }//GEN-LAST:event_tbKMMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
