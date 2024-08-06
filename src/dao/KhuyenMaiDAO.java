@@ -45,7 +45,7 @@ public class KhuyenMaiDAO {
     
     public List<KhuyenMai> selectByTenKM(String tenKM) {
         String sql = "SELECT * FROM KhuyenMai WHERE TenKM LIKE ?";
-        return selectBySql(sql, "%" + tenKM + "%");
+        return selectBySql(sql, tenKM);
     }
 
     private List<KhuyenMai> selectBySql(String sql, Object... args) {

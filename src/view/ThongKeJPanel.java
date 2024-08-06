@@ -187,14 +187,20 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         jLabel4.setText("Doanh thu hôm nay");
 
         txtDoanhThuHomNay.setBackground(new java.awt.Color(242, 242, 242));
+        txtDoanhThuHomNay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtDoanhThuHomNay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtDoanhThuHomNay.setEnabled(false);
 
         jLabel7.setText("Thành công: ");
 
         jLabel8.setText("Bị hủy: ");
 
+        txtThanhCongHomNay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtThanhCongHomNay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtThanhCongHomNay.setEnabled(false);
 
+        txtHuyHomNay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtHuyHomNay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtHuyHomNay.setEnabled(false);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -239,14 +245,20 @@ public class ThongKeJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Doanh thu tháng này");
 
+        txtDoanhThuThangNay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtDoanhThuThangNay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtDoanhThuThangNay.setEnabled(false);
 
         jLabel10.setText("Thành công: ");
 
         jLabel12.setText("Bị hủy: ");
 
+        txtThanhCongThangNay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtThanhCongThangNay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtThanhCongThangNay.setEnabled(false);
 
+        txtHuyThangNay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtHuyThangNay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtHuyThangNay.setEnabled(false);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -291,14 +303,20 @@ public class ThongKeJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Doanh thu năm nay");
 
+        txtDoanhThuNamNay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtDoanhThuNamNay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtDoanhThuNamNay.setEnabled(false);
 
         jLabel15.setText("Thành công: ");
 
         jLabel16.setText("Bị hủy: ");
 
+        txtThanhCongNamNay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtThanhCongNamNay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtThanhCongNamNay.setEnabled(false);
 
+        txtHuyNamNay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtHuyNamNay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtHuyNamNay.setEnabled(false);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -346,10 +364,16 @@ public class ThongKeJPanel extends javax.swing.JPanel {
 
         jLabel13.setText("Bị hủy: ");
 
+        txtHuyTheoNgay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtHuyTheoNgay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtHuyTheoNgay.setEnabled(false);
 
+        txtThanhCongTheoNgay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtThanhCongTheoNgay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtThanhCongTheoNgay.setEnabled(false);
 
+        txtDoanhThuTheoNgay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtDoanhThuTheoNgay.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txtDoanhThuTheoNgay.setEnabled(false);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);

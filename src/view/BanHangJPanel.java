@@ -106,7 +106,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
         HoaDon hd = getForm(false);
         hdDAO.insert(hd);
         fillTableDanhSachHD();
-        clearForm();
     }
 
     // tạo một hóa đơn với kênh bán hàng online
@@ -114,7 +113,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
         HoaDon hd = getForm(true);
         hdDAO.insert(hd);
         fillTableDanhSachHD();
-        clearForm();
     }
 
     // Thêm sản phẩm vào giở hàng
@@ -282,7 +280,9 @@ public class BanHangJPanel extends javax.swing.JPanel {
     public boolean checkKhuyenMai(String maGiamGia) {
         List<KhuyenMai> list = kmDAO.selectByTenKM(maGiamGia);
         Date ngayHienTai = XDate.toDate(LocalDate.now().toString(), "yyyy-MM-dd");
-        if (list.isEmpty()) {
+        if (maGiamGia.isBlank()) {
+            return false;
+        } else if (list.isEmpty()) {
             MsgBox.alert(this, "Mã khuyến mại không tồn tại!");
             return false;
         } else if (ngayHienTai.before(list.get(0).getNgayBD())) {
@@ -900,6 +900,8 @@ public class BanHangJPanel extends javax.swing.JPanel {
                 updateThongTinHD(row, 0, "");
                 updateThanhTien(row);
                 setForm(row);
+            } else {
+                txtMaGiamGia.setText("");
             }
         }
     }//GEN-LAST:event_txtMaGiamGiaKeyPressed

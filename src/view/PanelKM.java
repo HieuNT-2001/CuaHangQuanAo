@@ -31,7 +31,7 @@ public class PanelKM extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tbKM.getModel();
         model.setRowCount(0);
         String tenKM = searchBar.getText();
-        List<KhuyenMai> lkm = kmd.selectByTenKM(tenKM);
+        List<KhuyenMai> lkm = kmd.selectByTenKM("%" + tenKM + "%");
         for (KhuyenMai km : lkm) {
             Object data[] = {
                 km.getMaKM(),
