@@ -49,16 +49,12 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbStartDate" min="-2" max="-2" attributes="0"/>
-
                                   <Component id="jdcKetThuc" min="-2" pref="240" max="-2" attributes="0"/>
-
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbEndDate" min="-2" max="-2" attributes="0"/>
-
                                   <Component id="jdcBatDau" min="-2" pref="240" max="-2" attributes="0"/>
-
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -117,11 +113,9 @@
                           <Component id="lbStartDate" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jdcBatDau" min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="jdcKetThuc" min="-2" pref="36" max="-2" attributes="0"/>
-
                       </Group>
                   </Group>
               </Group>
@@ -339,7 +333,6 @@
         </Component>
       </SubComponents>
     </Container>
-
     <Component class="com.toedter.calendar.JDateChooser" name="jdcBatDau">
       <Properties>
         <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
@@ -349,7 +342,6 @@
       <Properties>
         <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
       </Properties>
-
     </Component>
   </SubComponents>
 </Form>

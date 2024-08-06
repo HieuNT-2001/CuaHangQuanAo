@@ -133,13 +133,25 @@ public class PanelKM extends javax.swing.JPanel {
 
     private boolean checkNull() {
         if (fillNameKM.getText().isBlank()) {
+            MsgBox.alert(this, "Không được để trống tên khuyến mại");
             return false;
         } else if (jdcKetThuc.getDate() == null) {
+            MsgBox.alert(this, "Không được để trống ngày bắt đầu");
             return false;
         } else if (jdcBatDau.getDate() == null) {
+            MsgBox.alert(this, "Không được để trống ngày kết thúc");
             return false;
         } else if (fillDiscount.getText().isBlank()) {
+            MsgBox.alert(this, "không được để trống tỷ lệ giảm giá");
             return false;
+        }
+        try {
+            double giamGia = Double.parseDouble(fillDiscount.getText());
+            if (giamGia < 0 || giamGia > 1) {
+                MsgBox.alert(this, "tỷ lệ giảm giá nằm trong khoảng từ 0 đến 1");
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this,"Nhập đúng tỷ lệ giảm giá");
         }
         return true;
     }

@@ -867,20 +867,25 @@ public class BanHangJPanel extends javax.swing.JPanel {
                 if (ghRow >= 0) {
                     int maSP = (int) tblGioHang.getValueAt(ghRow, 0);
                     int maHD = (int) tblDanhSachHD.getValueAt(hdRow, 0);
-                    int sl_gioHang = Integer.parseInt(model.getValueAt(ghRow, 3).toString());
-                    int soLuongTon = spDAO.selectById(maSP).getSoLuong();
-                    HoaDonChiTiet hdct = hdctDAO.selectByMaHD_MaSP(maHD, maSP);
+                    int sl_gioHang;
+                    try {
+                        sl_gioHang = Integer.parseInt(model.getValueAt(ghRow, 3).toString());
+                        int soLuongTon = spDAO.selectById(maSP).getSoLuong();
+                        HoaDonChiTiet hdct = hdctDAO.selectByMaHD_MaSP(maHD, maSP);
 
-                    if (sl_gioHang < soLuongTon) {
-                        hdct.setSoLuong(sl_gioHang);
-                        hdctDAO.update(hdct);
-                    } else {
-                        MsgBox.alert(tblGioHang, "Không có đủ hàng!");
+                        if (sl_gioHang < soLuongTon) {
+                            hdct.setSoLuong(sl_gioHang);
+                            hdctDAO.update(hdct);
+                        } else {
+                            MsgBox.alert(tblGioHang, "Không có đủ hàng!");
+                        }
+
+                        fillTableGioHang(hdRow);
+                        updateThanhTien(hdRow);
+                        setForm(hdRow);
+                    } catch (NumberFormatException ex) {
+                        MsgBox.alert(this, "Nhập đúng số lượng");
                     }
-
-                    fillTableGioHang(hdRow);
-                    updateThanhTien(hdRow);
-                    setForm(hdRow);
                 }
             }
         });

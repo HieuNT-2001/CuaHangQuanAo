@@ -105,7 +105,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     }
 
     private void insert() {
-        if (checkNull()) {
+        if (isValidate()) {
             SanPham sp = getModel();
             try {
                 spd.insert(sp);
@@ -120,7 +120,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     }
 
     private void update() {
-        if (MsgBox.confirm(this, "Bạn thật sự muốn sửa sản phẩm này ") && checkNull()) {
+        if (MsgBox.confirm(this, "Bạn thật sự muốn sửa sản phẩm này ") && isValidate()) {
             SanPham sp = getModel();
             try {
                 spd.update(sp);
@@ -171,13 +171,21 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         }
     }
 
-    private boolean checkNull() {
+    private boolean isValidate() {
         if (fillNameSP.getText().isBlank()) {
+            MsgBox.alert(this, "Không được để trống tên sản phẩm");
             return false;
         } else if (fillPrice.getText().isBlank()) {
+            MsgBox.alert(this, "Không được để trống giá sản phẩm");
             return false;
         } else if (fillQuantity.getText().isBlank()) {
+            MsgBox.alert(this, "Không được để trống số lượng");
             return false;
+        }
+        try {
+            Integer.valueOf(fillQuantity.getText());
+        } catch (NumberFormatException e) {
+            MsgBox.alert(this, "Nhập đúng số lượng");
         }
         return true;
     }
