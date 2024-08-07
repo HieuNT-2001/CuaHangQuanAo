@@ -25,6 +25,8 @@ public class PanelKM extends javax.swing.JPanel {
     public PanelKM() {
         initComponents();
         fillTable();
+        jdcBatDau.getDateEditor().setEnabled(false);
+        jdcKetThuc.getDateEditor().setEnabled(false);
     }
 
     private void fillTable() {

@@ -35,6 +35,8 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         getDoanhThuToday();
         getDoanhThuThisMonth();
         getDoanhThuThisYear();
+        jdcStart.getDateEditor().setEnabled(false);
+        jdcEnd.getDateEditor().setEnabled(false);
     }
 
     private void fillComboBoxNam1() {
