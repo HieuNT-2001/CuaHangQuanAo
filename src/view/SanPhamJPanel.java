@@ -224,6 +224,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         btnHiddenList = new javax.swing.JButton();
         btnHideSP = new javax.swing.JButton();
         btnTTSP = new javax.swing.JButton();
+        btnDanhMucSP = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -360,6 +361,14 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDanhMucSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnDanhMucSP.setText("Danh Mục SP");
+        btnDanhMucSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDanhMucSPActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -368,6 +377,8 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDanhMucSP)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnTTSP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHideSP)
@@ -457,7 +468,8 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHiddenList)
                     .addComponent(btnHideSP)
-                    .addComponent(btnTTSP))
+                    .addComponent(btnTTSP)
+                    .addComponent(btnDanhMucSP))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -523,9 +535,15 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         new ThuocTinhSPJDialog(new javax.swing.JFrame(), true).setVisible(true);
     }//GEN-LAST:event_btnTTSPActionPerformed
 
+    private void btnDanhMucSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhMucSPActionPerformed
+        // TODO add your handling code here:
+        new DanhMucJDialog(new javax.swing.JFrame(), true).setVisible(true);
+    }//GEN-LAST:event_btnDanhMucSPActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnDanhMucSP;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHiddenList;

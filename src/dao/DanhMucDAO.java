@@ -19,7 +19,7 @@ public class DanhMucDAO {
 
     private final String SELECT_ALL = "SELECT * FROM DanhMuc";
     private final String SELECT_BY_ID = "SELECT * FROM DanhMuc WHERE MaDM = ?";
-    private final String INSERT = "INSERT INTO DanhMuc (TenDM) values ?";
+    private final String INSERT = "INSERT INTO DanhMuc (TenDM) values (?)";
     private final String UPDATE = "UPDATE DanhMuc SET TenDM = ? WHERE MaDM = ?";
     private final String DELETE = "DELETE FROM DanhMuc WHERE MaDM = ?";
 

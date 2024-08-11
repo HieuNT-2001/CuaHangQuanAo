@@ -198,7 +198,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
         }
     }
 
-    // Cập nhật lại thành tiền khi thêm sản phẩm vào giỏ hàng
+    // Cập nhật lại thành tiền khi thêm hoặc xóa sản phẩm vào giỏ hàng
     private void updateThanhTien(int row) {
         int maHD = (int) tblDanhSachHD.getValueAt(row, 0);
         HoaDon hd = hdDAO.selectById(maHD);
@@ -208,7 +208,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
         hdDAO.update(hd);
     }
 
-    // Lấy tổng thành tiền trước giảm giá
+    // Lấy tổng thành tiền trước giảm giá của các sản phẩm trong giỏ hàng
     private double getThanhTien() {
         double thanhTien = 0;
         for (int i = 0; i < tblGioHang.getRowCount(); i++) {
@@ -241,7 +241,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
         return hd;
     }
 
-    // Hien thi thong tin thanh toan cua hoa don duoc chon
+    // Hiển thị thông tin thanh toán của hóa đơn lên form
     private void setForm(int row) {
         int maHD = (int) tblDanhSachHD.getValueAt(row, 0);
         HoaDon hd = hdDAO.selectById(maHD);

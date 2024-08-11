@@ -25,6 +25,8 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnDanhMucSP" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnTTSP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnHideSP" min="-2" max="-2" attributes="0"/>
@@ -135,6 +137,7 @@
                   <Component id="btnHiddenList" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnHideSP" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTTSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnDanhMucSP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -435,6 +438,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTTSPActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnDanhMucSP">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Danh M&#x1ee5;c SP"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDanhMucSPActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
