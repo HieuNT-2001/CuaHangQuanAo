@@ -419,10 +419,10 @@ GO
 INSERT INTO ChiTietSP
     (MaSP, MaMS, MaKT, Hinh)
 VALUES
-    (1, 1, 1, 'somitrang.jpg'),
-    (1, 1, 2, 'somitrang.jpg'),
-    (1, 1, 3, 'somitrang.jpg'),
-    (2, 2, 3, 'quancongsoden.jpg')
+    (1, 1, 1, 'somitrang.png'),
+    (1, 1, 2, 'somitrang.png'),
+    (1, 1, 3, 'somitrang.png'),
+    (2, 2, 3, 'quancongsoden.png')
 GO
 
 -- NHẬP DỮ LIỆU HÓA ĐƠN
